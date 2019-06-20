@@ -1,0 +1,84 @@
+// Variables
+
+$push-down-head-panel: 40%;
+$icon-size-head-panel: 85%;
+
+// fade on header panel
+$transition-base: all .6s ease-in-out;
+
+// Set custom colors
+$orange: #ffa504 !default;
+$faint-black: #0f0f0f;
+$gray-black: #1f1f1f;
+$dark-blue: #2c3e50 !default;
+
+// Override Bootstrap primary and secondary colors
+$primary: $faint-black !default;
+$secondary: $gray-black !default;
+$warning: $orange !default;
+
+// Override Bootstrap font variables
+// $font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+$font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+$headings-font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+$headings-font-weight: 700 !default;
+
+.anchor-header {}
+
+.anchor-side-link {
+    color: $orange;
+    float:left;
+    margin-left: -30px;
+    opacity: 0;
+    .is-active & {
+        opacity: 0;
+    }
+    :hover > & {
+        opacity: 1;
+    }
+}
+
+.inline-a {
+    color: $orange;
+    &:hover {
+        color: white;
+    }
+}
+
+.link-border {
+    padding: 0px;
+    margin: -.2rem 0px 5px 0px;
+    a {
+        font-size: 0.8rem;
+        padding: 2px 5px 2px 5px;
+        border: 1px solid;
+        border-radius: 0px 0px 5px 5px;
+        border-color: gray;
+        color: $orange !important;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: $font-family-sans-serif;
+    font-weight: $headings-font-weight;
+    color: $orange;
+}
+
+// Override Bootstrap border variables
+$border-width: 0.125rem !default;
+$border-radius: 0.5rem !default;
+$border-radius-lg: 0.75rem !default;
+$border-radius-sm: 0.25rem !default;
+
+// Override Bootstrap input/button variables
+$input-btn-border-width: $border-width !default;
+
+// Override Bootstrap modal variables
+$modal-inner-padding: 4rem 1rem !default;
+$modal-content-border-width: 0 !default;

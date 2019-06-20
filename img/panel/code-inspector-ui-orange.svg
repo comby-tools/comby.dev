@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>code-inspector-ui</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="code-inspector-ui" transform="translate(8.000000, 20.000000)">
+            <rect id="Rectangle-16-Copy-16" stroke="#FFA504" stroke-linecap="round" stroke-linejoin="round" x="3" y="4" width="79" height="53"></rect>
+            <rect id="Rectangle-16-Copy-17" stroke="#FFA504" stroke-linecap="round" stroke-linejoin="round" x="3" y="41" width="79" height="16"></rect>
+            <g id="Oval-Copy-116" transform="translate(3.500000, 56.000000) rotate(-90.000000) translate(-3.500000, -56.000000) translate(0.000000, 53.000000)" stroke="#151515">
+                <circle id="Oval" stroke-width="1.5" fill="#FFA504" cx="3.5" cy="3" r="2.25"></circle>
+                <g id="path-1-link">
+                    <circle id="path-1" cx="3.5" cy="3" r="3"></circle>
+                </g>
+            </g>
+            <g id="Oval-Copy-120" transform="translate(81.500000, 4.000000) rotate(-90.000000) translate(-81.500000, -4.000000) translate(78.000000, 1.000000)" stroke="#151515">
+                <circle id="Oval" stroke-width="1.5" fill="#FFA504" cx="3.5" cy="3" r="2.25"></circle>
+                <g id="path-2-link">
+                    <circle id="path-2" cx="3.5" cy="3" r="3"></circle>
+                </g>
+            </g>
+            <path d="M29.5,49 L13,49" id="Stroke-1-Copy-40" stroke="#FFA504" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M63,42 L63,56.5" id="Stroke-1-Copy-41" stroke="#FFA504" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Oval-Copy-123" transform="translate(63.000000, 41.500000) rotate(-90.000000) translate(-63.000000, -41.500000) translate(60.000000, 38.000000)" stroke="#151515">
+                <circle id="Oval" stroke-width="1.5" fill="#FFA504" cx="3" cy="3.5" r="2.25"></circle>
+                <g id="path-3-link">
+                    <circle id="path-3" cx="3" cy="3.5" r="3"></circle>
+                </g>
+            </g>
+            <g id="Oval-Copy-252" transform="translate(13.000000, 49.000000) rotate(-90.000000) translate(-13.000000, -49.000000) translate(10.000000, 46.000000)" stroke="#151515">
+                <circle id="Oval" stroke-width="1.5" fill="#FFA504" cx="3" cy="3" r="2.25"></circle>
+                <g id="path-4-link">
+                    <circle id="path-4" cx="3" cy="3" r="3"></circle>
+                </g>
+            </g>
+            <path d="M42.9715019,15.5 L18,15.5" id="Stroke-1-Copy-12" stroke="#FFA504" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M41.8906773,27.5 L18,27.5" id="Stroke-1-Copy-13" stroke="#FFA504" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M18,17 L18,27.511898" id="Stroke-1-Copy-13" stroke="#FFA504" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M43,15.6047521 L43,27.511898" id="Stroke-1-Copy-14" stroke="#FFA504" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="Oval-Copy-197" transform="translate(18.000000, 15.500000) rotate(-90.000000) translate(-18.000000, -15.500000) translate(15.000000, 12.000000)" stroke="#151515">
+                <circle id="Oval" stroke-width="1.5" fill="#FFA504" cx="3" cy="3.5" r="2.25"></circle>
+                <g id="path-5-link">
+                    <circle id="path-5" cx="3" cy="3.5" r="3"></circle>
+                </g>
+            </g>
+            <g id="Oval-Copy-200" transform="translate(43.000000, 27.500000) rotate(-90.000000) translate(-43.000000, -27.500000) translate(40.000000, 24.000000)" stroke="#151515">
+                <circle id="Oval" stroke-width="1.5" fill="#FFA504" cx="3" cy="3.5" r="2.25"></circle>
+                <g id="path-6-link">
+                    <circle id="path-6" cx="3" cy="3.5" r="3"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Comby〔 Rewrite Code 〕</title>
+
+    <!-- Custom fonts for this theme -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
+    <!-- Source Sans Pro font -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon/">
+
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Masthead -->
+    <header class="masthead bg-primary text-center">
+      <div class="container masthead-container d-flex align-items-center flex-column">
+
+        <!-- Masthead Avatar Image -->
+        <!--<img class="masthead-avatar mb-5" src="img/avataaars.svg" alt="">-->
+
+        <!-- Masthead Heading -->
+        <h1 class="masthead-heading text-uppercase mb-0">Comby</h1>
+
+        <!-- Line -->
+        <div class="divider-line"></div>
+
+        <!-- Masthead Subheading -->
+        <p class="masthead-subheading font-weight-light mb-0"><code><span class="hole">change the way you change :[code]</span></code></p>
+      </div>
+
+      <!-- Panel -->
+      <div class="container media-width-override mt-5 pl-5 pr-5">
+        <div class="row">
+
+          <!-- Basic Usage -->
+          <div class="col-sm-2 offset-sm-1 panel-item">
+            <a href="#basic-usage">
+              <div class="mastpanel-item">
+                <div class="mastpanel-item-overlay h-100 w-100">
+                  <img class="img-fluid" src="img/panel/hexa-cell-1-orange.svg" alt="">
+                  <p>Basic Usage</p>
+                </div>
+                <img class="img-fluid" src="img/panel/hexa-cell-1.svg" alt="">
+                <p>Basic Usage</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Advanced Usage -->
+          <div class="col-sm-2 panel-item">
+            <a href="#advanced-usage">
+              <div class="mastpanel-item">
+                <div class="mastpanel-item-overlay h-100 w-100">
+                  <img class="img-fluid" src="img/panel/hexa-cell-2-orange.svg" alt="">
+                  <p>Advanced Usage</p>
+                </div>
+                <img class="img-fluid" src="img/panel/hexa-cell-2.svg" alt="">
+                <p>Advanced Usage</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Catalog -->
+          <div class="col-sm-2 panel-item">
+            <a href="https://catalogue.comby.dev/">
+              <div class="mastpanel-item">
+                <div class="mastpanel-item-overlay h-100 w-100">
+                  <img class="img-fluid" src="img/panel/reading-book-orange.svg" alt="">
+                  <p>Catalog</p>
+                </div>
+                <img class="img-fluid" src="img/panel/reading-book.svg" alt="">
+                <p>Catalog</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Live -->
+          <div class="col-sm-2 panel-item">
+            <a href="https://comby.live/">
+              <div class="mastpanel-item">
+                <div class="mastpanel-item-overlay h-100 w-100 fucksakes">
+                  <img class="img-fluid" src="img/panel/code-inspector-ui-orange.svg" alt="">
+                  <p>Live</p>
+                </div>
+                <img class="img-fluid" src="img/panel/code-inspector-ui.svg" alt="">
+                <p>Live</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- GitHub -->
+          <div class="col-sm-2 panel-item">
+            <a href="https://github.com/comby-tools/comby/">
+              <div class="mastpanel-item mx-auto">
+                <div class="mastpanel-item-overlay h-100 w-100">
+                  <img class="img-fluid" src="img/panel/github-orange.svg" alt="">
+                  <p>GitHub</p>
+                </div>
+                <img class="img-fluid" src="img/panel/github.svg" alt="">
+                <p>GitHub</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Philosophy Section -->
+    <section class="page-section bg-secondary portfolio" id="philosophy">
+      <div class="container">
+        <!--<h2 class="page-section-heading text-center">Philosophy</h2>-->
+
+        <!-- Line -->
+        <div class="d-flex align-items-center flex-column">
+          <div class="divider-line"></div>
+        </div>
+
+        \p{Code is so interesting because simple linear sequences of characters
+      express rich non-linear structures (like trees) and arbitrary information
+      (like comments). Humans are very creative, and have developed a variety of
+      ways to order these varying characters to mean different things. For
+      example, C-like comments can start with \source{//} but Python-like
+      comments use \source{#}. Problematically, we use the same characters to
+      mean different things across languages and in different contexts: a
+      \source{#} in C could be the start of a macro. Or it could be part of a
+      string like \source{"#"}. Or it could be a meaningless character inside a
+      C comment like \source{\\ #}. Yet at some level, a choice of characters in
+      all languages correspond to similar underlying structures or information:
+      most languages have comments, and balanced delimiters like parentheses
+      \source{()} or braces \source{{}} nest expressions, as found in typical
+      if-statements. The key idea in Comby is to match code that respects the
+      basics of this richer structure on a per-language basis, and not (only) as
+      arbitrary sequences of characters.<sup>(which is something that regex is
+      really for)</sup>}
+
+        <!-- Line -->
+        <div class="d-flex align-items-center flex-column">
+          <div class="divider-line"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Basic Usage Section -->
+    <section class="page-section bg-primary portfolio" id="basic-usage">
+      <div class="container">
+
+        <!-- Section Heading -->
+        <h2 class="page-section-heading text-center">Basic Usage</h2>
+
+        <!-- Line -->
+        <div class="d-flex align-items-center flex-column">
+          <div class="divider-line"></div>
+        </div>
+
+        \p{Comby is a tool for matching and rewriting code. You start by writing a simple template to match syntax. Look at this Go function:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source func main() {
+    fmt.Println("hello world")
+}
+```
+          </div>
+        </div>
+
+        \p{We can match the arguments to \source{fmt.Println} with this <i>match template</i>:}
+
+        <div class="row">
+          <div class="col-sm-6 offset-sm-3">
+```match
+fmt.Println(:[arguments])
+```
+          </div>
+        </div>
+
+            \p{The :[arguments] part is called a hole. It saves the matched part to a variable. In this case, the variable is called <code>arguments</code>, but we could have called it something else, like :[1] or :[the_1st_arg]. Your choice! As long as it only contains alphabet characters, numbers, or underscores.}
+
+            \p{The :[arguments] hole matches the \source{"hello world"} string. We can use it in a <i>rewrite template</i> to rewrite the function, like this one:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+```rewrite
+fmt.Println(fmt.Sprintf("comby says %s", :[arguments]))
+```
+          </div>
+        </div>
+
+        \p{Comby takes the match and rewrite templates and replaces the matched part in place:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+```source
+func main() {
+  \rewrite{fmt.Println(fmt.Sprintf("comby says %s", "hello world"))}
+}
+```
+[Live example](https://bit.ly/2XpttJG)
+          </div>
+        </div>
+
+        \p{Holes are the only special part in match templates, and they always have the form \color{:[...]}[orange]. <u>All other characters are interpreted literally</u> (there's a bit of detail about whitespace that we'll talk about in the next part). The point is that you <u>never</u> have to escape any characters in your template. Just say what you mean!}
+
+        \h6{How Matching Works}[#how-matching-works]
+        \p{:[hole] matches all characters, including newlines. If the match template was <i>just</i><br> :[file_content], it would match all the file content. The way :[hole] starts and stops matching depends on the code structure around it. Let's look at an example, matching on this Javascript code using the match template on the right:}
+
+        <div class="row">
+          <div class="col-sm-5 offset-sm-2">
+```source
+if (width <= 1280 && height <= 800) {
+    return 1;
+}
+```
+[Live example](https://bit.ly/2Xiw1cf)
+          </div>
+
+          <div class="col-sm-3">
+```match
+if (:[var] <= :[rest])
+
+
+```
+          </div>
+        </div>
+
+        \p{:[var] matches until it sees the \source{&nbsp;<=&nbsp;} part coming after it and matches \match{width}. :[rest] matches the rest of the condition: \match{1280 && height <= 800}. These holes match lazily: they look for the shortest way to satisfy the match. One way to refine matching is to add concrete context around holes based on what we care about. For example, we could match \match{height} to :[height] with both of the following templates, which depends on matching different parts of surrounding code:}
+
+        <div class="row">
+          <div class="col-sm-4 offset-sm-2">
+```match
+if (:[_] && :[height] :[_])
+```
+          </div>
+          <div class="col-sm-4">
+```match
+if (:[_] :[height] <= 800)
+```
+          </div>
+        </div>
+
+        \h6{About whitespace}[about-whitespace]
+        \p{Comby tries to make matching code forgiving. Whitespace in the template, like a single space, multiple contiguous spaces, or newlines are interpreted all the same: Comby will match the corresponding whitespace in the source code, but will not care about matching the exact number of spaces, or distinguish between spaces and newlines. Not being strict about whitespace tends to be the right default decision for code in most languages. It means our previous match templates all still work in these cases where our Javascript code is formatted differently:}
+
+      <div class="row">
+        <div class="col-sm-4 offset-sm-2">
+```source
+if (width <= 1280
+    && height <= 800) {
+    return 1;
+}
+```
+[Live example](https://bit.ly/2Xh2tMk)
+        </div>
+        <div class="col-sm-4">
+```source
+if (width     <= 1280
+    && height <= 800) {
+    return 1;
+}
+```
+[Live example](https://bit.ly/2XaGTZV)
+          </div>
+      </div>
+
+      \p{If you're wondering about indentation-sensitive languages like Python, be sure to check out the <a href="#faq-what-about-python" class="inline-a">FAQ</a>.}
+
+      \h6{What makes Comby special: More about structural matching}[what-makes-comby-special]
+
+      \p{If holes only matched lazily and indiscriminately up to patterns
+      like \source{<=} it wouldn't be much more special than matching a sequence
+      of characters. But matching is smarter than that. In many languages,
+      balanced delimiters like \source{()}, \source{[]} and \source{{}}
+      are <u>always</u> balanced. By default, a match template like
+      \match{(:[1])} will only match characters <u>inside well-balanced
+      parentheses</u>. Here are two example matches in this code:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+result = foo\match{(\color{bar(x)}[orange])} + foobar\match{(\color{baz(x)}[orange])};
+```
+[Live example](https://bit.ly/2Xm12Mk)
+          </div>
+        </div>
+
+        \p{The hole binds to \source{bar(x)} and \source{baz(x)} respectively,
+        which we can easily rewrite to a different call \source{qux(x)}, for
+        example. Note that writing a regular expression to do the same is not
+        easy (trivial attempts like \source{\(.*\)}
+        <sup>[[]](https://regexr.com/4fssh)</sup> or \source{\(.*?\)}
+        <sup>[[]](https://regexr.com/4fssk)</sup> don't work).}
+
+        \p{Let's change the code above and make it a little more interesting.
+        Suppose it was Javascript:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+var result = foo(bar(x \color{/* arg 1\unbalanced_right_paren */}[#57beef])) + foobar(\color{"\unbalanced_left_paren"}[yellow]);
+```
+          </div>
+        </div>
+
+        \p{Now there's quite a bit of complexity if we want to match the
+        arguments of \source{foo} and \source{foobar}. A block comment
+        \source{\color{/* arg 1\unbalanced_right_paren */}[#57beef]} is inlined
+        for \source{foo}. Because this is a comment, it shouldn't matter whether
+        the parenthesis inside are balanced or not. The same goes for the string
+        literal argument to \source{foobar}: it's not a parenthesis in the code.
+        The special thing here is that our original match template
+        \match{(:[1])} can stay <u>exactly the same</u> and still matches the
+        two arguments (in this case, it captures the comment and string)}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange])} + foobar(\match{\color{"\unbalanced_left_paren"}[orange]});
+```
+[Live example](https://bit.ly/2Zy5PYG)
+          </div>
+        </div>
+
+        \p{Comby understands this interaction between delimiters, strings, and
+        comments and makes reasonable guesses for your language based on file
+        extension (you can also force a particular matcher with a command line
+        option). And, you can always fall back to a generic matcher for files or
+        languages that are not explicitly supported.}
+
+        \p{Note that if we tried to use a regex above, our pattern would need to
+        understand that \source{/* */} delineates comments, otherwise it would
+        get confused by the parenthesis inside! The same problem comes up for
+        the string literal argument, which contains an unbalanced parenthesis. A
+        regular expression that takes all of this into account would get ugly
+        fast, and that's only for Javascript!}
+
+        \h6{A few more tips and tricks}[tips-and-tricks]
+
+        \p{Using :[hole] inside string quotes will match only within the string
+        (for most languages). Comby also understands the difference between
+        escapable string literals (like \source{"}string\source{"} in C) and raw
+        string literals like \source{`}string\source{`} in Go, and will know to
+        stop between these delimiters. <sup>[[]](https://bit.ly/2WRnxEL)</sup>}
+
+        \p{Use \color{:[[hole]]}[orange] to match only alphanumeric and
+        underscore characters. This hole does not match across newlines or
+        punctuation.<sup>[[]](https://bit.ly/2WUhPCa)</sup>}
+
+        \p{You can refer to the same variable using either
+        \color{:[[hole]]}[orange] or :[hole] in the rewrite template.
+        <sup>[[]](https://bit.ly/2ZAQZR0)</sup>}
+
+        \p{You almost never want to start a template with :[hole], since it
+        matches everything including newlines up to its suffix. This can make
+        things slow. :[hole] is typically useful inside balanced delimiters.<sup>[[]](https://bit.ly/2WVDzh7)</sup>}
+
+        \p{Want more inspiration? Check out these simple code rewrites<sup>[[]](https://catalogue.comby.dev/).}
+
+        </div>
+      </div>
+
+
+  </section>
+
+  <!-- Advanced Usage Section -->
+  <section class="page-section bg-secondary portfolio" id="advanced-usage">
+    <div class="container">
+
+      <!-- Section Heading -->
+      <h2 class="page-section-heading text-center">Advanced Usage</h2>
+
+      <!-- Line -->
+      <div class="d-flex align-items-center flex-column">
+        <div class="divider-line"></div>
+      </div>
+
+      \p{Comming soon}
+
+  </section>
+
+  <!-- Advanced Usage Section -->
+  <section class="page-section bg-primary portfolio" id="quick-reference">
+    <div class="container">
+
+      <!-- Section Heading -->
+      <h2 class="page-section-heading text-center">Quick Reference</h2>
+
+      <!-- Line -->
+      <div class="d-flex align-items-center flex-column">
+        <div class="divider-line"></div>
+      </div>
+
+      \p{All the examples on comby.live and in the catalog are just a copy away
+      from working on your command-line (just click on terminal). Install:}
+
+      <div class="offset-sm-3">\p{\rewrite{bash <(curl -sL get.comby.dev)}}</div>
+
+      \p{Here are some basics:}
+
+      \h6{Highlighted diff output for all go files in this directory and below}[ref-1]
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+comby 'match :[template]' 'rewrite :[template]' .go
+```
+          </div>
+        </div>
+
+      \h6{Replace in place for all go files in this directory and below}[ref-1]
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+comby 'match :[template]' 'rewrite :[template]' .go -i
+```
+          </div>
+        </div>
+
+      \h6{Diff output for all files starting with file.go in directory foo}[ref-1]
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+comby 'match :[template]' 'rewrite :[template]' file.go -d foo
+```
+          </div>
+        </div>
+
+      \h6{Force using the Javascript matcher for all .txt files}[ref-1]
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+comby 'match :[template]' 'rewrite :[template]' .txt -matcher .js
+```
+          </div>
+        </div>
+
+
+      \h6{Replace stdin using the generic matcher}[ref-1]
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin
+```
+          </div>
+        </div>
+
+\p{Output:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```diff
+\color{------ /dev/null}[red]
+\color{++++++ /dev/null}[green]
+\color{@|}[gray]-1,1 +1,1 ============================================================
+\bgcolor{-|}[red]\color{foo}[red](\color{a}[red], \color{b}[red])
+\bgcolor{+|}[green]\color{bar}[green](\color{b}[green], \color{a}[green])
+```
+
+          </div>
+        </div>
+
+      \h6{As above, but a plain patch}[ref-1]
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+
+
+```source
+echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin -diff
+```
+          </div>
+        </div>
+
+\p{Output:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```diff
+--- /dev/null
++++ /dev/null
+@@ -1,1 +1,1 @@
+-foo(a, b)
++bar(b, a)
+```
+
+          </div>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="page-section bg-secondary portfolio" id="faq">
+    <div class="container">
+
+      <!-- Section Heading -->
+      <h2 class="page-section-heading text-center">FAQ</h2>
+
+      <!-- Line -->
+      <div class="d-flex align-items-center flex-column">
+        <div class="divider-line"></div>
+      </div>
+
+      \h6{What about indentation-sensitive langouages?}[what-about-python]
+
+      \h6{How does Comby compare to Regex?}[what-about-regex]
+      <!--https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}-->
+
+      \h6{What about supporting Regex inside holes?}[language-support]
+
+  </section>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <a style="color: orange" href="https://twitter.com/rvtond"><i class="fab fa-twitter"></i>@rvtond</a>
+        </div>
+          <div class="col-sm-12 text-center">
+            <small>Copyright &copy; 2019</small>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+
+</body>
+
+</html>

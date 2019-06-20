@@ -1,0 +1,60 @@
+.lead {
+    font-size: 1.2rem;
+    font-family: 'Source Sans Pro'
+}
+
+code {
+    color: white;
+}
+
+p {
+    color: #ddd;
+}
+
+pre {
+    color: white;
+    font-size: 1rem;
+    border: 1px solid;
+    padding: 5px 5px 5px 5px;
+    &.source {
+        border-radius: 5px 5px 0px 5px;
+        border-color: gray;
+        margin: 0px;
+    }
+    &.match {
+        border-radius: 5px;
+        border-color: #00b4f2;
+    }
+    &.rewrite {
+        border-radius: 5px;
+        border-color: #f96215;
+    }
+}
+
+.hole {
+    color: $orange;
+}
+
+.hl-bg-rewrite {
+    border: 1px solid;
+    border-color: #f96215;
+    border-radius: 5px;
+    /* background-color: #0f0f0f; */
+    padding: 3px;
+}
+
+.hl-bg-match {
+    border: 1px solid;
+    border-color: #00b4f2;
+    border-radius: 5px;
+    /* background-color: #0f0f0f; */
+    padding: 1px;
+}
+
+.hl-bg-source {
+    border: 1px solid;
+    border-color: gray;
+    border-radius: 5px 5px 5px 5px;
+    /* background-color: #0f0f0f; */
+    padding: 1px;
+}
