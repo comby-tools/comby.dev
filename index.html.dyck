@@ -135,7 +135,7 @@
         \p{Code is so interesting because simple linear sequences of characters
       express rich non-linear structures (like trees) and arbitrary information
       (like comments). Humans are very creative, and have developed a variety of
-      ways to order these varying characters to mean different things. For
+      ways to order these characters to mean different things. For
       example, C-like comments can start with \source{//} but Python-like
       comments use \source{#}. Problematically, we use the same characters to
       mean different things across languages and in different contexts: a
@@ -143,7 +143,7 @@
       string like \source{"#"}. Or it could be a meaningless character inside a
       C comment like \source{\\ #}. Yet at some level, a choice of characters in
       all languages correspond to similar underlying structures or information:
-      most languages have comments, and balanced delimiters like parentheses
+      most languages have comments and balanced delimiters like parentheses
       \source{()} or braces \source{{}} nest expressions, as found in typical
       if-statements. The key idea in Comby is to match code that respects the
       basics of this richer structure on a per-language basis, and not (only) as
@@ -308,7 +308,7 @@ result = foo\match{(\color{bar(x)}[orange])} + foobar\match{(\color{baz(x)}[oran
         <sup>[[]](https://regexr.com/4fssk)</sup> don't work).}
 
         \p{Let's change the code above and make it a little more interesting.
-        Suppose it was Javascript:}
+        Suppose it was this Javascript:}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
