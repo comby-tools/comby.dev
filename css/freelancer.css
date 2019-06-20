@@ -10708,6 +10708,7 @@ pre.rewrite {
     width: 45% !important;
     padding-left: 10%;
     padding-right: 5%;
+    margin-bottom: -20px;
   }
   .media-width-override .panel-item .mastpanel-item {
     margin: 0px !important;
@@ -10909,10 +10910,10 @@ pre.rewrite {
 
 @media only screen and (max-width: 600px) {
   .masthead {
-    padding-top: 5rem;
+    padding-top: 2rem;
   }
   .masthead .masthead-subheading {
-    padding-bottom: 2rem;
+    padding-bottom: 0.5rem;
   }
 }
 
