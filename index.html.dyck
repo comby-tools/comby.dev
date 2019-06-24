@@ -637,7 +637,7 @@ comby .go -templates /path/to/directory
       </div>
 
 
-      \h6{What about indentation-sensitive langouages?}[what-about-python]
+      \h6{What about indentation-sensitive languages?}[what-about-python]
       \p{Comby does not currently consider whitespace significant. We have plans
       to support it though! The idea is that your declarative templates will
       match on code that happens at the correct relative indentation level, for languages like Python.
