@@ -499,7 +499,7 @@ where match :[left_side] {
         <div class="divider-line"></div>
       </div>
 
-      \p{All the examples on comby.live and in the catalog are just a copy away
+      \p{All the examples on [comby.live]{https://comby.live} and in the [catalog]{https://catalog.comby.dev} are just a copy away
       from working on your command-line (just click on terminal). Install:}
 
       <div class="offset-sm-3">\p{\rewrite{bash <(curl -sL get.comby.dev)}}</div>
