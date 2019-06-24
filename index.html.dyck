@@ -367,25 +367,30 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
 
         \h6{A few more tips and tricks}[tips-and-tricks]
 
-        \p{Using :[hole] inside string quotes will match only within the string
+        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
+        Using :[hole] inside string quotes will match only within the string
         (for most languages). Comby also understands the difference between
         escapable string literals (like \source{"}string\source{"} in C) and raw
         string literals like \source{`}string\source{`} in Go, and will know to
         stop between these delimiters. <sup>[[]](https://bit.ly/2WRnxEL)</sup>}
 
-        \p{Use \color{:[[hole]]}[orange] to match only alphanumeric and
+        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
+        Use \color{:[[hole]]}[orange] to match only alphanumeric and
         underscore characters. This hole does not match across newlines or
         punctuation.<sup>[[]](https://bit.ly/2WUhPCa)</sup>}
 
-        \p{You can refer to the same variable using either
+        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
+        You can refer to the same variable using either
         \color{:[[hole]]}[orange] or :[hole] in the rewrite template.
         <sup>[[]](https://bit.ly/2ZAQZR0)</sup>}
 
-        \p{You almost never want to start a template with :[hole], since it
+        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
+        You almost never want to start a template with :[hole], since it
         matches everything including newlines up to its suffix. This can make
         things slow. :[hole] is typically useful inside balanced delimiters.<sup>[[]](https://bit.ly/2WVDzh7)</sup>}
 
-        \p{Want more inspiration? Check out these simple code rewrites<sup>[[]](https://catalogue.comby.dev/).}
+        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
+        Want more inspiration? Check out these simple code rewrites.<sup>[[]](https://catalog.comby.dev/)}
 
         </div>
       </div>
