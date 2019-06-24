@@ -44,7 +44,6 @@
         <!-- Masthead Avatar Image -->
         <!--<img class="masthead-avatar mb-5" src="img/avataaars.svg" alt="">-->
 
-        <h1><i class="fas fa-exclamation-triangle"></i>Site Under Construction<i class="fas fa-exclamation-triangle"></i></h1>
         <!-- Masthead Heading -->
         <h1 class="masthead-heading text-uppercase mb-0">Comby</h1>
 
@@ -90,7 +89,7 @@
 
           <!-- Catalog -->
           <div class="col-sm-2 panel-item">
-            <a href="https://catalogue.comby.dev/">
+            <a href="https://catalog.comby.dev/">
               <div class="mastpanel-item">
                 <div class="mastpanel-item-overlay h-100 w-100">
                   <img class="img-fluid" src="img/panel/reading-book-orange.svg" alt="">
@@ -148,20 +147,25 @@
 <p class="lead">Code is so interesting because simple linear sequences of characters
       express rich non-linear structures (like trees) and arbitrary information
       (like comments). Humans are very creative, and have developed a variety of
-      ways to order these characters to mean different things. For
-      example, C-like comments can start with <code class="hl-bg-source">//</code> but Python-like
-      comments use <code class="hl-bg-source">#</code>. Problematically, we use the same characters to
-      mean different things across languages and in different contexts: a
-      <code class="hl-bg-source">#</code> in C could be the start of a macro. Or it could be part of a
-      string like <code class="hl-bg-source">"#"</code>. Or it could be a meaningless character inside a
-      C comment like <code class="hl-bg-source">\\ #</code>. Yet at some level, a choice of characters in
-      all languages correspond to similar underlying structures or information:
-      most languages have comments and balanced delimiters like parentheses
+      ways to order these characters to mean different things. For example,
+      C-like comments can start with <code class="hl-bg-source">//</code> but Python-like comments use
+      <code class="hl-bg-source">#</code>. Problematically, we use the same characters to mean different
+      things across languages and in different contexts: a <code class="hl-bg-source">#</code> in C could
+      be the start of a macro. Or it could be part of a string like
+      <code class="hl-bg-source">"#"</code>. Or it could be a meaningless character inside a C comment
+      like <code class="hl-bg-source">// #</code>. Yet at some level, a choice of characters in all
+      languages correspond to similar underlying structures or information: most
+      languages have comments and balanced delimiters like parentheses
       <code class="hl-bg-source">()</code> or braces <code class="hl-bg-source">{}</code> nest expressions, as found in typical
       if-statements. The key idea in Comby is to match code that respects the
       basics of this richer structure on a per-language basis, and not (only) as
-      arbitrary sequences of characters.<sup>(which is something that regex is
-      really for)</sup></p>
+      arbitrary sequences of characters. Matching sequences of characters is
+      something that regex is really good for, but regex is not generally
+      powerful enough to recognize nested code structures. Regex also supports a
+      lot of additional functionality that can lead to complex patterns. Comby
+      tries to cut down on this complexity to make changing code easy, so you'll
+      find that regex-style match operators are absent in Comby. And that's
+      OK.</p>
 </div>
 </div>
 
@@ -492,8 +496,96 @@
 
       <div class="row">
 <div class="col-sm-8 offset-sm-2">
-<p class="lead">Comming soon</p>
+<p class="lead">You can refine matches and rewrite templates with <i>rules</i> in Comby. Rules start with the word <code class="hl-bg-source">where</code>. A rule can check whether two variables are syntactically equal. For example, we can check for duplicate expressions in if-conditions with the following match template and rule:</p>
 </div>
+</div>
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+<pre class="match"><code>if (<code><span class="hole">:[left_side]</span></code> && <code><span class="hole">:[right_side]</span></code>)</code></pre>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4 offset-sm-2">
+<pre class="source"><code>where <code><span class="hole">:[left_side]</span></code> == <code><span class="hole">:[right_side]</span></code></code></pre>
+          </div>
+        </div>
+
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">This matches code where the programmer perhaps made a mistake and duplicated an expression without changing a variable like <code class="hl-bg-source">x</code> to <code class="hl-bg-source">y</code>:</p>
+</div>
+</div>
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+<pre class="source"><code>if (<code class="hl-bg-match">x == 500</code> && <code class="hl-bg-match">x == 500</code>)</code></pre>
+<div class="text-right link-border"><a href="https://bit.ly/2Na9UAS" target="_blank"><i class="fas fa-external-link-alt fa-fw"></i>Live example</a></div>
+          </div>
+        </div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">You can use the <code class="hl-bg-source">!=</code> operator to check inequality. Multiple conditions can be separated by a comma, and mean "logical and". The following adds a condition to ignore our match case above:</p>
+</div>
+</div>
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+<pre class="source"><code>where <code><span class="hole">:[left_side]</span></code> == <code><span class="hole">:[right_side]</span></code>, <code><span class="hole">:[left_side]</span></code> != <code style="color:yellow">"x == 500"</code></code></pre>
+<div class="text-right link-border"><a href="https://bit.ly/2NaaCOy" target="_blank"><i class="fas fa-external-link-alt fa-fw"></i>Live example</a></div>
+          </div>
+        </div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">Variables can be compared to other variables or string contents (enclosed by double quotes).</p>
+</div>
+</div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<div class="anchor-header is-active mt-3">
+  <a href="#experimental-language-features"><i class="fas fa-link anchor-side-link"></i><h6 id="experimental-language-features">Experimental language features</h6>
+  </a>
+</div>
+</div>
+</div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">Comby includes experimental language features for sub-matching on variables. These features are subject to change, but available if you want to experiment with it. Here is an example using the sub-matching syntax:</p>
+</div>
+</div>
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+<pre class="source"><code>where match <code><span class="hole">:[left_side]</span></code> {
+      | <code style="color:yellow">"x == 600"</code> -> false
+      | <code style="color:yellow">"x == 500"</code> -> true
+      }</code></pre>
+<div class="text-right link-border"><a href="https://bit.ly/2NaGjaK" target="_blank"><i class="fas fa-external-link-alt fa-fw"></i>Live example</a></div>
+          </div>
+        </div>
+
+      <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">The <code class="hl-bg-source">match { ... }</code> says to match the text bound to <code><span class="hole">:[left_side]</span></code> against each of the match cases <code class="hl-bg-source">| match_case</code>, and to perform the filter on the right-hand side of the <code class="hl-bg-source">-></code> when the pattern matches. Sub-matching statements can nest:</p>
+</div>
+</div>
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+<pre class="source"><code>where match <code><span class="hole">:[left_side]</span></code> {
+      | <code style="color:yellow">"x == 500"</code> ->
+            match <code><span class="hole">:[right_side]</span></code> {
+            | <code style="color:yellow">"x == 500"</code> -> true
+            | <code style="color:yellow">"x == 600"</code> -> false
+            }
+      | <code style="color:yellow">"x == 600"</code> -> false
+      }</code></pre>
+                                                                    </div>
 </div>
 
   </section>
@@ -652,9 +744,36 @@
 @@ -1,1 +1,1 @@
 -foo(a, b)
 +bar(b, a)</code></pre>
-
           </div>
         </div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<div class="anchor-header is-active mt-3">
+  <a href="#ref-x"><i class="fas fa-link anchor-side-link"></i><h6 id="ref-x">Use a directory of template patterns instead of the command line</h6>
+  </a>
+</div>
+</div>
+</div>
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+
+
+<pre class="source"><code>comby .go -templates /path/to/directory</code></pre>
+          </div>
+        </div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">A rewrite pattern should be described by two files in
+        <code class="hl-bg-source">path/to/directory</code>, one named <code class="hl-bg-source">match</code> and the other named
+        <code class="hl-bg-source">rewrite</code>. An optional rule can be put in the same directory, in
+        a file called <code class="hl-bg-source">rule</code>. See the <a href="https://github.com/comby-tools/sample-catalog" class="inline-a">catalog directory
+        layout</a> for a <a href="https://catalog.comby.dev" class="inline-a">sample
+        catalog of templates</a>.</p>
+</div>
+</div>
 
     </div>
 </div>
@@ -675,6 +794,7 @@
         <div class="divider-line"></div>
       </div>
 
+
       <div class="row">
 <div class="col-sm-8 offset-sm-2">
 <div class="anchor-header is-active mt-3">
@@ -683,7 +803,17 @@
 </div>
 </div>
 </div>
+      <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">Comby does not currently consider whitespace significant. We have plans
+      to support it though! The idea is that your declarative templates will
+      match on code that happens at the correct relative indentation level, for languages like Python.
+      Stay tuned! Of course, a lot of Python code is not sensitive to whitespace indentation, so Comby
+      is still useful (for example, a lot of Python 2 to Python 3 conversions will work in Comby).</p>
+</div>
+</div>
 
+      <!--
       <div class="row">
 <div class="col-sm-8 offset-sm-2">
 <div class="anchor-header is-active mt-3">
@@ -694,14 +824,20 @@
 </div>
       <!--https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}-->
 
-      <div class="row">
+      <!--<div class="row">
 <div class="col-sm-8 offset-sm-2">
 <div class="anchor-header is-active mt-3">
   <a href="#language-support"><i class="fas fa-link anchor-side-link"></i><h6 id="language-support">What about supporting Regex inside holes?</h6>
   </a>
 </div>
 </div>
+</div>-->
+      <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">More improvements coming soon!</p>
 </div>
+</div>
+
 
   </section>
 

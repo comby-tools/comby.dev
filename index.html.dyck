@@ -44,7 +44,6 @@
         <!-- Masthead Avatar Image -->
         <!--<img class="masthead-avatar mb-5" src="img/avataaars.svg" alt="">-->
 
-        <h1><i class="fas fa-exclamation-triangle"></i>Site Under Construction<i class="fas fa-exclamation-triangle"></i></h1>
         <!-- Masthead Heading -->
         <h1 class="masthead-heading text-uppercase mb-0">Comby</h1>
 
@@ -90,7 +89,7 @@
 
           <!-- Catalog -->
           <div class="col-sm-2 panel-item">
-            <a href="https://catalogue.comby.dev/">
+            <a href="https://catalog.comby.dev/">
               <div class="mastpanel-item">
                 <div class="mastpanel-item-overlay h-100 w-100">
                   <img class="img-fluid" src="img/panel/reading-book-orange.svg" alt="">
@@ -146,20 +145,25 @@
         \p{Code is so interesting because simple linear sequences of characters
       express rich non-linear structures (like trees) and arbitrary information
       (like comments). Humans are very creative, and have developed a variety of
-      ways to order these characters to mean different things. For
-      example, C-like comments can start with \source{//} but Python-like
-      comments use \source{#}. Problematically, we use the same characters to
-      mean different things across languages and in different contexts: a
-      \source{#} in C could be the start of a macro. Or it could be part of a
-      string like \source{"#"}. Or it could be a meaningless character inside a
-      C comment like \source{\\ #}. Yet at some level, a choice of characters in
-      all languages correspond to similar underlying structures or information:
-      most languages have comments and balanced delimiters like parentheses
+      ways to order these characters to mean different things. For example,
+      C-like comments can start with \source{//} but Python-like comments use
+      \source{#}. Problematically, we use the same characters to mean different
+      things across languages and in different contexts: a \source{#} in C could
+      be the start of a macro. Or it could be part of a string like
+      \source{"#"}. Or it could be a meaningless character inside a C comment
+      like \source{// #}. Yet at some level, a choice of characters in all
+      languages correspond to similar underlying structures or information: most
+      languages have comments and balanced delimiters like parentheses
       \source{()} or braces \source{{}} nest expressions, as found in typical
       if-statements. The key idea in Comby is to match code that respects the
       basics of this richer structure on a per-language basis, and not (only) as
-      arbitrary sequences of characters.<sup>(which is something that regex is
-      really for)</sup>}
+      arbitrary sequences of characters. Matching sequences of characters is
+      something that regex is really good for, but regex is not generally
+      powerful enough to recognize nested code structures. Regex also supports a
+      lot of additional functionality that can lead to complex patterns. Comby
+      tries to cut down on this complexity to make changing code easy, so you'll
+      find that regex-style match operators are absent in Comby. And that's
+      OK.}
 
         <!-- Line -->
         <div class="d-flex align-items-center flex-column">
@@ -290,7 +294,7 @@ if (width     <= 1280
           </div>
       </div>
 
-      \p{If you're wondering about indentation-sensitive languages like Python, be sure to check out the <a href="#faq-what-about-python" class="inline-a">FAQ</a>.}
+      \p{If you're wondering about indentation-sensitive languages like Python, be sure to check out the [FAQ]{#faq-what-about-python}.}
 
       \h6{What makes Comby special: More about structural matching}[what-makes-comby-special]
 
@@ -401,7 +405,80 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
         <div class="divider-line"></div>
       </div>
 
-      \p{Comming soon}
+      \p{You can refine matches and rewrite templates with <i>rules</i> in Comby. Rules start with the word \source{where}. A rule can check whether two variables are syntactically equal. For example, we can check for duplicate expressions in if-conditions with the following match template and rule:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+```match
+if (:[left_side] && :[right_side])
+```
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4 offset-sm-2">
+```source
+where :[left_side] == :[right_side]
+```
+          </div>
+        </div>
+
+\p{This matches code where the programmer perhaps made a mistake and duplicated an expression without changing a variable like \source{x} to \source{y}:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+if (\match{x == 500} && \match{x == 500})
+```
+[Live example](https://bit.ly/2Na9UAS)
+          </div>
+        </div>
+
+        \p{You can use the \source{!=} operator to check inequality. Multiple conditions can be separated by a comma, and mean "logical and". The following adds a condition to ignore our match case above:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+```source
+where :[left_side] == :[right_side], :[left_side] != \color{"x == 500"}[yellow]
+```
+[Live example](https://bit.ly/2NaaCOy)
+          </div>
+        </div>
+
+        \p{Variables can be compared to other variables or string contents (enclosed by double quotes).}
+
+        \h6{Experimental language features}[experimental-language-features]
+
+        \p{Comby includes experimental language features for sub-matching on variables. These features are subject to change, but available if you want to experiment with it. Here is an example using the sub-matching syntax:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+```source
+where match :[left_side] {
+      | \color{"x == 600"}[yellow] -> false
+      | \color{"x == 500"}[yellow] -> true
+      }
+```
+[Live example](https://bit.ly/2NaGjaK)
+          </div>
+        </div>
+
+      \p{The \source{match { ... }} says to match the text bound to :[left_side] against each of the match cases \source{| match_case}, and to perform the filter on the right-hand side of the \source{->} when the pattern matches. Sub-matching statements can nest:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+```source
+where match :[left_side] {
+      | \color{"x == 500"}[yellow] ->
+            match :[right_side] {
+            | \color{"x == 500"}[yellow] -> true
+            | \color{"x == 600"}[yellow] -> false
+            }
+      | \color{"x == 600"}[yellow] -> false
+      }
+```
+                                                                    </div>
+</div>
 
   </section>
 
@@ -513,9 +590,27 @@ echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin -diff
 -foo(a, b)
 +bar(b, a)
 ```
-
           </div>
         </div>
+
+        \h6{Use a directory of template patterns instead of the command line}[ref-x]
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+
+
+```source
+comby .go -templates /path/to/directory
+```
+          </div>
+        </div>
+
+        \p{A rewrite pattern should be described by two files in
+        \source{path/to/directory}, one named \source{match} and the other named
+        \source{rewrite}. An optional rule can be put in the same directory, in
+        a file called \source{rule}. See the [catalog directory
+        layout]{https://github.com/comby-tools/sample-catalog} for a [sample
+        catalog of templates]{https://catalog.comby.dev}.}
 
     </div>
 </div>
@@ -536,12 +631,21 @@ echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin -diff
         <div class="divider-line"></div>
       </div>
 
-      \h6{What about indentation-sensitive langouages?}[what-about-python]
 
+      \h6{What about indentation-sensitive langouages?}[what-about-python]
+      \p{Comby does not currently consider whitespace significant. We have plans
+      to support it though! The idea is that your declarative templates will
+      match on code that happens at the correct relative indentation level, for languages like Python.
+      Stay tuned! Of course, a lot of Python code is not sensitive to whitespace indentation, so Comby
+      is still useful (for example, a lot of Python 2 to Python 3 conversions will work in Comby).}
+
+      <!--
       \h6{How does Comby compare to Regex?}[what-about-regex]
       <!--https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}-->
 
-      \h6{What about supporting Regex inside holes?}[language-support]
+      <!--\h6{What about supporting Regex inside holes?}[language-support]-->
+      \p{More improvements coming soon!}
+
 
   </section>
 
