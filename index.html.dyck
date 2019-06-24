@@ -317,8 +317,12 @@ result = foo\match{(\color{bar(x)}[orange])} + foobar\match{(\color{baz(x)}[oran
 
         \p{The hole binds to \source{bar(x)} and \source{baz(x)} respectively,
         which we can easily rewrite to a different call \source{qux(x)}, for
-        example. Note that writing a regular expression to do the same is not
-        easy (trivial attempts like \source{\(.*\)}
+        example. The observant reader will notice that
+        \source{(\color{x}[orange])} are nested matches. By default, Comby will
+        match at the toplevel, but nested matches can be found with added
+        context (e.g., \match{bar(:[1])}), or by extracting and rerunning on
+        Comby on modified code. Note that writing a regular expression to do the
+        same is not easy (simple attempts like \source{\(.*\)}
         <sup>[[]](https://regexr.com/4fssh)</sup> or \source{\(.*?\)}
         <sup>[[]](https://regexr.com/4fssk)</sup> don't work).}
 

@@ -365,8 +365,12 @@
 <div class="col-sm-8 offset-sm-2">
 <p class="lead">The hole binds to <code class="hl-bg-source">bar(x)</code> and <code class="hl-bg-source">baz(x)</code> respectively,
         which we can easily rewrite to a different call <code class="hl-bg-source">qux(x)</code>, for
-        example. Note that writing a regular expression to do the same is not
-        easy (trivial attempts like <code class="hl-bg-source">\(.*\)</code>
+        example. The observant reader will notice that
+        <code class="hl-bg-source">(<code style="color:orange">x</code>)</code> are nested matches. By default, Comby will
+        match at the toplevel, but nested matches can be found with added
+        context (e.g., <code class="hl-bg-match">bar(<code><span class="hole">:[1]</span></code>)</code>), or by extracting and rerunning on
+        Comby on modified code. Note that writing a regular expression to do the
+        same is not easy (simple attempts like <code class="hl-bg-source">\(.*\)</code>
         <sup><a href="https://regexr.com/4fssh" target="_blank" style="color: orange; font-size: .75rem"><i class="fas fa-external-link-alt fa-fw"></i></a></sup> or <code class="hl-bg-source">\(.*?\)</code>
         <sup><a href="https://regexr.com/4fssk" target="_blank" style="color: orange; font-size: .75rem"><i class="fas fa-external-link-alt fa-fw"></i></a></sup> don't work).</p>
 </div>
