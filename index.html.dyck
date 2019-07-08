@@ -724,8 +724,8 @@ comby .go -templates /path/to/directory
         </div>
 
       \p{Note: Comby cannot recognize arbitrary matching tags like `&lt;foo&gt;...&lt;/foo&gt;`
-      in HTML or XML yet (we do have plans to support it soon). Matching inside angle
-      brackets `<...>` is OK though.}
+      in HTML or XML yet (we do have plans to support it soon). Matching within angle
+      brackets `<...>` works.}
 
       \h6{How do I extend language support?}[faq-language-extension]
       \p{Hopefully the language you're interested is already supported. If not,
