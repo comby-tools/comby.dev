@@ -52,7 +52,7 @@
         <div class="divider-line"></div>
 
         <!-- Masthead Subheading -->
-        <p class="masthead-subheading font-weight-light mb-0"><code><span class="hole">change the way you change :[code]</span></code></p>
+        <p class="masthead-subheading font-weight-light mb-0"><code><span class="hole">a tool for changing :[code]</span></code></p>
       </div>
 
       <!-- Panel -->
@@ -162,8 +162,7 @@
       powerful enough to recognize nested code structures. Regex also supports a
       lot of additional functionality that can lead to complex patterns. Comby
       tries to cut down on this complexity to make changing code easy, so you'll
-      find that regex-style match operators are absent in Comby. And that's
-      OK.}
+      find that regex-style match operators are absent in Comby. And that's OK.}
 
         <!-- Line -->
         <div class="d-flex align-items-center flex-column">
@@ -185,7 +184,8 @@
           <div class="divider-line"></div>
         </div>
 
-        \p{Comby is a tool for matching and rewriting code. You start by writing a simple template to match syntax. Look at this Go function:}
+        \p{Comby is a tool for matching and rewriting code. You start by writing
+        a simple template to match syntax. Look at this Go function:}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -196,7 +196,8 @@
           </div>
         </div>
 
-        \p{We can match the arguments to \source{fmt.Println} with this <i>match template</i>:}
+        \p{We can match the arguments to \source{fmt.Println} with this <i>match
+        template</i>:}
 
         <div class="row">
           <div class="col-sm-6 offset-sm-3">
@@ -206,9 +207,15 @@ fmt.Println(:[arguments])
           </div>
         </div>
 
-            \p{The :[arguments] part is called a hole. It saves the matched part to a variable. In this case, the variable is called <code>arguments</code>, but we could have called it something else, like :[1] or :[the_1st_arg]. Your choice! As long as it only contains alphabet characters, numbers, or underscores.}
+            \p{The :[arguments] part is called a hole. It saves the matched part
+            to a variable. In this case, the variable is
+            called <code>arguments</code>, but we could have called it something
+            else, like :[1] or :[the_1st_arg]. Your choice! As long as it only
+            contains alphabet characters, numbers, or underscores.}
 
-            \p{The :[arguments] hole matches the \source{"hello world"} string. We can use it in a <i>rewrite template</i> to rewrite the function, like this one:}
+            \p{The :[arguments] hole matches the \source{"hello world"} string.
+            We can use it in a <i>rewrite template</i> to rewrite the function,
+            like this one:}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2">
@@ -218,7 +225,8 @@ fmt.Println(fmt.Sprintf("comby says %s", :[arguments]))
           </div>
         </div>
 
-        \p{Comby takes the match and rewrite templates and replaces the matched part in place:}
+        \p{Comby takes the match and rewrite templates and replaces the matched
+        part in place:}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2">
@@ -231,10 +239,18 @@ func main() {
           </div>
         </div>
 
-        \p{Holes are the only special part in match templates, and they always have the form \color{:[...]}[orange]. <u>All other characters are interpreted literally</u> (there's a bit of detail about whitespace that we'll talk about in the next part). The point is that you <u>never</u> have to escape any characters in your template. Just say what you mean!}
+        \p{Holes are the only special part in match templates, and they always
+        have the form \color{:[...]}[orange]. <u>All other characters are
+        interpreted literally</u> (there's a bit of detail about whitespace that
+        we'll talk about in the next part). The point is that you <u>never</u>
+        have to escape any characters in your template. Just say what you mean!}
 
-        \h6{How Matching Works}[#how-matching-works]
-        \p{:[hole] matches all characters, including newlines. If the match template was <i>just</i><br> :[file_content], it would match all the file content. The way :[hole] starts and stops matching depends on the code structure around it. Let's look at an example, matching on this Javascript code using the match template on the right:}
+        \h6{How Matching Works}[#how-matching-works] \p{:[hole] matches all
+        characters, including newlines. If the match template
+        was <i>just</i><br> :[file_content], it would match all the file
+        content. The way :[hole] starts and stops matching depends on the code
+        structure around it. Let's look at an example, matching on this
+        Javascript code using the match template on the right:}
 
         <div class="row">
           <div class="col-sm-5 offset-sm-2">
@@ -255,7 +271,14 @@ if (:[var] <= :[rest])
           </div>
         </div>
 
-        \p{:[var] matches until it sees the \source{&nbsp;<=&nbsp;} part coming after it and matches \match{width}. :[rest] matches the rest of the condition: \match{1280 && height <= 800}. These holes match lazily: they look for the shortest way to satisfy the match. One way to refine matching is to add concrete context around holes based on what we care about. For example, we could match \match{height} to :[height] with both of the following templates, which depends on matching different parts of surrounding code:}
+        \p{:[var] matches until it sees the \source{&nbsp;<=&nbsp;} part coming
+        after it and matches \match{width}. :[rest] matches the rest of the
+        condition: \match{1280 && height <= 800}. These holes match lazily: they
+        look for the shortest way to satisfy the match. One way to refine
+        matching is to add concrete context around holes based on what we care
+        about. For example, we could match \match{height} to :[height] with both
+        of the following templates, which depends on matching different parts of
+        surrounding code:}
 
         <div class="row">
           <div class="col-sm-4 offset-sm-2">
@@ -271,7 +294,15 @@ if (:[_] :[height] <= 800)
         </div>
 
         \h6{About whitespace}[about-whitespace]
-        \p{Comby tries to make matching code forgiving. Whitespace in the template, like a single space, multiple contiguous spaces, or newlines are interpreted all the same: Comby will match the corresponding whitespace in the source code, but will not care about matching the exact number of spaces, or distinguish between spaces and newlines. Not being strict about whitespace tends to be the right default decision for code in most languages. It means our previous match templates all still work in these cases where our Javascript code is formatted differently:}
+        \p{Comby tries to make matching
+        code forgiving. Whitespace in the template, like a single space,
+        multiple contiguous spaces, or newlines are interpreted all the same:
+        Comby will match the corresponding whitespace in the source code, but
+        will not care about matching the exact number of spaces, or distinguish
+        between spaces and newlines. Not being strict about whitespace tends to
+        be the right default decision for code in most languages. It means our
+        previous match templates all still work in these cases where our
+        Javascript code is formatted differently:}
 
       <div class="row">
         <div class="col-sm-4 offset-sm-2">
@@ -294,7 +325,8 @@ if (width     <= 1280
           </div>
       </div>
 
-      \p{If you're wondering about indentation-sensitive languages like Python, be sure to check out the [FAQ]{#faq-what-about-python}.}
+      \p{If you're wondering about indentation-sensitive languages like Python,
+      be sure to check out the [FAQ]{#faq-what-about-python}.}
 
       \h6{What makes Comby special: More about structural matching}[what-makes-comby-special]
 
@@ -320,9 +352,9 @@ result = foo\match{(\color{bar(x)}[orange])} + foobar\match{(\color{baz(x)}[oran
         example. The observant reader will notice that
         \source{(\color{x}[orange])} are nested matches. By default, Comby will
         match at the toplevel, but nested matches can be found with added
-        context (e.g., \match{bar(:[1])}), or by extracting and rerunning on
-        Comby on modified code. Note that writing a regular expression to do the
-        same is not easy (simple attempts like \source{\(.*\)}
+        context (e.g., \match{bar(:[1])}), or by extracting and rerunning Comby
+        on modified code. Note that writing a regular expression to do the same
+        is not easy (simple attempts like \source{\(.*\)}
         <sup>[[]](https://regexr.com/4fssh)</sup> or \source{\(.*?\)}
         <sup>[[]](https://regexr.com/4fssk)</sup> don't work).}
 
@@ -332,15 +364,15 @@ result = foo\match{(\color{bar(x)}[orange])} + foobar\match{(\color{baz(x)}[oran
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
-var result = foo(bar(x \color{/* arg 1\unbalanced_right_paren */}[#57beef])) + foobar(\color{"\unbalanced_left_paren"}[yellow]);
+var result = foo(bar(x \color{/* arg 1\unbalanced_right_paren */}[#ea4f00])) + foobar(\color{"\unbalanced_left_paren"}[#ea4f00]);
 ```
           </div>
         </div>
 
         \p{Now there's quite a bit of complexity if we want to match the
         arguments of \source{foo} and \source{foobar}. A block comment
-        \source{\color{/* arg 1\unbalanced_right_paren */}[#57beef]} is inlined
-        for \source{foo}. Because this is a comment, it shouldn't matter whether
+        \source{\color{/* arg 1\unbalanced_right_paren */}[#ea4f00]} is inlined
+        for \source{bar}. Because this is a comment, it shouldn't matter whether
         the parenthesis inside are balanced or not. The same goes for the string
         literal argument to \source{foobar}: it's not a parenthesis in the code.
         The special thing here is that our original match template
@@ -359,8 +391,10 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
         \p{Comby understands this interaction between delimiters, strings, and
         comments and makes reasonable guesses for your language based on file
         extension (you can also force a particular matcher with a command line
-        option). And, you can always fall back to a generic matcher for files or
-        languages that are not explicitly supported.}
+        option, see the [Quick Reference]{#quick-reference}). And, you can
+        always fall back to a generic matcher for files or languages that are
+        not explicitly supported. See the [FAQ]{#faq-language-support} for
+        language support and extension.}
 
         \p{Note that if we tried to use a regex above, our pattern would need to
         understand that \source{/* */} delineates comments, otherwise it would
@@ -369,32 +403,64 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
         regular expression that takes all of this into account would get ugly
         fast, and that's only for Javascript!}
 
+        \h6{Match Syntax Reference}[match-syntax]
+        \p{The following syntax is
+        supported in Comby, and carry special meaning for matching:}
+
+        \p{\source{:[hole]} matches zero or more <i>well-balanced</i> characters
+        until the part that comes after the hole (like whitespace, or some other
+        string) in a lazy fashion. When :[hole] is inside delimiters, as in
+        `(:[hole])`, it matches (only) within those delimiters.}
+
+        \p{\source{\color{:[[hole]]}[orange]} matches one or more alphanumeric
+        characters and `_`.}
+
+        \p{\source{\color{:[hole.]}[orange]} (with a period at the end) matches
+        one or more alphanumeric characters and punctuation (like `.`, `;`, and
+        `-`).}
+
+        \p{\source{\color{:[hole\n]}[orange]} (with a `\n` at the end) matches one or more
+        characters up to a newline.}
+
+        \p{\source{\color{:[ ]}[orange]} (with a space) matches only whitespace
+        characters, excluding newlines. To assign the matched whitespace to
+        variable, put the variable name after the space, like \color{:[
+        white]}[orange].}
+
+
         \h6{A few more tips and tricks}[tips-and-tricks]
 
-        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
-        Using :[hole] inside string quotes will match only within the string
-        (for most languages). Comby also understands the difference between
-        escapable string literals (like \source{"}string\source{"} in C) and raw
-        string literals like \source{`}string\source{`} in Go, and will know to
-        stop between these delimiters. <sup>[[]](https://bit.ly/2WRnxEL)</sup>}
+        \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Using :[hole] inside
+        string quotes will match only within the string. This is implemented for
+        [most languages]{#faq-language-support}. Comby also understands the
+        difference between escapable string literals (like
+        `"string"` in C) and raw string literals (like
+        `\backtickstring\backtick` in Go), and will know to stop between these
+        delimiters. <sup>[[]](https://bit.ly/2WRnxEL)</sup>}
 
-        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
+        \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange]
         Use \color{:[[hole]]}[orange] to match only alphanumeric and
         underscore characters. This hole does not match across newlines or
         punctuation.<sup>[[]](https://bit.ly/2WUhPCa)</sup>}
 
-        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
+        \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange]
         You can refer to the same variable using either
         \color{:[[hole]]}[orange] or :[hole] in the rewrite template.
         <sup>[[]](https://bit.ly/2ZAQZR0)</sup>}
 
-        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
+        \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange]
         You almost never want to start a template with :[hole], since it
         matches everything including newlines up to its suffix. This can make
         things slow. :[hole] is typically useful inside balanced delimiters.<sup>[[]](https://bit.ly/2WVDzh7)</sup>}
 
-        \p{\color{<i class="fas fa-lightbulb"></i>}[orange]
-        Want more inspiration? Check out these simple code rewrites.<sup>[[]](https://catalog.comby.dev/)}
+        \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Consider
+        combinations of holes to match interesting properties. For example, to
+        capture leading indentation of a line, use a template like <br>\color{:[
+        leading_indentation]:[everything_until_newline]}[orange].<sup>[[]](https://bit.ly/2XOpczz)</sup>}
+
+        \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Looking for
+        inspiration? Check out these simple code
+        rewrites<sup>[[]](https://catalog.comby.dev/)</sup> and the [FAQ]{#faq-applications}.}
 
         </div>
       </div>
@@ -448,7 +514,7 @@ if (\match{x == 500} && \match{x == 500})
         <div class="row">
           <div class="col-sm-8 offset-sm-2">
 ```source
-where :[left_side] == :[right_side], :[left_side] != \color{"x == 500"}[yellow]
+where :[left_side] == :[right_side], :[left_side] != \color{"x == 500"}[#ea4f00]
 ```
 [Live example](https://bit.ly/2NaaCOy)
           </div>
@@ -458,14 +524,14 @@ where :[left_side] == :[right_side], :[left_side] != \color{"x == 500"}[yellow]
 
         \h6{Experimental language features}[experimental-language-features]
 
-        \p{Comby includes experimental language features for sub-matching on variables. These features are subject to change, but available if you want to experiment with it. Here is an example using the sub-matching syntax:}
+        \p{Comby includes experimental language features for sub-matching on variables. These features might change, but are currently available if you want to experiment with it. Here is an example using the sub-matching syntax:}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2">
 ```source
 where match :[left_side] {
-      | \color{"x == 600"}[yellow] -> false
-      | \color{"x == 500"}[yellow] -> true
+      | \color{"x == 600"}[#ea4f00] -> false
+      | \color{"x == 500"}[#ea4f00] -> true
       }
 ```
 [Live example](https://bit.ly/2NaGjaK)
@@ -478,12 +544,12 @@ where match :[left_side] {
           <div class="col-sm-8 offset-sm-2">
 ```source
 where match :[left_side] {
-      | \color{"x == 500"}[yellow] ->
+      | \color{"x == 500"}[#ea4f00] ->
             match :[right_side] {
-            | \color{"x == 500"}[yellow] -> true
-            | \color{"x == 600"}[yellow] -> false
+            | \color{"x == 500"}[#ea4f00] -> true
+            | \color{"x == 600"}[#ea4f00] -> false
             }
-      | \color{"x == 600"}[yellow] -> false
+      | \color{"x == 600"}[#ea4f00] -> false
       }
 ```
                                                                     </div>
@@ -510,48 +576,7 @@ where match :[left_side] {
 
       \p{Here are some basics:}
 
-      \h6{Highlighted diff output for all go files in this directory and below}[ref-1]
-
-        <div class="row">
-          <div class="col-sm-8 offset-sm-2 mb-3">
-```source
-comby 'match :[template]' 'rewrite :[template]' .go
-```
-          </div>
-        </div>
-
-      \h6{Replace in place for all go files in this directory and below}[ref-1]
-
-        <div class="row">
-          <div class="col-sm-8 offset-sm-2 mb-3">
-```source
-comby 'match :[template]' 'rewrite :[template]' .go -i
-```
-          </div>
-        </div>
-
-      \h6{Diff output for all files starting with file.go in directory foo}[ref-1]
-
-        <div class="row">
-          <div class="col-sm-8 offset-sm-2 mb-3">
-```source
-comby 'match :[template]' 'rewrite :[template]' file.go -d foo
-```
-          </div>
-        </div>
-
-      \h6{Force using the Javascript matcher for all .txt files}[ref-1]
-
-        <div class="row">
-          <div class="col-sm-8 offset-sm-2 mb-3">
-```source
-comby 'match :[template]' 'rewrite :[template]' .txt -matcher .js
-```
-          </div>
-        </div>
-
-
-      \h6{Replace stdin using the generic matcher}[ref-1]
+      \p{\color{Replace stdin using the generic matcher (highlighted diff preview)}[orange]}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -566,17 +591,58 @@ echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```diff
-\color{------ /dev/null}[red]
-\color{++++++ /dev/null}[green]
+\color{------ /dev/null}[#ea4f00]
+\color{++++++ /dev/null}[#13b313]
 \color{@|}[gray]-1,1 +1,1 ============================================================
-\bgcolor{-|}[red]\color{foo}[red](\color{a}[red], \color{b}[red])
-\bgcolor{+|}[green]\color{bar}[green](\color{b}[green], \color{a}[green])
+\bgcolor{-|}[#ea4f00]\color{foo}[#ea4f00](\color{a}[#ea4f00], \color{b}[#ea4f00])
+\bgcolor{+|}[#13b313]\color{bar}[#13b313](\color{b}[#13b313], \color{a}[#13b313])
 ```
 
           </div>
         </div>
 
-      \h6{As above, but a plain patch}[ref-1]
+      \p{\color{Highlighted diff preview for all go files in this directory and below}[orange]}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+comby 'match :[template]' 'rewrite :[template]' .go
+```
+          </div>
+        </div>
+
+      \p{\color{Replace <i>in place</i> for all go files in this directory and below}[orange]}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+comby 'match :[template]' 'rewrite :[template]' .go -i
+```
+          </div>
+        </div>
+
+      \p{\color{Diff preview replacement for files ending with file.go in directory foo}[orange]}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+comby 'match :[template]' 'rewrite :[template]' file.go -d foo
+```
+          </div>
+        </div>
+
+      \p{\color{Force using the Javascript matcher for all .txt files}[orange]}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+comby 'match :[template]' 'rewrite :[template]' .txt -matcher .js
+```
+          </div>
+        </div>
+
+
+      \p{\color{Use -diff to output a plain patch (unified diff)}[orange]}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -602,7 +668,7 @@ echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin -diff
           </div>
         </div>
 
-        \h6{Use a directory of template patterns instead of the command line}[ref-x]
+        \p{\color{Use a directory of template patterns instead of the command line}[orange]}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -640,21 +706,92 @@ comby .go -templates /path/to/directory
         <div class="divider-line"></div>
       </div>
 
+      \h6{What languages are supported?}[faq-language-support] \p{Comby supports
+      basic delimiter matching for common characters like \source{()},
+      \source{{}}, and \source{[]} using a generic matcher. This works as a
+      fallback for data formats like JSON, new languages, and existing ones that
+      may not have explicit support yet (like VHDL). The grammars for the
+      following languages have been refined to take into account basic
+      language-specific delimiters, comments, and string literals:}
 
-      \h6{What about indentation-sensitive languages?}[what-about-python]
+
+        <div class="row">
+          <div class="col-sm-10 offset-sm-1 mb-3">
+            \p{Assembly, Bash, CSS, Clojure, C#, Dart, Elixir, Elm, Erlang,
+      Fortran, F#, Go, Haskell, HTML/XML, Java, Javascript/Typescript, JSON,
+      Julia, LaTeX, OCaml, Pascal, PHP, Python, Ruby, Rust, SQL, Scala, Swift}
+          </div>
+        </div>
+
+      \p{Note: Comby cannot recognize arbitrary matching tags like `&lt;foo&gt;...&lt;/foo&gt;`
+      in HTML or XML yet (we do have plans to support it soon). Matching inside angle
+      brackets `<...>` is OK though.}
+
+      \h6{How do I extend language support?}[faq-language-extension]
+      \p{Hopefully the language you're interested is already supported. If not,
+      open a [feature
+      request]{https://github.com/comby-tools/comby/issues/new/choose}, or have
+      a look at the [languages
+      file]{https://github.com/comby-tools/comby/blob/master/lib/matchers/languages.ml}
+      which can be modified for additional languages.}
+
+      \p{Note that languages can currently be added and expanded with respect
+      to <i>syntactic</i> code strctures that Comby recognizes: balanced
+      delimiters, comments, and kinds of string literals. By design, it isn't
+      possible to further refine the meaning of syntax into keywords or
+      high-level structures like functions.}
+
+      \h6{What can I use Comby for?}[faq-applications]
+      \p{Comby is well-suited
+      for matching and changing coarse syntactic structures. Uses include:}
+
+        <div class="row">
+          <div class="col-sm-10 offset-sm-1">
+            \p{Custom linter checks and refactorings. See the [example
+            catalog]{https://catalog.comby.dev} for checks in existing
+            tools.}
+          </div>
+          <div class="col-sm-10 offset-sm-1">
+            \p{Bug hunting. Find unchecked functions, incorrect API calls, or
+            copy-paste errors with structured matching that is easier and more
+            powerful than regex.}
+          </div>
+          <div class="col-sm-10 offset-sm-1">
+            \p{Temporarily changing or removing code for tests or analyses.
+            Stubbing or changing code is useful for suppressing spurious
+            warnings, and in refining static analyses or fuzzing.}
+          </div>
+          <div class="col-sm-10 offset-sm-1">
+            \p{A custom templating engine. Because Comby understands balanced
+            delimiters generically, you can easily roll your own templating
+            engine. This web page mixes [HTML, LaTeX-like, and Markdown-like
+            syntax]{https://github.com/comby-tools/comby.dev/blob/f2d2c11d15cf192daeadd3ff6e9da647a3b98d53/index.html.dyck#L221-L232}
+            to generate the final page using [custom
+            templates]{https://github.com/comby-tools/comby.dev/tree/master/templates}.}.
+          </div>
+        </div>
+
+      \p{Note: Comby is not well-suited to stylistic changes and formatting like
+      "insert a line break after 80 characters". Pair Comby with a
+      language-specific formatter to perserve formatting (like `gofmt` for the
+      Go language) after performing a change.}.
+
+      \h6{What about indentation-sensitive languages?}[faq-what-about-python]
       \p{Comby does not currently consider whitespace significant. We have plans
       to support it though! The idea is that your declarative templates will
-      match on code that happens at the correct relative indentation level, for languages like Python.
-      Stay tuned! Of course, a lot of Python code is not sensitive to whitespace indentation, so Comby
-      is still useful (for example, a lot of Python 2 to Python 3 conversions will work in Comby).}
+      match on code that happens at the correct relative indentation level, for
+      languages like Python. Stay tuned! Of course, a lot of Python code is not
+      sensitive to whitespace indentation, so Comby is still useful (for
+      example, a lot of Python 2 to Python 3 conversions can be written with
+      Comby).}
+
+      <!--\h6{I need more info}[faq-gitter]\p{ Pop in at the gitter}-->
 
       <!--
       \h6{How does Comby compare to Regex?}[what-about-regex]
       <!--https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}-->
 
       <!--\h6{What about supporting Regex inside holes?}[language-support]-->
-      \p{More improvements coming soon!}
-
 
   </section>
 

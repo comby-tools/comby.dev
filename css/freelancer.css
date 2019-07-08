@@ -10687,7 +10687,7 @@ pre.rewrite {
   border-color: #00b4f2;
   border-radius: 5px;
   /* background-color: #0f0f0f; */
-  padding: 1px;
+  padding: 0px 3px 0px 3px;
 }
 
 .hl-bg-source {
@@ -10695,7 +10695,7 @@ pre.rewrite {
   border-color: gray;
   border-radius: 5px 5px 5px 5px;
   /* background-color: #0f0f0f; */
-  padding: 1px;
+  padding: 0px 3px 0px 3px;
 }
 
 @media only screen and (max-width: 600px) {
