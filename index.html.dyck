@@ -773,7 +773,7 @@ comby .go -templates /path/to/directory
 
       \p{Note: Comby is not well-suited to stylistic changes and formatting like
       "insert a line break after 80 characters". Pair Comby with a
-      language-specific formatter to perserve formatting (like `gofmt` for the
+      language-specific formatter to preserve formatting (like `gofmt` for the
       Go language) after performing a change.}.
 
       \h6{What about indentation-sensitive languages?}[faq-what-about-python]
