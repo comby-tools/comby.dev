@@ -729,7 +729,45 @@ comby .go -templates /path/to/directory
 
       \h6{How do I extend language support?}[faq-language-extension]
       \p{Hopefully the language you're interested is already supported. If not,
-      open a [feature
+          you can define your own language in a simple JSON file and pass it as a custom matcher and rewriter. Just define the following supported language constructs in JSON, as follows:}
+
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+{
+  "user_defined_delimiters": [
+    [ "BLOCK-BEGIN", "BLOCK-END" ]
+    [ "if", "fi" ],
+  ],
+  "escapable_string_literals": [
+    [ "\"", "\"" ]
+  ],
+  "escape_char": "\\",
+  "raw_string_literals": [],
+  "comment_parser": [
+    [ "Until_newline", "#" ]
+  ]
+}
+```
+          </div>
+        </div>
+
+        \p{Put the contents above in a JSON file, like \source{my-language.json}, and then specify your file with the \source{-custom-matcher} flag. The following runs the custom language rewrite on all files with the extension \source{.newlang}:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+
+
+```source
+comby -custom-matcher my-language.json 'match...' 'rewrite...' .newlang
+```
+          </div>
+        </div>
+
+        \p{}
+
+          \p{If you want your missing language to be built into Comby, open a [feature
       request]{https://github.com/comby-tools/comby/issues/new/choose}, or have
       a look at the [languages
       file]{https://github.com/comby-tools/comby/blob/master/lib/matchers/languages.ml}

@@ -934,7 +934,53 @@
       <div class="row">
 <div class="col-sm-8 offset-sm-2">
 <p class="lead">Hopefully the language you're interested is already supported. If not,
-      open a <a href="https://github.com/comby-tools/comby/issues/new/choose" class="inline-a">feature
+          you can define your own language in a simple JSON file and pass it as a custom matcher and rewriter. Just define the following supported language constructs in JSON, as follows:</p>
+</div>
+</div>
+
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+<pre class="source"><code>{
+  "user_defined_delimiters": [
+    [ "BLOCK-BEGIN", "BLOCK-END" ]
+    [ "if", "fi" ],
+  ],
+  "escapable_string_literals": [
+    [ "\"", "\"" ]
+  ],
+  "escape_char": "\\",
+  "raw_string_literals": [],
+  "comment_parser": [
+    [ "Until_newline", "#" ]
+  ]
+}</code></pre>
+          </div>
+        </div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">Put the contents above in a JSON file, like <code class="hl-bg-source">my-language.json</code>, and then specify your file with the <code class="hl-bg-source">-custom-matcher</code> flag. The following runs the custom language rewrite on all files with the extension <code class="hl-bg-source">.newlang</code>:</p>
+</div>
+</div>
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+
+
+<pre class="source"><code>comby -custom-matcher my-language.json 'match...' 'rewrite...' .newlang</code></pre>
+          </div>
+        </div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead"></p>
+</div>
+</div>
+
+          <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">If you want your missing language to be built into Comby, open a <a href="https://github.com/comby-tools/comby/issues/new/choose" class="inline-a">feature
       request</a>, or have
       a look at the <a href="https://github.com/comby-tools/comby/blob/master/lib/matchers/languages.ml" class="inline-a">languages
       file</a>
