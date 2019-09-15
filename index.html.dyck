@@ -774,7 +774,7 @@ comby -custom-matcher my-language.json 'match...' 'rewrite...' .newlang
       which can be modified for additional languages.}
 
       \p{Note that languages can currently be added and expanded with respect
-      to <i>syntactic</i> code strctures that Comby recognizes: balanced
+      to <i>syntactic</i> code structures that Comby recognizes: balanced
       delimiters, comments, and kinds of string literals. By design, it isn't
       possible to further refine the meaning of syntax into keywords or
       high-level structures like functions.}
