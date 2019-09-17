@@ -103,7 +103,7 @@
 
           <!-- Live -->
           <div class="col-sm-2 panel-item">
-            <a href="https://comby.live/">
+            <a href="https://bit.ly/2UXkonD">
               <div class="mastpanel-item">
                 <div class="mastpanel-item-overlay h-100 w-100 fucksakes">
                   <img class="img-fluid" src="img/panel/code-inspector-ui-orange.svg" alt="">
@@ -364,14 +364,14 @@ result = foo\match{(\color{bar(x)}[orange])} + foobar\match{(\color{baz(x)}[oran
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
-var result = foo(bar(x \color{/* arg 1\unbalanced_right_paren */}[#ea4f00])) + foobar(\color{"\unbalanced_left_paren"}[#ea4f00]);
+var result = foo(bar(x \color{/* arg 1\unbalanced_right_paren */}[#e2c211])) + foobar(\color{"\unbalanced_left_paren"}[#e2c211]);
 ```
           </div>
         </div>
 
         \p{Now there's quite a bit of complexity if we want to match the
         arguments of \source{foo} and \source{foobar}. A block comment
-        \source{\color{/* arg 1\unbalanced_right_paren */}[#ea4f00]} is inlined
+        \source{\color{/* arg 1\unbalanced_right_paren */}[#e2c211]} is inlined
         for \source{bar}. Because this is a comment, it shouldn't matter whether
         the parenthesis inside are balanced or not. The same goes for the string
         literal argument to \source{foobar}: it's not a parenthesis in the code.
@@ -456,7 +456,7 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
         \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Consider
         combinations of holes to match interesting properties. For example, to
         capture leading indentation of a line, use a template like <br>\color{:[
-        leading_indentation]:[everything_until_newline]}[orange].<sup>[[]](https://bit.ly/2XOpczz)</sup>}
+        leading_indentation]:[everything_until_newline]}[orange].<sup>[[]](https://bit.ly/31uC6RE)</sup>}
 
         \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Looking for
         inspiration? Check out these simple code
@@ -464,7 +464,6 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
 
         </div>
       </div>
-
 
   </section>
 
@@ -514,7 +513,7 @@ if (\match{x == 500} && \match{x == 500})
         <div class="row">
           <div class="col-sm-8 offset-sm-2">
 ```source
-where :[left_side] == :[right_side], :[left_side] != \color{"x == 500"}[#ea4f00]
+where :[left_side] == :[right_side], :[left_side] != \color{"x == 500"}[#e2c211]
 ```
 [Live example](https://bit.ly/2NaaCOy)
           </div>
@@ -530,8 +529,8 @@ where :[left_side] == :[right_side], :[left_side] != \color{"x == 500"}[#ea4f00]
           <div class="col-sm-8 offset-sm-2">
 ```source
 where match :[left_side] {
-      | \color{"x == 600"}[#ea4f00] -> false
-      | \color{"x == 500"}[#ea4f00] -> true
+      | \color{"x == 600"}[#e2c211] -> false
+      | \color{"x == 500"}[#e2c211] -> true
       }
 ```
 [Live example](https://bit.ly/2NaGjaK)
@@ -544,12 +543,12 @@ where match :[left_side] {
           <div class="col-sm-8 offset-sm-2">
 ```source
 where match :[left_side] {
-      | \color{"x == 500"}[#ea4f00] ->
+      | \color{"x == 500"}[#e2c211] ->
             match :[right_side] {
-            | \color{"x == 500"}[#ea4f00] -> true
-            | \color{"x == 600"}[#ea4f00] -> false
+            | \color{"x == 500"}[#e2c211] -> true
+            | \color{"x == 600"}[#e2c211] -> false
             }
-      | \color{"x == 600"}[#ea4f00] -> false
+      | \color{"x == 600"}[#e2c211] -> false
       }
 ```
                                                                     </div>
@@ -569,14 +568,21 @@ where match :[left_side] {
         <div class="divider-line"></div>
       </div>
 
+      \p{The project is available on GitHub: [https://github.com/comby-tools/comby]{https://github.com/comby-tools/comby}.}
+
+
+      \h6{Command Line Install}[quick-install]
+      \p{\rewrite{bash <(curl -sL get.comby.dev)} (Binary for Ubuntu Linux and Mac)}
+      \p{\rewrite{docker pull comby/comby} (Docker)}
+
       \p{All the examples on [comby.live]{https://comby.live} and in the [catalog]{https://catalog.comby.dev} are just a copy away
-      from working on your command-line (just click on terminal). Install:}
+      from working on your command-line (just click on terminal).}
 
-      <div class="offset-sm-3">\p{\rewrite{bash <(curl -sL get.comby.dev)}}</div>
+      \p{}
+      \h6{Quick usage}[quick-usage]
 
-      \p{Here are some basics:}
-
-      \p{\color{Replace stdin using the generic matcher (highlighted diff preview)}[orange]}
+      \p{}
+      \ph{\color{Replace stdin using the generic matcher (highlighted diff preview)}[orange]}[quick-stdin-generic]
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -586,22 +592,23 @@ echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin
           </div>
         </div>
 
-\p{Output:}
+        \p{Output:}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```diff
-\color{------ /dev/null}[#ea4f00]
+\color{------ /dev/null}[red]
 \color{++++++ /dev/null}[#13b313]
 \color{@|}[gray]-1,1 +1,1 ============================================================
-\bgcolor{-|}[#ea4f00]\color{foo}[#ea4f00](\color{a}[#ea4f00], \color{b}[#ea4f00])
+\bgcolor{-|}[red]\color{foo}[red](\color{a}[red], \color{b}[red])
 \bgcolor{+|}[#13b313]\color{bar}[#13b313](\color{b}[#13b313], \color{a}[#13b313])
 ```
 
           </div>
         </div>
 
-      \p{\color{Highlighted diff preview for all go files in this directory and below}[orange]}
+        \p{}
+        \ph{\color{Highlighted diff preview for all go files in this directory and below}[orange]}[quick-diff-go-highlight]
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -611,7 +618,8 @@ comby 'match :[template]' 'rewrite :[template]' .go
           </div>
         </div>
 
-      \p{\color{Replace <i>in place</i> for all go files in this directory and below}[orange]}
+        \p{}
+        \ph{\color{Replace <i>in place</i> for all go files in this directory and below}[orange]}[quick-replace-go-in-place]
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -621,7 +629,8 @@ comby 'match :[template]' 'rewrite :[template]' .go -i
           </div>
         </div>
 
-      \p{\color{Diff preview replacement for files ending with file.go in directory foo}[orange]}
+      \p{}
+      \ph{\color{Diff preview replacement for files ending with file.go in directory foo}[orange]}[quick-diff-preview-with-directory]
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -631,7 +640,8 @@ comby 'match :[template]' 'rewrite :[template]' file.go -d foo
           </div>
         </div>
 
-      \p{\color{Force using the Javascript matcher for all .txt files}[orange]}
+      \p{}
+      \ph{\color{Force using the Javascript matcher for all .txt files}[orange]}[quick-force-js-for-txt]
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -641,8 +651,8 @@ comby 'match :[template]' 'rewrite :[template]' .txt -matcher .js
           </div>
         </div>
 
-
-      \p{\color{Use -diff to output a plain patch (unified diff)}[orange]}
+      \p{}
+      \ph{\color{Use -diff to output a plain patch (unified diff)}[orange]}[quick-diff-plain]
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -668,7 +678,7 @@ echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin -diff
           </div>
         </div>
 
-        \p{\color{Use a directory of template patterns instead of the command line}[orange]}
+        \ph{\color{Use a directory of template patterns instead of the command line}[orange]}[quick-template-directory]
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
@@ -717,37 +727,49 @@ comby .go -templates /path/to/directory
 
         <div class="row">
           <div class="col-sm-10 offset-sm-1 mb-3">
-            \p{Assembly, Bash, CSS, Clojure, C#, Dart, Elixir, Elm, Erlang,
-      Fortran, F#, Go, Haskell, HTML/XML, Java, Javascript/Typescript, JSON,
-      Julia, LaTeX, OCaml, Pascal, PHP, Python, Ruby, Rust, SQL, Scala, Swift}
+            \p{`Assembly, Bash, C/C++, C#, Clojure, CSS, Dart, Elm, Elixir, Erlang,
+            Fortran, F#, Go, Haskell, HTML/XML, Java, Javascript/Typescript, JSON,
+            Julia, LaTeX, Lisp, OCaml, Pascal, PHP, Python, Ruby, Rust, Scala, SQL, Swift, Text`}
           </div>
         </div>
 
       \p{Note: Comby cannot recognize arbitrary matching tags like `&lt;foo&gt;...&lt;/foo&gt;`
-      in HTML or XML yet (we do have plans to support it soon). Matching within angle
+      in HTML or XML yet (we do have plans to support it soon). Matching tags within angle
       brackets `<...>` works.}
 
       \h6{How do I extend language support?}[faq-language-extension]
       \p{Hopefully the language you're interested is already supported. If not,
-          you can define your own language in a simple JSON file and pass it as a custom matcher and rewriter. Just define the following supported language constructs in JSON, as follows:}
+          you can define your own language in a simple JSON file and pass it as a custom matcher. Just define the following supported language constructs in JSON, as follows:}
 
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
 {
-  "user_defined_delimiters": [
-    [ "BLOCK-BEGIN", "BLOCK-END" ]
-    [ "if", "fi" ],
-  ],
-  "escapable_string_literals": [
-    [ "\"", "\"" ]
-  ],
-  "escape_char": "\\",
-  "raw_string_literals": [],
-  "comment_parser": [
-    [ "Until_newline", "#" ]
-  ]
+   \color{"user_defined_delimiters"}[#e2c211]:[
+      [
+         \color{"case"}[#e2c211],
+         \color{"esac"}[#e2c211]
+      ]
+   ],
+   \color{"escapable_string_literals"}[#e2c211]:{
+      \color{"delimiters"}[#e2c211]:[
+         \color{"\""}[#e2c211]
+      ],
+      \color{"escape_character"}[#e2c211]:\color{"\\"}[#e2c211]
+   },
+   \color{"raw_string_literals"}[#e2c211]: [],
+   \color{"comments"}[#e2c211]:[
+      [
+         \color{"Multiline"}[#e2c211],
+         \color{"/*"}[#e2c211],
+         \color{"*/"}[#e2c211]
+      ],
+      [
+         \color{"Until_newline"}[#e2c211],
+         \color{"//"}[#e2c211]
+      ]
+   ]
 }
 ```
           </div>
@@ -775,7 +797,7 @@ comby -custom-matcher my-language.json 'match...' 'rewrite...' .newlang
 
       \p{Note that languages can currently be added and expanded with respect
       to <i>syntactic</i> code structures that Comby recognizes: balanced
-      delimiters, comments, and kinds of string literals. By design, it isn't
+      delimiters, comments, and kinds of string literals. By design, it currently isn't
       possible to further refine the meaning of syntax into keywords or
       high-level structures like functions.}
 
@@ -797,7 +819,7 @@ comby -custom-matcher my-language.json 'match...' 'rewrite...' .newlang
           <div class="col-sm-10 offset-sm-1">
             \p{Temporarily changing or removing code for tests or analyses.
             Stubbing or changing code is useful for suppressing spurious
-            warnings, and in refining static analyses or fuzzing.}
+            warnings, and for refining static analyses or fuzzing.}
           </div>
           <div class="col-sm-10 offset-sm-1">
             \p{A custom templating engine. Because Comby understands balanced
