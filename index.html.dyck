@@ -456,7 +456,7 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
         \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Consider
         combinations of holes to match interesting properties. For example, to
         capture leading indentation of a line, use a template like <br>\color{:[
-        leading_indentation]:[everything_until_newline]}[orange].<sup>[[]](https://bit.ly/31uC6RE)</sup>}
+        leading_indentation]:[everything_until_newline\n]}[orange].<sup>[[]](https://bit.ly/31uC6RE)</sup>}
 
         \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Looking for
         inspiration? Check out these simple code
@@ -523,7 +523,11 @@ where :[left_side] == :[right_side], :[left_side] != \color{"x == 500"}[#e2c211]
 
         \h6{Experimental language features}[experimental-language-features]
 
-        \p{Comby includes experimental language features for sub-matching on variables. These features might change, but are currently available if you want to experiment with it. Here is an example using the sub-matching syntax:}
+        \p{Comby includes experimental language features for sub-matching and rewriting in rules. These features might change slightly in meaning or syntax, but are currently available if you want to experiment with it.}
+
+        \ph{\color{Sub-matching syntax}[orange]}[experimental-language-features-sub-matching]
+
+        \p{Here is an example using the sub-matching syntax:}
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2">
@@ -551,8 +555,66 @@ where match :[left_side] {
       | \color{"x == 600"}[#e2c211] -> false
       }
 ```
-                                                                    </div>
+      </div>
 </div>
+
+\p{}
+\p{}
+\ph{\color{Rewrite expression syntax}[orange]}[experimental-language-features-rewrite-expression]
+
+\p{A \source{rewrite { ... }} expression can rewrite syntax captured in a hole. This is useful for rewriting reptitions of a pattern. This example converts arguments of a `dict` to a JSON-like format, where \source{dict(foo=bar,baz=qux)} becomes \source{{"foo": bar, "baz": qux}}:}
+
+        <div class="row">
+          <div class="col-sm-4 offset-sm-2">
+```match
+dict(:[args])
+```
+          </div>
+
+          <div class="col-sm-4">
+```rewrite
+:[args]
+```
+          </div>
+        </div>
+
+
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+```source
+where rewrite :[args] {  "\color{:[[k]]}[orange]=\color{:[[v]]}[orange]" -> "\":[k]\": :[v]" }
+```
+[Live example](https://bit.ly/30d3Tss)
+      </div>
+</div>
+
+\p{}
+\p{The pattern rewrites every matching instance of
+\match{\color{:[[k]]}[orange]=\color{:[[v]]}[orange]} to \rewrite-smol{":[k]": :[v]}.
+The contents of the :[args] hole are overwritten if the rewrite pattern
+fires. Note that the left and right hand sides inside the \source{{ ... }} need
+enclosing string quotes. This means that our pattern needs to escape the double qutes
+on the right hand side.}
+
+\p{Conceptually, a rewrite rule works the same way as a toplevel match and rewrite template, but only for a particular hole, and has the effect of overwriting the hole contents when there are substitutions.}
+
+\p{It is possible to have sequences of rewrite expressions in a rule. Here a second rewrite expression adds quotes around :[v]:}
+
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+```source
+where
+rewrite :[args] {  "\color{:[[k]]}[orange]=\color{:[[v]]}[orange]" -> "\":[k]\": :[v]" },
+rewrite :[args] {  ": \color{:[[v]]}[orange]" -> ": \":[v]\"" }
+```
+[Live example](https://bit.ly/306lB0H)
+      </div>
+</div>
+
+\p{}
+\p{The \source{rewrite} expressions are evaluated in a left-to-right sequence and overwrite :[args] in every case where expressions succeed. Rewrite expressions always return `true`, even if they don't succeed in rewriting a pattern. What this means for the example above is that the first rewrite expression will be attempted on :[args]. Even if it does not succeed in rewriting any patterns, the second rewrite expression will also be attempted. If neither rewrite expression change the contents of :[args], it remains unchanged in the output of the toplevel rewrite template.}
+
+\p{It is not currently possible to nest rewrite statements, though there are plans for support in the near future. For more about future plans, see the [roadmap]{https://github.com/comby-tools/comby/blob/master/docs/ROADMAP.md}.}
 
   </section>
 
@@ -587,7 +649,7 @@ where match :[left_side] {
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
-echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin
+echo \color{"foo(a, b)"}[#e2c211] | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin
 ```
           </div>
         </div>
@@ -618,6 +680,7 @@ comby 'match :[template]' 'rewrite :[template]' .go
           </div>
         </div>
 
+
         \p{}
         \ph{\color{Replace <i>in place</i> for all go files in this directory and below}[orange]}[quick-replace-go-in-place]
 
@@ -625,6 +688,17 @@ comby 'match :[template]' 'rewrite :[template]' .go
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
 comby 'match :[template]' 'rewrite :[template]' .go -i
+```
+          </div>
+        </div>
+
+        \p{}
+        \ph{\color{Add a rule for the pattern on the command line}[orange]}[quick-diff-go-highlight]
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+comby 'match :[template]' 'rewrite :[template]' .go -rule 'where :[template] == \color{"main"}[#e2c211]'
 ```
           </div>
         </div>
@@ -659,7 +733,7 @@ comby 'match :[template]' 'rewrite :[template]' .txt -matcher .js
 
 
 ```source
-echo "foo(a, b)" | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin -diff
+echo \color{"foo(a, b)"}[#e2c211] | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -stdin -diff
 ```
           </div>
         </div>
@@ -845,7 +919,11 @@ comby -custom-matcher my-language.json 'match...' 'rewrite...' .newlang
       example, a lot of Python 2 to Python 3 conversions can be written with
       Comby).}
 
-      <!--\h6{I need more info}[faq-gitter]\p{ Pop in at the gitter}-->
+        \h6{What features are planned for the future?}[faq-roadmap]
+        \p{See the [roadmap in the GitHub repository]{https://github.com/comby-tools/comby/blob/master/docs/ROADMAP.md}.}
+
+        \h6{I need help writing a pattern, or other have questions.}[faq-gitter]
+        \p{Pop in at the [Gitter channel]{https://gitter.im/comby-tools/community} for more support.}
 
       <!--
       \h6{How does Comby compare to Regex?}[what-about-regex]

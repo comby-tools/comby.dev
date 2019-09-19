@@ -10682,6 +10682,14 @@ pre.rewrite {
   padding: 3px;
 }
 
+.hl-bg-rewrite-smol {
+  border: 1px solid;
+  border-color: #f96215;
+  border-radius: 5px;
+  /* background-color: #0f0f0f; */
+  padding: 0px 3px 0px 3px;
+}
+
 .hl-bg-match {
   border: 1px solid;
   border-color: #00b4f2;

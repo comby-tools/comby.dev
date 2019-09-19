@@ -574,7 +574,7 @@
 <p class="lead"><code style="color:orange"><i class="fas fa-lightbulb"></i>&nbsp;</code> Consider
         combinations of holes to match interesting properties. For example, to
         capture leading indentation of a line, use a template like <br><code style="color:orange">:[
-        leading_indentation]<code><span class="hole">:[everything_until_newline]</span></code></code>.<sup><a href="https://bit.ly/31uC6RE" target="_blank" style="color: orange; font-size: .75rem"><i class="fas fa-external-link-alt fa-fw"></i></a></sup></p>
+        leading_indentation]:[everything_until_newline\n]</code>.<sup><a href="https://bit.ly/31uC6RE" target="_blank" style="color: orange; font-size: .75rem"><i class="fas fa-external-link-alt fa-fw"></i></a></sup></p>
 </div>
 </div>
 
@@ -664,7 +664,22 @@
 
         <div class="row">
 <div class="col-sm-8 offset-sm-2">
-<p class="lead">Comby includes experimental language features for sub-matching on variables. These features might change, but are currently available if you want to experiment with it. Here is an example using the sub-matching syntax:</p>
+<p class="lead">Comby includes experimental language features for sub-matching and rewriting in rules. These features might change slightly in meaning or syntax, but are currently available if you want to experiment with it.</p>
+</div>
+</div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<div class="anchor-header is-active">
+  <a href="#experimental-language-features-sub-matching"><i class="fas fa-link anchor-side-link"></i><p class="lead" id="experimental-language-features-sub-matching"><code style="color:orange">Sub-matching syntax</code></p>
+  </a>
+</div>
+</div>
+</div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">Here is an example using the sub-matching syntax:</p>
 </div>
 </div>
 
@@ -694,7 +709,104 @@
             }
       | <code style="color:#e2c211">"x == 600"</code> -> false
       }</code></pre>
-                                                                    </div>
+      </div>
+</div>
+
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead"></p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead"></p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<div class="anchor-header is-active">
+  <a href="#experimental-language-features-rewrite-expression"><i class="fas fa-link anchor-side-link"></i><p class="lead" id="experimental-language-features-rewrite-expression"><code style="color:orange">Rewrite expression syntax</code></p>
+  </a>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">A <code class="hl-bg-source">rewrite { ... }</code> expression can rewrite syntax captured in a hole. This is useful for rewriting reptitions of a pattern. This example converts arguments of a <code>dict</code> to a JSON-like format, where <code class="hl-bg-source">dict(foo=bar,baz=qux)</code> becomes <code class="hl-bg-source">{"foo": bar, "baz": qux}</code>:</p>
+</div>
+</div>
+
+        <div class="row">
+          <div class="col-sm-4 offset-sm-2">
+<pre class="match"><code>dict(<code><span class="hole">:[args]</span></code>)</code></pre>
+          </div>
+
+          <div class="col-sm-4">
+<pre class="rewrite"><code><code><span class="hole">:[args]</span></code></code></pre>
+          </div>
+        </div>
+
+
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+<pre class="source"><code>where rewrite <code><span class="hole">:[args]</span></code> {  "<code style="color:orange">:[[k]]</code>=<code style="color:orange">:[[v]]</code>" -> "\"<code><span class="hole">:[k]</span></code>\": <code><span class="hole">:[v]</span></code>" }</code></pre>
+<div class="text-right link-border"><a href="https://bit.ly/30d3Tss" target="_blank"><i class="fas fa-external-link-alt fa-fw"></i>Live example</a></div>
+      </div>
+</div>
+
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead"></p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">The pattern rewrites every matching instance of
+<code class="hl-bg-match"><code style="color:orange">:[[k]]</code>=<code style="color:orange">:[[v]]</code></code> to <code class="hl-bg-rewrite-smol">"<code><span class="hole">:[k]</span></code>": <code><span class="hole">:[v]</span></code></code>.
+The contents of the <code><span class="hole">:[args]</span></code> hole are overwritten if the rewrite pattern
+fires. Note that the left and right hand sides inside the <code class="hl-bg-source">{ ... }</code> need
+enclosing string quotes. This means that our pattern needs to escape the double qutes
+on the right hand side.</p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">Conceptually, a rewrite rule works the same way as a toplevel match and rewrite template, but only for a particular hole, and has the effect of overwriting the hole contents when there are substitutions.</p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">It is possible to have sequences of rewrite expressions in a rule. Here a second rewrite expression adds quotes around <code><span class="hole">:[v]</span></code>:</p>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+<pre class="source"><code>where
+rewrite <code><span class="hole">:[args]</span></code> {  "<code style="color:orange">:[[k]]</code>=<code style="color:orange">:[[v]]</code>" -> "\"<code><span class="hole">:[k]</span></code>\": <code><span class="hole">:[v]</span></code>" },
+rewrite <code><span class="hole">:[args]</span></code> {  ": <code style="color:orange">:[[v]]</code>" -> ": \"<code><span class="hole">:[v]</span></code>\"" }</code></pre>
+<div class="text-right link-border"><a href="https://bit.ly/306lB0H" target="_blank"><i class="fas fa-external-link-alt fa-fw"></i>Live example</a></div>
+      </div>
+</div>
+
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead"></p>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">The <code class="hl-bg-source">rewrite</code> expressions are evaluated in a left-to-right sequence and overwrite <code><span class="hole">:[args]</span></code> in every case where expressions succeed. Rewrite expressions always return <code>true</code>, even if they don't succeed in rewriting a pattern. What this means for the example above is that the first rewrite expression will be attempted on <code><span class="hole">:[args]</span></code>. Even if it does not succeed in rewriting any patterns, the second rewrite expression will also be attempted. If neither rewrite expression change the contents of <code><span class="hole">:[args]</span></code>, it remains unchanged in the output of the toplevel rewrite template.</p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">It is not currently possible to nest rewrite statements, though there are plans for support in the near future. For more about future plans, see the <a href="https://github.com/comby-tools/comby/blob/master/docs/ROADMAP.md" class="inline-a">roadmap</a>.</p>
+</div>
 </div>
 
   </section>
@@ -774,7 +886,7 @@
 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
-<pre class="source"><code>echo "foo(a, b)" | comby 'foo(<code><span class="hole">:[1]</span></code>, <code><span class="hole">:[2]</span></code>)' 'bar(<code><span class="hole">:[2]</span></code>, <code><span class="hole">:[1]</span></code>)' -stdin</code></pre>
+<pre class="source"><code>echo <code style="color:#e2c211">"foo(a, b)"</code> | comby 'foo(<code><span class="hole">:[1]</span></code>, <code><span class="hole">:[2]</span></code>)' 'bar(<code><span class="hole">:[2]</span></code>, <code><span class="hole">:[1]</span></code>)' -stdin</code></pre>
           </div>
         </div>
 
@@ -815,6 +927,7 @@
           </div>
         </div>
 
+
         <div class="row">
 <div class="col-sm-8 offset-sm-2">
 <p class="lead"></p>
@@ -832,6 +945,26 @@
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 <pre class="source"><code>comby 'match <code><span class="hole">:[template]</span></code>' 'rewrite <code><span class="hole">:[template]</span></code>' .go -i</code></pre>
+          </div>
+        </div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead"></p>
+</div>
+</div>
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<div class="anchor-header is-active">
+  <a href="#quick-diff-go-highlight"><i class="fas fa-link anchor-side-link"></i><p class="lead" id="quick-diff-go-highlight"><code style="color:orange">Add a rule for the pattern on the command line</code></p>
+  </a>
+</div>
+</div>
+</div>
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+<pre class="source"><code>comby 'match <code><span class="hole">:[template]</span></code>' 'rewrite <code><span class="hole">:[template]</span></code>' .go -rule 'where <code><span class="hole">:[template]</span></code> == <code style="color:#e2c211">"main"</code>'</code></pre>
           </div>
         </div>
 
@@ -893,7 +1026,7 @@
           <div class="col-sm-8 offset-sm-2 mb-3">
 
 
-<pre class="source"><code>echo "foo(a, b)" | comby 'foo(<code><span class="hole">:[1]</span></code>, <code><span class="hole">:[2]</span></code>)' 'bar(<code><span class="hole">:[2]</span></code>, <code><span class="hole">:[1]</span></code>)' -stdin -diff</code></pre>
+<pre class="source"><code>echo <code style="color:#e2c211">"foo(a, b)"</code> | comby 'foo(<code><span class="hole">:[1]</span></code>, <code><span class="hole">:[2]</span></code>)' 'bar(<code><span class="hole">:[2]</span></code>, <code><span class="hole">:[1]</span></code>)' -stdin -diff</code></pre>
           </div>
         </div>
 
@@ -1173,18 +1306,33 @@
 </div>
 </div>
 
-      <!--<div class="row">
+        <div class="row">
 <div class="col-sm-8 offset-sm-2">
 <div class="anchor-header is-active mt-3">
-  <a href="#faq-gitter"><i class="fas fa-link anchor-side-link"></i><h6 id="faq-gitter">I need more info</h6>
+  <a href="#faq-roadmap"><i class="fas fa-link anchor-side-link"></i><h6 id="faq-roadmap">What features are planned for the future?</h6>
   </a>
 </div>
 </div>
-</div><div class="row">
-<div class="col-sm-8 offset-sm-2">
-<p class="lead"> Pop in at the gitter</p>
 </div>
-</div>-->
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">See the <a href="https://github.com/comby-tools/comby/blob/master/docs/ROADMAP.md" class="inline-a">roadmap in the GitHub repository</a>.</p>
+</div>
+</div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<div class="anchor-header is-active mt-3">
+  <a href="#faq-gitter"><i class="fas fa-link anchor-side-link"></i><h6 id="faq-gitter">I need help writing a pattern, or other have questions.</h6>
+  </a>
+</div>
+</div>
+</div>
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead">Pop in at the <a href="https://gitter.im/comby-tools/community" class="inline-a">Gitter channel</a> for more support.</p>
+</div>
+</div>
 
       <!--
       <div class="row">
