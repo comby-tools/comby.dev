@@ -925,8 +925,36 @@ comby -custom-matcher my-language.json 'match...' 'rewrite...' .newlang
         \h6{I need help writing a pattern, or other have questions.}[faq-gitter]
         \p{Pop in at the [Gitter channel]{https://gitter.im/comby-tools/community} for more support.}
 
+
+        \h6{Aren't regex approaches like sed good enough?}[faq-regex-good-enough]
+
+        \p{Sometimes, yes. But often, small changes and refactorings are
+        complicated by nested expressions, comments, or strings. Consider the
+        following C-like snippet. Say the challenge is to rewrite the two `if`
+        conditions to the value `1`. Can you write a regular expression that
+        matches the contents of the two if condition expressions, and only those
+        two? Feel free to share your pattern with
+        [@rvtond]{https://twitter.com/rvtond} on Twitter.}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+```source
+if (fgets(line, 128, file_pointer) == Null) // 1&rpar; if (...) returns 0
+      return 0;
+...
+if (scanf("%d&rpar; %d", &x, &y) == 2) // 2&rpar; if (scanf("%d&rpar; %d", &x, &y) == 2) returns 0
+      return 0;
+```
+          </div>
+        </div>
+
+        \p{To match these with comby, all you need to write is \match{if (:[condition])}, and specify one flag that this language is C-like. The
+        replacement is \rewrite-smol{if (1)}. See the [live
+        example]{https://bit.ly/30935ou}.}
+
       <!--
       \h6{How does Comby compare to Regex?}[what-about-regex]
+
       <!--https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}-->
 
       <!--\h6{What about supporting Regex inside holes?}[language-support]-->
