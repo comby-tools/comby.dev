@@ -10635,6 +10635,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .lead {
+  font-weight: 400;
   font-size: 1.2rem;
   font-family: 'Source Sans Pro';
 }
@@ -10644,7 +10645,7 @@ code {
 }
 
 p {
-  color: #ddd;
+  color: #e8e8e8;
 }
 
 pre {
@@ -11065,5 +11066,7 @@ form .row:first-child .floating-label-form-group {
 }
 
 html, body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   height: 100%;
 }

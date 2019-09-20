@@ -12,14 +12,13 @@
 
     <!-- Custom fonts for this theme -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
     <link href="css/freelancer.min.css" rel="stylesheet">
 
     <!-- Source Sans Pro font -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon/">
 
@@ -420,12 +419,12 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
         `-`).}
 
         \p{\source{\color{:[hole\n]}[orange]} (with a `\n` at the end) matches one or more
-        characters up to a newline.}
+        characters up to a newline, including the newline.}
 
         \p{\source{\color{:[ ]}[orange]} (with a space) matches only whitespace
         characters, excluding newlines. To assign the matched whitespace to
         variable, put the variable name after the space, like \color{:[
-        white]}[orange].}
+        hole]}[orange].}
 
 
         \h6{A few more tips and tricks}[tips-and-tricks]
