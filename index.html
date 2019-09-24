@@ -474,17 +474,17 @@
 </div>
         <div class="row">
 <div class="col-sm-8 offset-sm-2">
-<p class="lead">The following syntax is
-        supported in Comby, and carry special meaning for matching:</p>
+<p class="lead">Comby supports the following syntax, which carry special meaning for matching:</p>
 </div>
 </div>
 
         <div class="row">
 <div class="col-sm-8 offset-sm-2">
-<p class="lead"><code class="hl-bg-source"><code><span class="hole">:[hole]</span></code></code> matches zero or more <i>well-balanced</i> characters
-        until the part that comes after the hole (like whitespace, or some other
-        string) in a lazy fashion. When <code><span class="hole">:[hole]</span></code> is inside delimiters, as in
-        <code>(<code><span class="hole">:[hole]</span></code>)</code>, it matches (only) within those delimiters.</p>
+<p class="lead"><code class="hl-bg-source"><code><span class="hole">:[hole]</span></code></code> matches zero or more characters (including
+        whitespace, and across newlines) in a lazy fashion. When <code><code><span class="hole">:[hole]</span></code></code> is used
+        inside delimiters, as in <code>{<code><span class="hole">:[h1]</span></code>, <code><span class="hole">:[h2]</span></code>}</code> or <code>(<code><span class="hole">:[h]</span></code>)</code>, those
+        delimiters set a boundary for what the hole can match, and the hole will then only match
+        patterns <i>within</i> those delimiters. Holes can be used outside of delimiters as well.</p>
 </div>
 </div>
 

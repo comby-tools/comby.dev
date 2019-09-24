@@ -403,13 +403,13 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
         fast, and that's only for Javascript!}
 
         \h6{Match Syntax Reference}[match-syntax]
-        \p{The following syntax is
-        supported in Comby, and carry special meaning for matching:}
+        \p{Comby supports the following syntax, which carry special meaning for matching:}
 
-        \p{\source{:[hole]} matches zero or more <i>well-balanced</i> characters
-        until the part that comes after the hole (like whitespace, or some other
-        string) in a lazy fashion. When :[hole] is inside delimiters, as in
-        `(:[hole])`, it matches (only) within those delimiters.}
+        \p{\source{:[hole]} matches zero or more characters (including
+        whitespace, and across newlines) in a lazy fashion. When `:[hole]` is used
+        inside delimiters, as in `{:[h1], :[h2]}` or `(:[h])`, those
+        delimiters set a boundary for what the hole can match, and the hole will then only match
+        patterns <i>within</i> those delimiters. Holes can be used outside of delimiters as well.}
 
         \p{\source{\color{:[[hole]]}[orange]} matches one or more alphanumeric
         characters and `_`.}
