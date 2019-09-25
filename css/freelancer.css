@@ -11066,6 +11066,7 @@ form .row:first-child .floating-label-form-group {
 }
 
 html, body {
+  background-color: #0f0f0f;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   height: 100%;
