@@ -5,8 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Comby is a tool for structural code search and replace that supports ~every
+language. It lets developers write simple patterns to more intelligently change
+code compared to standard regex approaches.">
+    <meta name="author" content="Rijnard van Tonder">
 
     <title>Comby〔 Rewrite Code 〕</title>
 
@@ -633,11 +635,13 @@ rewrite :[args] {  ": \color{:[[v]]}[orange]" -> ": \":[v]\"" }
 
 
       \h6{Command Line Install}[quick-install]
-      \p{\rewrite{bash <(curl -sL get.comby.dev)} (Binary for Ubuntu Linux and Mac)}
+      \p{\rewrite{brew install comby} (Mac OS X)}
+      \p{\rewrite{bash <(curl -sL get.comby.dev)} (Ubuntu Linux)}
       \p{\rewrite{docker pull comby/comby} (Docker)}
+      \p{See the GitHub project for others or to [build from source]{https://github.com/comby-tools/comby/#build-from-source}.}
 
       \p{All the examples on [comby.live]{https://comby.live} and in the [catalog]{https://catalog.comby.dev} are just a copy away
-      from working on your command-line (just click on terminal).}
+      from working on your command-line (just click on terminal in [comby.live]{https://comby.live}).}
 
       \p{}
       \h6{Quick usage}[quick-usage]
@@ -674,7 +678,7 @@ echo \color{"foo(a, b)"}[#e2c211] | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -s
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
-comby 'match :[template]' 'rewrite :[template]' .go
+comby 'foo :[template]' 'bar :[template]' .go
 ```
           </div>
         </div>
@@ -686,7 +690,7 @@ comby 'match :[template]' 'rewrite :[template]' .go
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
-comby 'match :[template]' 'rewrite :[template]' .go -i
+comby 'foo :[template]' 'bar :[template]' .go -i
 ```
           </div>
         </div>
@@ -697,7 +701,7 @@ comby 'match :[template]' 'rewrite :[template]' .go -i
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
-comby 'match :[template]' 'rewrite :[template]' .go -rule 'where :[template] == \color{"main"}[#e2c211]'
+comby 'foo :[template]' 'bar :[template]' .go -rule 'where :[template] == \color{"main"}[#e2c211]'
 ```
           </div>
         </div>
@@ -708,7 +712,7 @@ comby 'match :[template]' 'rewrite :[template]' .go -rule 'where :[template] == 
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
-comby 'match :[template]' 'rewrite :[template]' file.go -d foo
+comby 'foo :[template]' 'bar :[template]' file.go -d foo
 ```
           </div>
         </div>
@@ -719,7 +723,7 @@ comby 'match :[template]' 'rewrite :[template]' file.go -d foo
         <div class="row">
           <div class="col-sm-8 offset-sm-2 mb-3">
 ```source
-comby 'match :[template]' 'rewrite :[template]' .txt -matcher .js
+comby 'foo :[template]' 'bar :[template]' .txt -matcher .js
 ```
           </div>
         </div>
@@ -748,6 +752,37 @@ echo \color{"foo(a, b)"}[#e2c211] | comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' -s
 -foo(a, b)
 +bar(b, a)
 ```
+          </div>
+        </div>
+
+      \ph{\color{Interactively review changes on the command line, just like in [<u>codemod</u>]{https://github.com/facebook/codemod}}[orange]}[review-mode]
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+
+
+```source
+comby 'foo(:[1], :[2])' 'bar(:[2], :[1])' sub.js -review
+```
+          </div>
+        </div>
+
+\p{Output:}
+
+        <div class="row">
+          <div class="col-sm-8 offset-sm-2 mb-3">
+
+```diff
+\color{------ sub.js}[red]
+\color{++++++ sub.js}[#13b313]
+\color{@|}[gray]-1,3 +1,3 ============================================================
+\bgcolor{-|}[red]\color{function subtract}[gray](\color{param1}[red]\color{,}[gray] \color{param2}[red]) \color{{ <!--}-->}[gray]
+\bgcolor{+|}[#13b313]function subtract(\color{param2}[#13b313], \color{param1}[#13b313]) { <!--}-->
+\color{ |}[gray]  return param1 - param2;
+\color{ |}[gray]<!--{-->}
+Accept change (\color{y = yes}[#13b313] [default], \color{n = no}[red], \color{e = edit original}[yellow], \color{E = apply+edit}[yellow], q = quit)?
+```
+
           </div>
         </div>
 
@@ -800,9 +835,10 @@ comby .go -templates /path/to/directory
 
         <div class="row">
           <div class="col-sm-10 offset-sm-1 mb-3">
-            \p{`Assembly, Bash, C/C++, C#, Clojure, CSS, Dart, Elm, Elixir, Erlang,
-            Fortran, F#, Go, Haskell, HTML/XML, Java, Javascript/Typescript, JSON,
-            Julia, LaTeX, Lisp, OCaml, Pascal, PHP, Python, Ruby, Rust, Scala, SQL, Swift, Text`}
+            \p{`Assembly, Bash, C/C++, C#, Clojure, CSS, Dart, Elm, Elixir,
+            Erlang, Fortran, F#, Go, Haskell, HTML/XML, Java, Javascript, JSX,
+            JSON, Julia, LaTeX, Lisp, Nim, OCaml, Pascal, PHP, Python, Reason,
+            Ruby, Rust, Scala, SQL, Swift, Plain Text, TSX, Typescript`}
           </div>
         </div>
 
@@ -949,16 +985,46 @@ if (scanf("%d&rpar; %d", &x, &y) == 2) // 2&rpar; if (scanf("%d&rpar; %d", &x, &
 
         \h6{I need help writing a pattern, or other have questions.}[faq-gitter]
         \p{Pop in at the [Gitter channel]{https://gitter.im/comby-tools/community} for more support.}
+        <!--\h6{How does Comby compare to Regex?}[what-about-regex]-->
+        <!--https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}-->
+        <!--\h6{What about supporting Regex inside holes?}[language-support]-->
+  </section>
+
+  <!-- Resources and Demos -->
+  <section class="page-section" id="Resources and demos">
+    <div class="container">
+
+      <!-- Section Heading -->
+      <h2 class="page-section-heading text-center">Resources and demos</h2>
+
+      <!-- Line -->
+      <div class="d-flex align-items-center flex-column">
+        <div class="divider-line"></div>
+      </div>
 
 
-
-      <!--
-      \h6{How does Comby compare to Regex?}[what-about-regex]
-
-      <!--https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}-->
-
-      <!--\h6{What about supporting Regex inside holes?}[language-support]-->
-
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            \h6{Strangeloop talk on comby}[strangeloop-talk]
+          </div>
+          <div class="col-sm-12 text-center">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/JMZLBB_BFNg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            \h6{Demos}[twitter-demos]
+          </div>
+          <div class="col-sm-6">
+<blockquote class="twitter-tweet" data-theme="dark" data-link-color="#FAB81E"><p lang="en" dir="ltr">A demo of how it&#39;s possible to support future rewrites for proposed syntax extensions like optional chaining in ES/JS. This just one syntactic variant of course; the fun part is how it&#39;s possible to support new syntax changes on concrete syntax trees even before it&#39;s adopted. <a href="https://t.co/jQuhNeTmXA">https://t.co/jQuhNeTmXA</a> <a href="https://t.co/ZzaAXHsLqK">pic.twitter.com/ZzaAXHsLqK</a></p>&mdash; Rijnard van Tonder (@rvtond) <a href="https://twitter.com/rvtond/status/1174433049322414081?ref_src=twsrc%5Etfw">September 18, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+          <div class="col-sm-6">
+<blockquote class="twitter-tweet" data-theme="dark" data-link-color="#FAB81E"><p lang="en" dir="ltr">Here&#39;s a declarative way to rewrite a list concat of strings using an infix operator in <a href="https://twitter.com/hashtag/Haskell?src=hash&amp;ref_src=twsrc%5Etfw">#Haskell</a> instead (this change inspired by a HLint check). Replace repeated patterns like &#39;,&#39; with &#39;++&#39;, but only inside a list. Hear more tomorrow @ 1:30PM ST Ovation <a href="https://twitter.com/strangeloop_stl?ref_src=twsrc%5Etfw">@strangeloop_stl</a> <a href="https://t.co/hIxO8uFRHV">pic.twitter.com/hIxO8uFRHV</a></p>&mdash; Rijnard van Tonder (@rvtond) <a href="https://twitter.com/rvtond/status/1172620504106250242?ref_src=twsrc%5Etfw">September 13, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Copyright Section -->
