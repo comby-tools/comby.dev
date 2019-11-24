@@ -923,7 +923,7 @@ comby -custom-matcher my-language.json 'match...' 'rewrite...' .newlang
       possible to further refine the meaning of syntax into keywords or
       high-level structures like functions.}
 
-        \h6{Aren't regex approaches like sed good enough?}[faq-regex-good-enough]
+        \h6{Isn't a regex approach like sed good enough?}[faq-regex-good-enough]
 
         \p{Sometimes, yes. But often, small changes and refactorings are
         complicated by nested expressions, comments, or strings. Consider the
@@ -955,22 +955,22 @@ if (scanf("%d&rpar; %d", &x, &y) == 2) // 2&rpar; if (scanf("%d&rpar; %d", &x, &
 
         <div class="row">
           <div class="col-sm-10 offset-sm-1">
-            \p{Custom linter checks and refactorings. See the [example
+            \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Custom linter checks and refactorings. See the [example
             catalog]{https://catalog.comby.dev} for checks in existing
             tools.}
           </div>
           <div class="col-sm-10 offset-sm-1">
-            \p{Bug hunting. Find unchecked functions, incorrect API calls, or
+            \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Bug hunting. Find unchecked functions, incorrect API calls, or
             copy-paste errors with structured matching that is easier and more
             powerful than regex.}
           </div>
           <div class="col-sm-10 offset-sm-1">
-            \p{Temporarily changing or removing code for tests or analyses.
+            \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Temporarily changing or removing code for tests or analyses.
             Stubbing or changing code is useful for suppressing spurious
             warnings, and for refining static analyses or fuzzing.}
           </div>
           <div class="col-sm-10 offset-sm-1">
-            \p{A custom templating engine. Because Comby understands balanced
+            \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] A custom templating engine. Because Comby understands balanced
             delimiters generically, you can easily roll your own templating
             engine. This web page mixes [HTML, LaTeX-like, and Markdown-like
             syntax]{https://github.com/comby-tools/comby.dev/blob/f2d2c11d15cf192daeadd3ff6e9da647a3b98d53/index.html.dyck#L221-L232}
@@ -982,21 +982,25 @@ if (scanf("%d&rpar; %d", &x, &y) == 2) // 2&rpar; if (scanf("%d&rpar; %d", &x, &
       \p{Note: Comby is not well-suited to stylistic changes and formatting like
       "insert a line break after 80 characters". Pair Comby with a
       language-specific formatter to preserve formatting (like `gofmt` for the
-      Go language) after performing a change.}.
+      Go language) after performing a change.}
 
       \h6{What about indentation-sensitive languages?}[faq-what-about-python]
-      \p{Comby does not currently consider whitespace significant. We have plans
-      to support it though! The idea is that your declarative templates will
-      match on code that happens at the correct relative indentation level, for
-      languages like Python. Stay tuned! Of course, a lot of Python code is not
-      sensitive to whitespace indentation, so Comby is still useful (for
-      example, a lot of Python 2 to Python 3 conversions can be written with
-      Comby).}
+      \p{Comby does not currently consider whitespace indentation significant.
+      We have plans to support it though! The idea is that your declarative
+      templates will match on code that happens at the correct relative
+      indentation level, for languages like Python. Stay tuned! Of course, a lot
+      of Python code is not sensitive to whitespace indentation, so Comby is
+      still useful (for example, a lot of Python 2 to Python 3 conversions can
+      be written with Comby).}
 
-        \h6{What features are planned for the future?}[faq-roadmap]
-        \p{See the [roadmap in the GitHub repository]{https://github.com/comby-tools/comby/blob/master/docs/ROADMAP.md}.}
+        \h6{What features are currently in development or planned for the
+        future?}[faq-roadmap] \p{See the [feature
+        table]{https://github.com/comby-tools/comby/blob/master/docs/FEATURE_TABLE.md}
+        and
+        [roadmap]{https://github.com/comby-tools/comby/blob/master/docs/ROADMAP.md}
+        in the GitHub repository.}
 
-        \h6{I need help writing a pattern, or other have questions.}[faq-gitter]
+        \h6{I need help writing a pattern or other have questions.}[faq-gitter]
         \p{Pop in at the [Gitter channel]{https://gitter.im/comby-tools/community} for more support.}
         <!--\h6{How does Comby compare to Regex?}[what-about-regex]-->
         <!--https://stackoverflow.com/questions/133601/can-regular-expressions-be-used-to-match-nested-patterns}-->
