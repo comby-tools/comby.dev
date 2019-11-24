@@ -260,7 +260,7 @@ code compared to standard regex approaches.">
         <div class="row">
 <div class="col-sm-8 offset-sm-2">
 <p class="lead">Holes are the only special part in match templates, and they always
-        have the form <code style="color:orange">:[...]</code>. <u>All other characters are
+        have the form <code style="color:orange"><code><span class="hole">:[...]</span></code></code>. <u>All other characters are
         interpreted literally</u> (there's a bit of detail about whitespace that
         we'll talk about in the next part). The point is that you <u>never</u>
         have to escape any characters in your template. Just say what you mean!</p>
@@ -499,7 +499,7 @@ code compared to standard regex approaches.">
 
         <div class="row">
 <div class="col-sm-8 offset-sm-2">
-<p class="lead"><code class="hl-bg-source"><code style="color:orange">:[hole.]</code></code> (with a period at the end) matches
+<p class="lead"><code class="hl-bg-source"><code style="color:orange"><code><span class="hole">:[hole.]</span></code></code></code> (with a period at the end) matches
         one or more alphanumeric characters and punctuation (like <code>.</code>, <code>;</code>, and
         <code>-</code>).</p>
 </div>
@@ -507,7 +507,7 @@ code compared to standard regex approaches.">
 
         <div class="row">
 <div class="col-sm-8 offset-sm-2">
-<p class="lead"><code class="hl-bg-source"><code style="color:orange">:[hole\n]</code></code> (with a <code>\n</code> at the end) matches one or more
+<p class="lead"><code class="hl-bg-source"><code style="color:orange"><code><span class="hole">:[hole\n]</span></code></code></code> (with a <code>\n</code> at the end) matches one or more
         characters up to a newline, including the newline.</p>
 </div>
 </div>
@@ -521,6 +521,16 @@ code compared to standard regex approaches.">
 </div>
 </div>
 
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead"><code class="hl-bg-source"><code style="color:orange"><code><span class="hole">:[?hole]</span></code></code></code> (with a <code>?</code> before the variable
+        name) optionally matches syntax. Optional holes work like ordinary
+        holes, except that if they fail to match syntax, the variable is
+        assigned the empty string <code>""</code>. Optional hole support is currently an
+        <a href="https://github.com/comby-tools/comby/blob/master/docs/FEATURE_TABLE.md#features" class="inline-a">experimental
+        feature</a>.</p>
+</div>
+</div>
 
         <div class="row">
 <div class="col-sm-8 offset-sm-2">
@@ -575,7 +585,18 @@ code compared to standard regex approaches.">
 <p class="lead"><code style="color:orange"><i class="fas fa-lightbulb"></i>&nbsp;</code> Consider
         combinations of holes to match interesting properties. For example, to
         capture leading indentation of a line, use a template like <br><code style="color:orange">:[
-        leading_indentation]:[everything_until_newline\n]</code>.<sup><a href="https://bit.ly/31uC6RE" target="_blank" style="color: orange; font-size: .75rem"><i class="fas fa-external-link-alt fa-fw"></i></a></sup></p>
+        leading_indentation]<code><span class="hole">:[everything_until_newline\n]</span></code></code>.<sup><a href="https://bit.ly/31uC6RE" target="_blank" style="color: orange; font-size: .75rem"><i class="fas fa-external-link-alt fa-fw"></i></a></sup></p>
+</div>
+</div>
+
+        <div class="row">
+<div class="col-sm-8 offset-sm-2">
+<p class="lead"><code style="color:orange"><i class="fas fa-lightbulb"></i>&nbsp;</code> Optional holes
+        are useful for matching syntax that may or may not exist. For example, a
+        Go function may or may not have a
+        <a href="https://tour.golang.org/methods/1" class="inline-a">receiver</a>. So, to match all
+        Go functions in a project, including ones with a receiver, use an
+        optional <code><span class="hole">:[?receiver]</span></code> hole.<sup><a href="bit.ly/2XH99RD" target="_blank" style="color: orange; font-size: .75rem"><i class="fas fa-external-link-alt fa-fw"></i></a></sup></p>
 </div>
 </div>
 

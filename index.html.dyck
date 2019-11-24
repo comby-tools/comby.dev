@@ -428,6 +428,12 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
         variable, put the variable name after the space, like \color{:[
         hole]}[orange].}
 
+        \p{\source{\color{:[?hole]}[orange]} (with a `?` before the variable
+        name) optionally matches syntax. Optional holes work like ordinary
+        holes, except that if they fail to match syntax, the variable is
+        assigned the empty string `""`. Optional hole support is currently an
+        [experimental
+        feature]{https://github.com/comby-tools/comby/blob/master/docs/FEATURE_TABLE.md#features}.}
 
         \h6{A few more tips and tricks}[tips-and-tricks]
 
@@ -458,6 +464,13 @@ var result = foo\match{(\color{bar(x /* arg 1\unbalanced_right_paren */)}[orange
         combinations of holes to match interesting properties. For example, to
         capture leading indentation of a line, use a template like <br>\color{:[
         leading_indentation]:[everything_until_newline\n]}[orange].<sup>[[]](https://bit.ly/31uC6RE)</sup>}
+
+        \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Optional holes
+        are useful for matching syntax that may or may not exist. For example, a
+        Go function may or may not have a
+        [receiver]{https://tour.golang.org/methods/1}. So, to match all
+        Go functions in a project, including ones with a receiver, use an
+        optional :[?receiver] hole.<sup>[[]](bit.ly/2XH99RD)</sup>}
 
         \p{\color{<i class="fas fa-lightbulb"></i>&nbsp;}[orange] Looking for
         inspiration? Check out these simple code
