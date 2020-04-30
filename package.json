@@ -32,7 +32,7 @@
         "@fortawesome/fontawesome-free": "5.8.2",
         "bootstrap": "4.3.1",
         "gulp-comby": "file:../gulp-comby",
-        "jquery": "3.4.1",
+        "jquery": "3.5.0",
         "jquery.easing": "^1.4.1",
         "magnific-popup": "^1.1.0",
         "node-sass": "^4.12.0"
