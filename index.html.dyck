@@ -607,7 +607,7 @@ where rewrite :[args] {  "\color{:[[k]]}[orange]=\color{:[[v]]}[orange]" -> "\":
 \match{\color{:[[k]]}[orange]=\color{:[[v]]}[orange]} to \rewrite-smol{":[k]": :[v]}.
 The contents of the :[args] hole are overwritten if the rewrite pattern
 fires. Note that the left and right hand sides inside the \source{{ ... }} need
-enclosing string quotes. This means that our pattern needs to escape the double qutes
+enclosing string quotes. This means that our pattern needs to escape the double quotes
 on the right hand side.}
 
 \p{Conceptually, a rewrite rule works the same way as a toplevel match and rewrite template, but only for a particular hole, and has the effect of overwriting the hole contents when there are substitutions.}
