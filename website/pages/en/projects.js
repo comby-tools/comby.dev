@@ -146,6 +146,7 @@ class Index extends React.Component {
             <td><a href="https://github.com/pedestal/pedestal/pull/600/files">pedestal</a></td>
             </tr>
             </table>
+            <p>Find more ideas for refactors in an <a href="https://catalog.comby.dev">example catalog of patterns</a>.</p>
             <li><b>Structural code search</b> - Find out how Comby is used to power <a href="https://about.sourcegraph.com/blog/going-beyond-regular-expressions-with-structural-code-search">language-aware code search at scale</a>.</li>
             <li><b>Academic research in software engineering</b>
             <ul><li><a href="https://2020.icse-conferences.org/details/icse-2020-papers/72/Tailoring-Programs-for-Static-Analysis-via-Program-Transformation">Suppressing analyzer false positives</a> (upcoming talk)</li>
