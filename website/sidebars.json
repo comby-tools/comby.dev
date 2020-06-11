@@ -1,0 +1,21 @@
+{
+  "core": {
+    "Getting Started": [
+      "overview",
+      "get-started"
+    ],
+    "Usage": [
+      "basic-usage",
+      "syntax-reference",
+      "advanced-usage",
+      "cheat-sheet"
+    ],
+    "API": [
+        "api"
+    ],
+    "Resources": [
+      "get-help",
+      "faq"
+    ]
+  }
+}

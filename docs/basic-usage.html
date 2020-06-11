@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>The Basics · Comby</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;style&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="The Basics · Comby"/><meta property="og:type" content="website"/><meta property="og:url" content="https://comby.dev/"/><meta property="og:description" content="&lt;style&gt;"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://comby.dev/blog/atom.xml" title="Comby Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://comby.dev/blog/feed.xml" title="Comby Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-142487942-1', 'auto');
+              ga('send', 'pageview');
+            </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/comby-logo.svg" alt="Comby"/><h2 class="headerTitleWithLogo">Comby</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/get-started" target="_self">Get started</a></li><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="/en/projects" target="_self">Projects &amp; Talks</a></li><li class=""><a href="https://github.com/comby-tools/comby" target="_self">GitHub</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Usage</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/get-started">Get Started</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/basic-usage">Basic Usage</a></li><li class="navListItem"><a class="navItem" href="/docs/syntax-reference">Syntax Reference</a></li><li class="navListItem"><a class="navItem" href="/docs/advanced-usage">Advanced Usage</a></li><li class="navListItem"><a class="navItem" href="/docs/cheat-sheet">Cheat Sheet</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Resources</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/get-help">Get Help</a></li><li class="navListItem"><a class="navItem" href="/docs/faq">FAQ</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/comby-tools/comby.dev/edit/master/website/docs/basic-usage.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">The Basics</h1></header><article><div><span><style>
+blockquote {
+    // background-color:#00000000;
+    border-left: 2px solid #ffa504;
+    border-bottom: 2px solid #ffa504;
+    border-left: 0px;
+//    border-radius: 20px 0px 0px 20px;
+    border-radius: 0px 20px 20px 0px;
+    text-align: right;
+    padding: 0px 10px 0px 0px;
+    align: right;
+    width: 115px;
+    margin-left: 85%;
+}
+</style>
+<h2><a class="anchor" aria-hidden="true" id="overview"></a><a href="#overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
+<p>Comby is a tool for searching and rewriting code. You start by writing a simple
+template to match syntax. Take a look at this Go function:</p>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    fmt.Println(<span class="hljs-string">"hello world"</span>)
+}
+</code></pre>
+<p>We can match the arguments to <code>fmt.Println</code> with this <em>match template</em> using
+<code>comby</code> syntax:</p>
+<pre><code class="hljs css language-plaintext">fmt.Println(:[arguments])
+</code></pre>
+<p>The <code>:[arguments]</code> part is called a hole. It saves the matched part to a
+variable. In this case, the variable is called arguments, but we could have
+called it something else, like <code>:[1]</code> or <code>:[the_1st_arg]</code>. Your choice! As long
+as it only contains alphabet characters, numbers, or underscores.</p>
+<p>The <code>:[arguments]</code> hole matches the “hello world” string. We can use it in a
+<em>rewrite template</em> to rewrite the function, like this one:</p>
+<pre><code class="hljs">fmt.<span class="hljs-constructor">Println(<span class="hljs-params">fmt</span>.Sprintf(<span class="hljs-string">"comby says %s"</span>, :[<span class="hljs-params">arguments</span>])</span>)
+</code></pre>
+<p>Comby takes the match and rewrite templates and replaces the matched part in
+place to produce:</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> {</span>
+  fmt.Println(fmt.Sprintf(<span class="hljs-string">"comby says %s"</span>, <span class="hljs-string">"hello world"</span>))
+}
+</code></pre>
+<p>To run this example on the command line, put the original code in a file <code>main.go</code> and run:</p>
+<pre><code class="hljs css language-bash">comby <span class="hljs-string">'fmt.Println(:[args])'</span> <span class="hljs-string">'fmt.Println(fmt.Sprintf("comby says %s", :[args]))'</span> .go
+</code></pre>
+<p>Or see it in action in the online <a href="https://bit.ly/2XpttJG">playground ↗</a></p>
+<p>Holes are the only special part in match templates, and they always have the
+form <code>:[...]</code>. <em>All other characters are interpreted literally</em> (there’s a bit
+of detail about whitespace that we’ll talk about in the next part). The point is
+that you <em>never</em> have to escape any characters in your template. Just say what
+you mean!</p>
+<p>There are more kinds of holes to match other kinds of strings, described in the
+<a href="syntax-reference">Syntax Reference</a> in the next section. For the rest of this
+page, we’ll focus on the main thing to understand, which is is the basic
+behavior of the <code>:[hole]</code> introduced above. of this page.</p>
+<h2><a class="anchor" aria-hidden="true" id="how-matching-works"></a><a href="#how-matching-works" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How matching works</h2>
+<p><code>:[hole]</code> matches all characters, including newlines. If the match template was
+just <code>:[file_content]</code>, it would match all the file content. The way <code>:[hole]</code>
+starts and stops matching depends on the code structure around it. Let’s look at
+a next example. There’s some Javascript code on the left, and a match template
+on the right:</p>
+<style>
+table thead {
+ visibility: collapse;
+}
+table td {
+  width: 25em;
+  min-width: 25em;
+  max-width: 25em;
+  border: none;
+}
+table tr:nth-child(2n) {
+  background-color: transparent;
+}
+table td:nth-child(2n) {
+  border: 2px dotted gray;
+  border-top: none;
+  border-bottom:none;
+}
+code {
+  background-color: #f0f0f0;
+}
+table tr {
+  background-color: #f0f0f0;
+}
+</style>
+<table>
+<thead>
+<tr><th></th><th></th></tr>
+</thead>
+<tbody>
+<tr><td><code class="hljs">if (width &lt;= 1280 &amp;&amp; height &lt;= 800) {<br/>     return 1; <br/>}</code></td><td><code>if (:[var] &lt;= :[rest])</code></td></tr>
+</tbody>
+</table>
+<blockquote>
+<p><a href="https://bit.ly/2Xiw1cf">playground ↗</a></p>
+</blockquote>
+<p><code>:[var]</code> matches until it sees the <code>&lt;=</code> part coming after it and matches
+<code>width</code>. <code>:[rest]</code> matches the rest of the condition: <code>1280 &amp;&amp; height &lt;= 800</code>.
+These holes match lazily: they look for the shortest way to satisfy the match.
+One way to refine matching is to add concrete context around holes based on what
+we care about. For example, we could match <code>height</code> to <code>:[height]</code> with either templates</p>
+<p>– <code>if (:[_] &amp;&amp; :[height] :[_])</code> or</p>
+<p>– <code>if (:[_] :[height] &lt;= 800)</code></p>
+<p>What we use just depends on what we care about in the surrounding code. Note we
+used <code>_</code> as an identifier that we didn’t care to avoid giving a descriptive
+name.</p>
+<h2><a class="anchor" aria-hidden="true" id="stuctural-matching"></a><a href="#stuctural-matching" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stuctural matching</h2>
+<p>If holes only matched lazily up to patterns like <code>&lt;=</code> it wouldn’t be much more
+special than using <code>.*?</code> in regex to match a bunch of characters. But matching
+is smarter than that. In many languages, balanced delimiters like <code>()</code>, <code>[]</code> and
+<code>{}</code> are always balanced. By default, a match template like <code>(:[1])</code> will only
+match characters inside well-balanced parentheses. There are two example matches
+for <code>(:[1])</code> in this code:</p>
+<pre><code class="hljs css language-plaintext">result = foo(bar(x)) + foobar(baz(x));
+</code></pre>
+<blockquote>
+<p><a href="https://bit.ly/2ZwvV1F">playground ↗</a></p>
+</blockquote>
+<p>The hole binds to <code>bar(x)</code> and <code>baz(x)</code> respectively, which we can easily
+rewrite to a different call <code>qux(x)</code>, for example. You may notice that the <code>(x)</code>
+part is a nested match. By default, Comby will match at the toplevel, but nested
+matches can be found with added context (e.g., <code>bar(:[1])</code>), or by extracting
+and rerunning Comby on modified code. Note that writing a regular expression to
+do the same is not easy (simple attempts like <a href="https://regexr.com/4fssh"><code>\(.*\)</code>↗</a>
+or <a href="https://regexr.com/4fssk"><code>\(.*?\)</code> ↗</a> don’t work).</p>
+<p>Let’s change the code above and make it a little more interesting. Suppose it
+was this Javascript snippet:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">var</span> result = foo(bar(x <span class="hljs-comment">/* arg 1) */</span>)) + foobar(<span class="hljs-string">"("</span>);
+</code></pre>
+<blockquote>
+<p><a href="https://bit.ly/2Xm12Mk">playground ↗</a></p>
+</blockquote>
+<p>Now there’s quite a bit of complexity if we want to match the arguments of foo
+and foobar. A block comment <code>/* arg 1) */</code> is inlined for <code>bar</code>. Because this is a
+comment, it shouldn’t matter whether the parenthesis inside are balanced or not.
+The same goes for the string literal argument to <code>foobar</code>: it’s not a parenthesis
+in the code. The special thing here is that our original match template <code>(:[1])</code>
+can stay <em>exactly the same</em> and still matches the two arguments (in this case, it
+captures the comment and string)</p>
+<pre><code class="hljs"><span class="hljs-variable">var</span> <span class="hljs-variable"><span class="hljs-class">result</span></span> = <span class="hljs-function"><span class="hljs-title">foo</span>(<span class="hljs-title">bar</span>(<span class="hljs-variable">x</span> <span class="hljs-comment">/* arg 1) */</span>)) + <span class="hljs-title">foobar</span>(<span class="hljs-string">"("</span>);
+</span></code></pre>
+<blockquote>
+<p><a href="https://bit.ly/2Zy5PYG">playground ↗</a></p>
+</blockquote>
+<p>Comby understands this interaction between delimiters, strings, and comments and
+makes reasonable guesses for your language based on file extension. You can also
+force a particular matcher with a command line option, see the <a href="cheat-sheet#select-the-language-to-parse">Quick Reference</a>.
+And, you can always fall back to a generic matcher for files or languages that
+are not explicitly supported. You can find out more about <a href="http://localhost:3000/docs/advanced-usage#custom-language-definitions">language support and extension</a>.</p>
+<p>Note that if we tried to use a regex above, our pattern would need to understand
+that <code>/* */</code> delineates comments, otherwise it would get confused by the
+parenthesis inside! The same problem comes up for the string literal argument,
+which contains an unbalanced parenthesis. A regular expression that takes all of
+this into account would get ugly fast, and that’s only for Javascript!</p>
+<h2><a class="anchor" aria-hidden="true" id="about-whitespace"></a><a href="#about-whitespace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>About whitespace</h2>
+<p>Comby tries to make matching code forgiving. Whitespace in the template, like a
+single space, multiple contiguous spaces, or newlines are interpreted all the
+same: Comby will match the corresponding whitespace in the source code, but will
+not care about matching the exact number of spaces, or distinguish between
+spaces and newlines. Not being strict about whitespace tends to be the right
+default decision for code in most languages. It means our previous match
+templates all still work in these cases where our Javascript code is formatted
+differently:</p>
+<pre><code class="hljs"><span class="hljs-keyword">if</span> (width &lt;= <span class="hljs-number">1280</span>
+    &amp;&amp; height &lt;= <span class="hljs-number">800</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
+</code></pre>
+<blockquote>
+<p><a href="https://bit.ly/2Xh2tMk">playground ↗</a></p>
+</blockquote>
+<pre><code class="hljs"><span class="hljs-keyword">if</span> (width     &lt;= <span class="hljs-number">1280</span>
+    &amp;&amp; height &lt;= <span class="hljs-number">800</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
+</code></pre>
+<blockquote>
+<p><a href="https://bit.ly/2XaGTZV">playground ↗</a></p>
+</blockquote>
+<p>If you’re wondering about indentation-sensitive languages like Python, be sure to check out the <a href="faq#what-about-indentation-sensitive-languages">FAQ</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/get-started"><span class="arrow-prev">← </span><span>Get Started</span></a><a class="docs-next button" href="/docs/syntax-reference"><span>Syntax Reference</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#overview">Overview</a></li><li><a href="#how-matching-works">How matching works</a></li><li><a href="#stuctural-matching">Stuctural matching</a></li><li><a href="#about-whitespace">About whitespace</a></li></ul></nav></div><footer class="nav-footer" id="footer"><div class="wrapper"><p class="footer">© 2020 <a href="https://twitter.com/rvtond">@rvtond</a> · <a href="/docs/get-started">Get started</a> · <a href="/docs/overview">Docs</a> · <a href="https://bit.ly/2UXkonD">Try</a> · <a href="/en/community">Community</a> · <a href="/blog">Blog</a> · <a href="https://twitter.com/rvtond">Twitter</a></p></div></footer></div></body></html>

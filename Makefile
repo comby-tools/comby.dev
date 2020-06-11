@@ -1,8 +1,2 @@
-install:
-	npm i ../gulp-comby 
-
 all:
-	gulp combyRewriteIndex
-
-watch:
-	gulp watch
+	cd webiste && yarn build && mv build ..
