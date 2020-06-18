@@ -15,9 +15,7 @@ class Footer extends React.Component {
             {' · '}
             <a href={docUrl('overview')}>Docs</a>
             {' · '}
-            <a href="https://bit.ly/2UXkonD">Try</a>
-            {' · '}
-            <a href={`${baseUrl}en/community`}>Community</a>
+            <a href={docUrl('projects')}>Projects & Talks</a>
             {' · '}
             <a href={`${baseUrl}blog`}>Blog</a>
             {' · '}

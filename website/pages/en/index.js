@@ -126,7 +126,7 @@ class Index extends React.Component {
           <div className="row">
             <div className="columnOneThird">
               <p>
-            Comby is ideal for touching up pieces of code. Use it to translate code like this Python 2 to 3 fixer on the right to replace deprecated methods. Or, easily write one-off refactors or a collection of quickfixes customized to your project.  Comby makes finding and changing code easier than regex alone allows and avoids pitfalls like escaping parentheses, quotes, or multiline changes.
+            Comby is ideal for touching up pieces of code. Use it to translate code like this Python 2 to 3 fixer on the right to replace deprecated methods. Easily write one-off refactors or a collection of quickfixes customized to your project. Comby makes finding and changing code easier than regex alone allows and avoids pitfalls like escaping parentheses, quotes, or multiline changes.
             </p>
             </div>
             <div className="columnTwoThirds">

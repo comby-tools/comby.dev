@@ -12,9 +12,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/*
- * The default footer is gray. We override it in a few ways.
- */
 .nav-footer {
   background-color: var(--comby-orange-3);
   color: #ffffff;
@@ -30,7 +27,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* make the logo color orange */
 .fixedHeaderContainer .headerTitleWithLogo {
   color: #ffa504;
 }
