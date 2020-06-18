@@ -152,7 +152,7 @@ Comby is designed to support <a href="docs/overview#does-it-work-on-my-language"
               </p>
             </div>
           </div>
-<video id="background-video" style={{width: '100%', marginTop: '0.5em', borderRadius: '5px'}} loop autoPlay>
+<video id="background-video" style={{width: '100%', marginTop: '0.5em', borderRadius: '5px'}} loop autoPlay controls>
     <source  src={`${baseUrl}img/comby-errorf.mp4`} type="video/mp4" />
     <source src={`${baseUrl}img/comby-errorf.mp4`} type="video/ogg" />
     Your browser does not support the video tag.
