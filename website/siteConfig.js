@@ -13,7 +13,7 @@ const users = [
   {
     caption: 'Merged Pull Requests',
     image: 'img/octicon-merged.svg',
-    infoLink: 'https://github.com/squaresLab/pldi-artifact-2019/blob/master/PullRequests.md',
+    infoLink: '/projects',
   },
   {
     caption: 'Search Popular GitHub Repos with Comby',
