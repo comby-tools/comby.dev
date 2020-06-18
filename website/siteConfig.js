@@ -18,7 +18,7 @@ const users = [
   {
     caption: 'Search Popular GitHub Repos with Comby',
     image: 'img/search.svg',
-    infoLink: 'https://sourcegraph.com/search?q=repogroup:go-gh-100+-file:vendor+%22errors.New%28fmt.Sprintf%28:%5B_%5D%29%29%22&patternType=structural'
+    infoLink: '/redirect'
   },
   {
     caption: 'Projects using Comby',
