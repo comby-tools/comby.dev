@@ -25,10 +25,6 @@ const ProjectListItem = (props) => {
     description = ' - ' + props.description;
   }
 
-  // var table;
-    if (true) {
-    }
-
   return (
     <li>
       {props.link ? <b><a href={props.link}>{props.title}</a></b> : <b>{props.title}</b>}
@@ -98,7 +94,7 @@ class Index extends React.Component {
               </div>
             </div>
           </div>
-          <PageSection align="center" className="featuresContainer" lightPurple>
+          <PageSection align="center" className="featuresContainer" combyOrange>
           <div>
             <h1 id="projects">Projects</h1>
             <p>

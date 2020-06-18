@@ -75,6 +75,22 @@
   text-align: left;
   margin-bottom: 0;
 }
+
+.buttonRedirect:hover {
+  color: white;
+  background: black;
+}
+
+.buttonRedirect {
+  border-color: var(--comby-orange-6);
+  border-radius: 8px;
+  border-width: 2px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 14px 27px;
+}
+
 .homeContainer {
   background: var(--comby-orange-2);
   color: #ffffff;

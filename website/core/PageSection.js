@@ -4,7 +4,7 @@ const classNames = require('classnames');
 const PageSection = (props) => {
   var className = classNames('PageSection', props.className, {
     'PageSection--gray': props.gray,
-    'PageSection--light-purple': props.lightPurple,
+    'PageSection--comby-orange-3': props.combyOrange,
     'PageSection--short': props.short,
   });
   return (
