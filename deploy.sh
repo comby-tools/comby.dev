@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -rf CNAME css en pdfs projects.html blog docs img js projects sitemap.xml
+rm -rf CNAME css en pdfs projects projects.html redirect redirect.html index.html blog docs img js sitemap.xml
 cd website
 yarn install
 yarn build
