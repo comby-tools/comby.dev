@@ -1,0 +1,106 @@
+/*
+ * Custom Docusaurus overrides.
+ * See here for more information:
+ * https://docusaurus.io/docs/en/api-pages#styles
+ */
+
+a {
+  color: var(--comby-orange-4);
+}
+a:hover {
+  color: var(--comby-orange-4);
+  text-decoration: underline;
+}
+
+.nav-footer {
+  background-color: var(--comby-orange-3);
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.nav-footer a {
+  color: var(--comby-orange-6);
+}
+
+.fixedHeaderContainer a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.fixedHeaderContainer .headerTitleWithLogo {
+  color: #ffa504;
+}
+
+sup {
+  vertical-align: super;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.navigationSlider .slidingNav ul li a {
+    color: var(--comby-orange-6);
+}
+
+@media only screen and (max-width: 1023px) {
+  .navigationSlider .slidingNav ul {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+    color: var(--comby-orange-6);
+  }
+
+  .navigationSlider .slidingNav ul li > a:focus,
+  .navigationSlider .slidingNav ul li > a:hover,
+  .navigationSlider .slidingNav ul li.siteNavItemActive > a,
+  .navigationSlider .slidingNav ul li.siteNavGroupActive > a {
+    background-color: var(--comby-orange-3);
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .wrapper {
+    max-width: 1100px;
+  }
+}
+
+.productShowcaseSection h2 {
+  color: initial;
+}
+
+.productShowcaseSection .logos {
+  align-items: flex-start;
+}
+
+.productShowcaseSection .logos img {
+  height: 110px;
+  width: auto;
+}
+
+@media only screen and (max-width: 735px) {
+  .productShowcaseSection .logos img {
+    height: 64px;
+    width: auto;
+  }
+}
+
+.productShowcaseSection .link {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 150px;
+}
+
+@media only screen and (max-width: 735px) {
+  .productShowcaseSection .link {
+    max-width: 104px;
+  }
+}
+
+.columnOneThird {
+    padding-right: 20px;
+    float: left;
+    width: 33%;
+}
+
+.columnTwoThirds {
+    float: left;
+    width: 66%;
+}

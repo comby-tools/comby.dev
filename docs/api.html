@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>API Reference · Comby</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!-- Query ? --&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="API Reference · Comby"/><meta property="og:type" content="website"/><meta property="og:url" content="https://comby.dev/"/><meta property="og:description" content="&lt;!-- Query ? --&gt;"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://comby.dev/blog/atom.xml" title="Comby Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://comby.dev/blog/feed.xml" title="Comby Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-142487942-1', 'auto');
+              ga('send', 'pageview');
+            </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/comby-logo.svg" alt="Comby"/><h2 class="headerTitleWithLogo">Comby</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/get-started" target="_self">Get started</a></li><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="/en/projects" target="_self">Projects &amp; Talks</a></li><li class=""><a href="https://github.com/comby-tools/comby" target="_self">GitHub</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>API</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/get-started">Get Started</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/basic-usage">Basic Usage</a></li><li class="navListItem"><a class="navItem" href="/docs/syntax-reference">Syntax Reference</a></li><li class="navListItem"><a class="navItem" href="/docs/advanced-usage">Advanced Usage</a></li><li class="navListItem"><a class="navItem" href="/docs/cheat-sheet">Cheat Sheet</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api">API Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Resources</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/get-help">Get Help</a></li><li class="navListItem"><a class="navItem" href="/docs/faq">FAQ</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/comby-tools/comby.dev/edit/master/website/docs/api.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">API Reference</h1></header><article><div><span><!-- Query ? -->
+<p>The API Reference explains how to access various match and rewrite information
+in Comby if you want to integrate or build other tooling (like an editor plugin
+or grammar fuzzer).</p>
+<p>There are three <strong>operations</strong> for information: <code>match</code>, <code>rewrite</code>, and
+<code>substitute</code>.</p>
+<p>To perform these operations and access the results, there are three options:</p>
+<ol>
+<li>Use <a href="https://github.com/ChrisTimperley/comby-python">Python bindings for Comby</a>.</li>
+<li>Invoke Comby directly on the command line.</li>
+<li>Use HTTP requests to a persistent server that you run on your machine.</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="python-bindings"></a><a href="#python-bindings" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Python Bindings</h2>
+<p>See the <a href="https://github.com/ChrisTimperley/comby-python/blob/master/src/comby/interface.py#L13">interface.py file</a>
+that describes the operations and data types when using Python bindings.</p>
+<h2><a class="anchor" aria-hidden="true" id="command-line"></a><a href="#command-line" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Command Line</h2>
+<p>The command line is a bare-bones interface to perform operations, but useful for
+understanding the schema–consider using the <a href="#python-bindings">Python bindings</a>
+or a <a href="#comby-server">server</a> to avoid command line awkwardness.</p>
+<h3><a class="anchor" aria-hidden="true" id="match"></a><a href="#match" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Match</h3>
+<p>Retrieve match information by using the <code>-match-only</code> flag. For example:</p>
+<pre><code class="hljs css language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">'printf("hello!");'</span> | comby <span class="hljs-string">'printf(:[arg])'</span> <span class="hljs-string">''</span> .c -stdin -match-only
+</code></pre>
+<blockquote>
+<p>Note: <code>comby</code> currently expects a rewrite template in the second anonymous argument. When using <code>-match-only</code>, simply use an empty string like above.</p>
+</blockquote>
+<p>The <code>-match-only</code> option will only print out the entire matched string on the
+command line. Add the <code>-json-lines</code> flag to get all information on matched
+ranges and matched holes.</p>
+<pre><code class="hljs css language-bash">comby <span class="hljs-string">'printf(:[arg])'</span> <span class="hljs-string">''</span> .c -stdin -match-only -json-lines
+</code></pre>
+<p>This outputs JSON information, one line per match (in this case, the <code>printf(...)</code> part). We can make the format more readable by piping the output to <code>python -m json.tool</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="schema-example"></a><a href="#schema-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Schema example</h4>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"uri"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"matches"</span>: [
+        {
+            <span class="hljs-attr">"range"</span>: {
+                <span class="hljs-attr">"start"</span>: {
+                    <span class="hljs-attr">"offset"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"line"</span>: <span class="hljs-number">1</span>,
+                    <span class="hljs-attr">"column"</span>: <span class="hljs-number">1</span>
+                },
+                <span class="hljs-attr">"end"</span>: {
+                    <span class="hljs-attr">"offset"</span>: <span class="hljs-number">16</span>,
+                    <span class="hljs-attr">"line"</span>: <span class="hljs-number">1</span>,
+                    <span class="hljs-attr">"column"</span>: <span class="hljs-number">17</span>
+                }
+            },
+            <span class="hljs-attr">"environment"</span>: [
+                {
+                    <span class="hljs-attr">"variable"</span>: <span class="hljs-string">"arg"</span>,
+                    <span class="hljs-attr">"value"</span>: <span class="hljs-string">"\"hello!\""</span>,
+                    <span class="hljs-attr">"range"</span>: {
+                        <span class="hljs-attr">"start"</span>: {
+                            <span class="hljs-attr">"offset"</span>: <span class="hljs-number">7</span>,
+                            <span class="hljs-attr">"line"</span>: <span class="hljs-number">1</span>,
+                            <span class="hljs-attr">"column"</span>: <span class="hljs-number">8</span>
+                        },
+                        <span class="hljs-attr">"end"</span>: {
+                            <span class="hljs-attr">"offset"</span>: <span class="hljs-number">15</span>,
+                            <span class="hljs-attr">"line"</span>: <span class="hljs-number">1</span>,
+                            <span class="hljs-attr">"column"</span>: <span class="hljs-number">16</span>
+                        }
+                    }
+                }
+            ],
+            <span class="hljs-attr">"matched"</span>: <span class="hljs-string">"printf(\"hello!\")"</span>
+        }
+    ]
+}
+</code></pre>
+<ul>
+<li><code>uri</code> is the file path of the document containing <code>matches</code> (<code>null</code> for <code>stdin</code>)</li>
+<li><code>matches</code> is a list of <code>matches</code> (like <code>printf(...)</code>. Each item in <code>matches</code> contains:
+<ul>
+<li><code>matched</code>, the string that was matched by the template</li>
+<li><code>range</code>, the range spanned by <code>matched</code></li>
+<li><code>environment</code>, containing a list of <code>variable</code>, <code>value</code>, and <code>range</code> items where:
+<ul>
+<li><code>variable</code> is the hole identifier</li>
+<li><code>value</code> is the string value bound to <code>variable</code></li>
+<li><code>range</code>, the range spanned by <code>value</code></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><code>range</code> contains <code>offset</code>, <code>line</code>, and <code>column</code> where:</p>
+<blockquote>
+<p>☞ <code>offset</code> starts at <strong>zero</strong></p>
+<p>☞ <code>line</code> and <code>column</code> start at <strong>one</strong></p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="rewrite"></a><a href="#rewrite" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rewrite</h3>
+<p>The rewrite operation is similar to match. Use the <code>-json-lines</code> flag with a rewrite template as in:</p>
+<pre><code class="hljs css language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">'printf("hello!");'</span> | comby <span class="hljs-string">'printf(:[arg])'</span> <span class="hljs-string">'printf("bye")'</span> .c -stdin -json-lines
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="schema-summary"></a><a href="#schema-summary" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Schema summary</h4>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"uri"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"rewritten_source"</span>: <span class="hljs-string">"printf(\"bye\");\n"</span>,
+    <span class="hljs-attr">"in_place_substitutions"</span>: [
+        {
+            <span class="hljs-attr">"range"</span>: {
+                <span class="hljs-attr">"start"</span>: {
+                    <span class="hljs-attr">"offset"</span>: <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">"line"</span>: <span class="hljs-number">-1</span>,
+                    <span class="hljs-attr">"column"</span>: <span class="hljs-number">-1</span>
+                },
+                <span class="hljs-attr">"end"</span>: {
+                    <span class="hljs-attr">"offset"</span>: <span class="hljs-number">13</span>,
+                    <span class="hljs-attr">"line"</span>: <span class="hljs-number">-1</span>,
+                    <span class="hljs-attr">"column"</span>: <span class="hljs-number">-1</span>
+                }
+            },
+            <span class="hljs-attr">"replacement_content"</span>: <span class="hljs-string">"printf(\"bye\")"</span>,
+            <span class="hljs-attr">"environment"</span>: []
+        }
+    ],
+    <span class="hljs-attr">"diff"</span>: <span class="hljs-string">"--- /dev/null\n+++ /dev/null\n@@ -1,1 +1,1 @@\n-printf(\"hello!\");\n+printf(\"bye\");"</span>
+}
+</code></pre>
+<ul>
+<li><code>uri</code> corresponds to the changed file (<code>null</code> for <code>stdin</code>)</li>
+<li><code>rewritten_source</code> is result of the entire rewritten file (or input for <code>stdin</code>)</li>
+<li><code>diff</code> is a patch-compatible <code>diff</code> of the change</li>
+<li><code>in_place_substitions</code> is a list of substituted fragments where:
+<ul>
+<li><code>replacement_content</code> is the fragment substituted in-place for matches</li>
+<li><code>range</code>, the range spanned by <code>replacement_content</code></li>
+<li><code>environment</code>, a list of <code>variable</code> and <code>value</code> of holes used in this
+result, with the updated <code>range</code></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>☞  Adding the <code>-json-only-diff</code> flag will output the <code>diff</code> value of the change
+(useful if you only care about the resulting diff).</p>
+</blockquote>
+<blockquote>
+<p>⚠ <strong>Current Limitations</strong></p>
+<ul>
+<li><p>Rewrite ranges currently do not report line and column values and are set to -1</p></li>
+<li><p>If a hole with the same identifier is used multiple times in the rewrite template, <code>environment</code> will currently report only the first range</p></li>
+</ul>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="substitute"></a><a href="#substitute" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substitute</h3>
+<p>Substitute an environment inside a rewrite template with the <code>-substitute</code> flag. An example invocation is:</p>
+<pre><code class="hljs css language-bash">comby <span class="hljs-string">''</span> <span class="hljs-string">':[1] :[2]'</span> -substitute <span class="hljs-string">'[{"variable":"1","value":"hello"},{"variable":"2","value":"there"}]'</span>
+</code></pre>
+<p>The output is only the rewritten output <code>hello there</code>.</p>
+<blockquote>
+<p>Note: <code>comby</code> currently expects a match template in the first anonymous argument. When using <code>-substitute</code>, simply use an empty string like above.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="walked-example"></a><a href="#walked-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Walked example</h4>
+<p>One way to effectively use <code>-substitute</code> in scripting is by combining it with other operations. For example, Use <a href="https://stedolan.github.io/jq/"><code>jq</code></a> to extract environments from matches:</p>
+<pre><code class="hljs">echo 'printf(<span class="hljs-string">"hello"</span>, <span class="hljs-string">"there"</span>)' \
+| <span class="hljs-type">comby</span> 'printf(<span class="hljs-string">":[1]"</span>, <span class="hljs-string">":[2]"</span>)' '' .c -stdin -json-lines -<span class="hljs-keyword">match</span>-only \
+| <span class="hljs-type">jq</span> -c '.matches | <span class="hljs-type">map</span>(.environment) | <span class="hljs-type">.[]'
+</span></code></pre>
+<p>The environment can be substituted by piping to <code>xargs</code> and using <code>-substitute</code>:</p>
+<pre><code class="hljs css language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">'printf("hello", "there")'</span> \
+| comby <span class="hljs-string">'printf(":[1]", ":[2]")'</span> <span class="hljs-string">''</span> .c -stdin -json-lines -match-only \
+| jq -c <span class="hljs-string">'.matches | map(.environment) | .[]'</span> \
+| xargs -0 comby <span class="hljs-string">''</span> <span class="hljs-string">':[1] :[2]. General Kenobi!'</span> -substitute
+</code></pre>
+<p>And we’ll see <code>hello there. General Kenobi!</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="comby-server"></a><a href="#comby-server" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Comby server</h2>
+<p>To use the server, you’ll need to <a href="get-started#build-from-source">build from source</a>.
+After running <code>make</code>, <code>comby-server</code> will exist in the directory. You can type
+<code>make-server</code> to run the server on port <code>8888</code>.</p>
+<p>The <code>comby</code> server exposes the three HTTP POST endpoints below. These return the
+same JSON values as the respective <a href="#command-line">command line</a> operations.
+The endpoints accept options like <code>rule</code> and <code>language</code> corresponding to
+command line flags.</p>
+<h4><a class="anchor" aria-hidden="true" id="match-1"></a><a href="#match-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>/match</code></h4>
+<pre><code class="hljs css language-json">{<span class="hljs-attr">"source"</span>: <span class="hljs-string">"hello there"</span>, <span class="hljs-attr">"match"</span>: <span class="hljs-string">"hello :[1]"</span>, <span class="hljs-attr">"rule"</span>: <span class="hljs-string">"where :[1] == \"there\""</span>, <span class="hljs-attr">"language"</span>: <span class="hljs-string">".generic"</span>, <span class="hljs-attr">"id"</span>: <span class="hljs-number">0</span>}
+</code></pre>
+<ul>
+<li><code>source</code> should be the entire source file to rewrite</li>
+<li><code>id</code> is an identifier for this request, which will be set in the corresponding response</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="rewrite-1"></a><a href="#rewrite-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>/rewrite</code></h4>
+<pre><code class="hljs css language-json">{<span class="hljs-attr">"source"</span>: <span class="hljs-string">"hello there"</span>, <span class="hljs-attr">"match"</span>: <span class="hljs-string">"hello :[1]"</span>, <span class="hljs-attr">"rule"</span>: <span class="hljs-string">"where :[1] == \"there\""</span>, <span class="hljs-attr">"rewrite"</span>: <span class="hljs-string">"kenobi"</span>, <span class="hljs-attr">"language"</span>: <span class="hljs-string">".generic"</span>, <span class="hljs-attr">"substitution_kind"</span>: <span class="hljs-string">"in_place"</span>, <span class="hljs-attr">"id"</span>: <span class="hljs-number">0</span>}
+</code></pre>
+<p><code>substitution_kind</code> can be one of <code>in_place</code> or <code>newline_separated</code>. When
+<code>newline_separated</code> is chosen, rewritten fragments are output one per line,
+rather than replaced in-place in the original document.</p>
+<h4><a class="anchor" aria-hidden="true" id="substitute-1"></a><a href="#substitute-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>/substitute</code></h4>
+<pre><code class="hljs css language-json">{<span class="hljs-attr">"rewrite_template"</span>: <span class="hljs-string">"print(:[1])"</span>, <span class="hljs-attr">"environment"</span>: <span class="hljs-string">"[{\"variable\":\"1\",\"value\":\"hello\"}]"</span>, <span class="hljs-attr">"id"</span>: <span class="hljs-number">0</span>}
+</code></pre>
+<p>Set the <code>DEBUG</code> environment variable to see verbose incoming and outgoing data.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/cheat-sheet"><span class="arrow-prev">← </span><span>Cheat Sheet</span></a><a class="docs-next button" href="/docs/get-help"><span>Get Help</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#python-bindings">Python Bindings</a></li><li><a href="#command-line">Command Line</a><ul class="toc-headings"><li><a href="#match">Match</a></li><li><a href="#rewrite">Rewrite</a></li><li><a href="#substitute">Substitute</a></li></ul></li><li><a href="#comby-server">Comby server</a></li></ul></nav></div><footer class="nav-footer" id="footer"><div class="wrapper"><p class="footer">© 2020 <a href="https://twitter.com/rvtond">@rvtond</a> · <a href="/docs/get-started">Get started</a> · <a href="/docs/overview">Docs</a> · <a href="/docs/projects">Projects &amp; Talks</a> · <a href="/blog">Blog</a> · <a href="https://twitter.com/rvtond">Twitter</a></p></div></footer></div></body></html>

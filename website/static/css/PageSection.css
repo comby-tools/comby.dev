@@ -1,0 +1,30 @@
+.PageSection {
+  background-color: #ffffff;
+  padding: 3em 0;
+}
+
+.PageSection-Wrapper {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+.PageSection--gray {
+  background-color: #f5f5f5;
+}
+
+.PageSection--comby-orange-3 {
+  background-color: var(--comby-orange-3);
+}
+
+.PageSection--short {
+  padding: 2em 0;
+}
+
+.PageSection--gray code {
+  border: 1px solid var(--comby-orange-6);
+}
+
+.PageSection code {
+  border: 1px solid #e2d4b98a;
+}
