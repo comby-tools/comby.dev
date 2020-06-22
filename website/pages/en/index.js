@@ -184,7 +184,7 @@ Comby is designed to support <a href="docs/overview#does-it-work-on-my-language"
             </div>
             <div className="column">
               <p>
-                Watch the <a href="docs/talks/strange-loop-2018">Strange Loop talk</a> to learn more about Comby.
+                Watch the <a href="https://www.youtube.com/watch?v=JMZLBB_BFNg&feature=emb_title">Strange Loop talk</a> to learn more about Comby.
               </p>
               <blockquote className="monotone">
                 <p>
