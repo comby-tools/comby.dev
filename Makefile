@@ -1,2 +1,2 @@
 all:
-	cd webiste && yarn build && mv build ..
+	cd website && yarn build && mv build ..
