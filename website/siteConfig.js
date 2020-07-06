@@ -102,13 +102,13 @@ const siteConfig = {
   // No .html extensions for paths.
   cleanUrl: true,
 
-//  algolia: {
-//    apiKey: '...',
-//    This name must match the index name here:
-//    https://github.com/algolia/docsearch-configs/blob/master/configs/comby.json
-//    indexName: '...',
-//    algoliaOptions: {}, // Optional, if provided by Algolia
-//  },
+algolia: {
+  apiKey: '2338f495ecf7cf858c6f1d73e1634c85',
+  //  This name must match the index name here:
+  //  https://github.com/algolia/docsearch-configs/blob/master/configs/comby.json
+  indexName: 'comby',
+  algoliaOptions: {}, // Optional, if provided by Algolia
+},
 
   gaTrackingId: 'UA-142487942-1',
 };
