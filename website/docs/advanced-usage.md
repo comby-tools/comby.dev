@@ -137,6 +137,19 @@ where match :[left_side] {
 }
 ```
 
+### Submatching with regular expressions
+
+Use regular expressions on extracted contents using match patterns like so:
+
+```bash
+where match :[hole] {
+| ":[_~\\d+]" -> true
+| ":[_]" -> false
+}
+```
+
+Note that patterns are quoted, so `\` needs to be escaped for regex classes like `\d`.
+
 ## Custom language definitions
 
 Hopefully the language you're interested is already [supported](overview#does-it-work-on-my-language) or

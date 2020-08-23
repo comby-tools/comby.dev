@@ -32,7 +32,7 @@ func main() {
 ```
 
 We can match the arguments to `fmt.Println` with this _match template_ using
-`comby` syntax:
+Comby syntax:
 
 ```plaintext
 fmt.Println(:[arguments])
@@ -190,6 +190,49 @@ that `/* */` delineates comments, otherwise it would get confused by the
 parenthesis inside! The same problem comes up for the string literal argument,
 which contains an unbalanced parenthesis. A regular expression that takes all of
 this into account would get ugly fast, and that's only for Javascript!
+
+## Using regular expressions
+
+Comby supports combining regular expressions with structural matching. The basic
+syntax is `:[hole~regex]` where `regex` is some PCRE regular expression.
+For example:
+
+```text
+:[_~\w+](:[arg~\d+])
+```
+
+This template matches syntax that look like calls which have one argument consisting only of numbers:
+
+```
+foo(777)          // matches
+bar(not_a_number) // does not match
+baz(123)          // matches
+```
+
+> [playground ↗](https://bit.ly/2FHco6u)
+
+
+There is one special rule to keep in mind when you use regex. Comby will try its
+best to first match your regular expression before carrying on with
+matching the rest of the template. In Comby, regular expressions in the template
+are _inlined_ and part of matching. This gives you a lot of power, because you
+can match anything you like, including special syntax like parentheses. But that
+also means that regular expressions can swallow syntax that prevents
+well-structured matching.
+
+For example, a template like `foo(:[hole~.*])` will not match `foo(bar)`. The
+regex `.*` means Comby will attempt greedy match zero or more of _any_
+character, including `)`. Comby will reach a point where `hole` matches `bar)`,
+and will then expect a `)` in the template, but the `)` will already have been
+matched by the regular expression.
+
+So: be careful about inling regex holes. For convenience, Comby provides some
+additional hole syntax that are a [shorthand](syntax-reference) for safe
+regular expressions. For example, the syntax `:[[hole]]` can be used instead of
+`:[hole~\w+]`. Another available safe option is to first extract syntax without
+regular expressions, and then use [rules](advanced-usage#submatching-with-regular-expressions) to match
+the extracted syntax with regular expressions. This is similar to piping the
+contents to regex matching.
 
 ## About whitespace
 
