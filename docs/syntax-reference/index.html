@@ -89,17 +89,13 @@ table tr:nth-child(2n) {
 </thead>
 <tbody>
 <tr><td><code>:[hole]</code></td><td>match zero or more characters (including whitespace, and across newlines) in a lazy fashion. When <code>:[hole]</code> is inside delimiters, as in <code>{:[h1], :[h2]}</code> or <code>(:[h])</code>, matching stops inside them. Holes can be used outside of delimiters as well.</td></tr>
-<tr><td><code>:[[hole]]</code></td><td>match one or more alphanumeric characters and _</td></tr>
-<tr><td><code>:[hole.]</code></td><td>(with a period at the end) matches one or more alphanumeric characters and punctuation (like <code>.</code>, <code>;</code>, and <code>-</code>)</td></tr>
-<tr><td><code>:[hole\n]</code></td><td>(with a <code>\n</code> at the end) matches one or more characters up to a newline, including the newline.</td></tr>
-<tr><td><code>:[ ]</code></td><td>(with a space) matches only whitespace characters, excluding newlines. To assign the matched whitespace to variable, put the variable name after the space, like <code>:[ hole]</code>.</td></tr>
+<tr><td><code>:[[hole]]</code></td><td>match one or more alphanumeric characters and _. Shorthand for <code>:[hole~\w+]</code></td></tr>
+<tr><td><code>:[hole.]</code></td><td>(with a period at the end) matches one or more alphanumeric characters and punctuation like <code>.</code>, <code>;</code>, and <code>-</code> that do not affect balanced syntax. Language dependent.</td></tr>
+<tr><td><code>:[hole\n]</code></td><td>(with a <code>\n</code> at the end) matches one or more characters up to a newline, including the newline. Shorthand for <code>:[x~.*\n]</code>.</td></tr>
+<tr><td><code>:[ ]</code></td><td>(with a space) matches only whitespace characters, excluding newlines. To assign the matched whitespace to variable, put the variable name after the space, like <code>:[ hole]</code>. Shorthand for <code>:[hole~[ \t]+]</code></td></tr>
 <tr><td><code>:[?hole]</code></td><td>(with a <code>?</code> before the variable name) optionally matches syntax. Optional holes work like ordinary holes, except that if they fail to match syntax, the variable is assigned the empty string <code>&quot;&quot;</code>. Optional hole support is currently an experimental feature.</td></tr>
-<tr><td></td><td></td></tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Coming soon</strong>: Comby will support regex syntax inside holes to match strings, like <code>\d+</code> or <code>[0-9]*?</code>.</p>
-</blockquote>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/basic-usage"><span class="arrow-prev">← </span><span>Basic Usage</span></a><a class="docs-next button" href="/docs/advanced-usage"><span>Advanced Usage</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><div class="wrapper"><p class="footer">© 2020 <a href="https://twitter.com/rvtond">@rvtond</a> · <a href="/docs/get-started">Get started</a> · <a href="/docs/overview">Docs</a> · <a href="/docs/projects">Projects &amp; Talks</a> · <a href="/blog">Blog</a> · <a href="https://twitter.com/rvtond">Twitter</a></p></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
