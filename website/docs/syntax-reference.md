@@ -4,19 +4,33 @@ title: Syntax Reference
 sidebar_label: Syntax Reference
 ---
 
-Comby supports the following syntax, which carry special meaning for matching:
+The Comby syntax below has special meaning for matching. Bind match contents to
+identifiers like `hole` using **Named Match** syntax. Using names is useful when
+replacing contents or writing [rules](advanced-usage). To just match patterns
+without giving a meaningful name, use any of the **Just Match** syntax.
 
 <style>
+.onPageNav {
+display: none; // remove right-hand side nav bar
+}
 table {
 //    width: 1600px;
 }
-table thead {
- visibility: collapse;
+table th {
+  background-color: transparent;
+  border: none;
+// visibility: collapse;
 }
 table td:first-child {
-  width: 8em;
-  min-width: 8em;
-  max-width: 8em;
+  width: 10em;
+  min-width: 10em;
+  max-width: 10em;
+//  word-break: break-all;
+}
+table td:nth-child(2) {
+  width: 10em;
+  min-width: 10em;
+  max-width: 10em;
 //  word-break: break-all;
 }
 table td {
@@ -28,11 +42,13 @@ table tr:nth-child(2n) {
 
 </style>
 
-|             |                                                                                                                                                                                                                                                                 |
-|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `:[hole]`   | match zero or more characters (including whitespace, and across newlines) in a lazy fashion. When `:[hole]` is inside delimiters, as in `{:[h1], :[h2]}` or `(:[h])`, matching stops inside them. Holes can be used outside of delimiters as well.              |
-| `:[[hole]]` | match one or more alphanumeric characters and _. Shorthand for `:[hole~\w+]`                                                                                                                                                                                    |
-| `:[hole.]`  | (with a period at the end) matches one or more alphanumeric characters and punctuation like `.`, `;`, and `-` that do not affect balanced syntax. Language dependent.                                                                                           |
-| `:[hole\n]` | (with a `\n` at the end) matches one or more characters up to a newline, including the newline. Shorthand for `:[x~.*\n]`.                                                                                                                                      |
-| `:[ ]`      | (with a space) matches only whitespace characters, excluding newlines. To assign the matched whitespace to variable, put the variable name after the space, like `:[ hole]`. Shorthand for `:[hole~[ \t]+]`                                                     |
-| `:[?hole]`  | (with a `?` before the variable name) optionally matches syntax. Optional holes work like ordinary holes, except that if they fail to match syntax, the variable is assigned the empty string `""`. Optional hole support is currently an experimental feature. |
+
+| Named Match     | Just Match                 | Description                                                                                                                                                                                                                                                                                        |
+|-----------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `:[hole]`       | `...`<br><br>`:[_]`        | match zero or more characters in a lazy fashion. When used is inside delimiters, as in `{:[h1], :[h2]}` or `(:[h])`, holes match within that group or code block, including newlines. Holes outside of delimiters stop matching at a newline, or the start of a code block, whichever comes first. |
+| `:[hole~regex]` | `:[~regex]`                | match an arbitrary PCRE regular expression `regex`. Avoid regular expressions that match special syntax like `)` or `.*`, otherwise your pattern may fail to match balanced blocks.                                                              |
+| `:[[hole]]`     | `:[~\w+]`<br>`:[[_]]`      | match one or more alphanumeric characters and _.                                                                                                                                                                                                                                                   |
+| `:[hole.]`      | `:[_.]`                    | match one or more alphanumeric characters and punctuation like `.`, `;`, and `-` that do not affect balanced syntax. Language dependent.                                                                                                                              |
+| `:[hole\n]`     | `:[~.*\n]`<br>`:[_\n]`     | match zero or more characters up to a newline, including the newline.                                                                                                                                                                                                    |
+| `:[ hole]`      | `:[hole~[ \t]+]`<br>`:[ ]` | match only whitespace characters, excluding newlines.                                                                                         |
+|    | |                                                                                         |

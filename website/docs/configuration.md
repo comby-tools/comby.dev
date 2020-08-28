@@ -44,7 +44,7 @@ After each section like `[my-first-pattern]`, you should specify:
 - `rule=...` (optional) valid [rule](advanced-usage#rules)
 
 Like the example above, the templates should be quoted. Use triple quotes for
-multi-line templates. Use a single `'` or `'''` to avoid escaping double quotes, as
+multiline templates. Use a single `'` or `'''` to avoid escaping double quotes, as
 done for `rule=...` above.
 
 Over time, the configuration file will allow more options and flags. If you have a special request,
@@ -53,7 +53,7 @@ please [create an issue](https://github.com/comby-tools/comby/issues/new).
 ## Running
 
 You can run the above configuration on the contents below. For example, put the
-follwoing in a file `in.js` where you will run `comby`:
+following in a file `in.js` where you will run `comby`:
 
 ```
 Array.prototype.slice.call(arguments);

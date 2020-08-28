@@ -53,9 +53,9 @@ table tr:nth-child(2n) {
 |------------|------------|---------|------------|---------|------|-------|-------|
 | Bash       | C          | C++     | C#         | Clojure | CSS  | Dart  | Elm   |
 | Elixir     | Erlang     | Fortran | F#         | Go      | Hask | HTML  | Java  |
-| Javascript | JSX        | JSON    | Julia      | LaTeX   | Lisp | Nim   | OCaml |
+| JavaScript | JSX        | JSON    | Julia      | LaTeX   | Lisp | Nim   | OCaml |
 | Pascal     | PHP        | Python  | Reason     | Ruby    | Rust | Scala | SQL   |
-| Swift      | Plain Text | TSX     | Typescript |         |      |       |       |
+| Swift      | Plain Text | TSX     | TypeScript |         |      |       |       |
 
 Comby also implements a generic matcher that works as a fallback parser for data
 formats similar to JSON, new languages, and existing ones that may not have
