@@ -106,21 +106,15 @@ place to produce:</p>
 <pre><code class="hljs css language-bash">comby <span class="hljs-string">'fmt.Println(:[args])'</span> <span class="hljs-string">'fmt.Println(fmt.Sprintf("comby says %s", :[args]))'</span> .go
 </code></pre>
 <p>Or see it in action in the online <a href="https://bit.ly/2XpttJG">playground ↗</a></p>
-<p>Holes are the only special part in match templates, and they always have the
-form <code>:[...]</code>. <em>All other characters are interpreted literally</em> (there’s a bit
-of detail about whitespace that we’ll talk about in the next part). The point is
-that you <em>never</em> have to escape any characters in your template. Just say what
-you mean!</p>
-<p>There are more kinds of holes to match other kinds of strings, described in the
-<a href="syntax-reference">Syntax Reference</a> in the next section. For the rest of this
-page, we’ll focus on the main thing to understand, which is is the basic
-behavior of the <code>:[hole]</code> introduced above. of this page.</p>
+<p><em>All other characters are interpreted literally</em> except for <a href="syntax-reference">recognized syntax</a>.
+There’s a bit of detail about whitespace that you’ll
+find at the end of this page. The point is that you <em>never</em> have to escape any
+characters in your template. Just say what you mean!</p>
 <h2><a class="anchor" aria-hidden="true" id="how-matching-works"></a><a href="#how-matching-works" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How matching works</h2>
-<p><code>:[hole]</code> matches all characters, including newlines. If the match template was
-just <code>:[file_content]</code>, it would match all the file content. The way <code>:[hole]</code>
-starts and stops matching depends on the code structure around it. Let’s look at
-a next example. There’s some Javascript code on the left, and a match template
-on the right:</p>
+<p>The way <code>:[hole]</code> starts and stops matching depends on the code structure around
+it. We can also use the syntax <code>...</code> to mean a hole that we don’t give a name
+to. Let’s look at a next example. There’s some Javascript code on the left, and
+a match template on the right:</p>
 <style>
 table thead {
  visibility: collapse;
@@ -162,11 +156,14 @@ table tr {
 These holes match lazily: they look for the shortest way to satisfy the match.
 One way to refine matching is to add concrete context around holes based on what
 we care about. For example, we could match <code>height</code> to <code>:[height]</code> with either templates</p>
-<p>– <code>if (:[_] &amp;&amp; :[height] :[_])</code> or</p>
-<p>– <code>if (:[_] :[height] &lt;= 800)</code></p>
+<p>– <code>if (... &amp;&amp; :[height] ...)</code> or</p>
+<p>– <code>if (... :[height] &lt;= 800)</code></p>
 <p>What we use just depends on what we care about in the surrounding code. Note we
-used <code>_</code> as an identifier that we didn’t care to avoid giving a descriptive
-name.</p>
+used <code>...</code> as a hole to avoid giving a descriptive name.</p>
+<p>When <code>:[hole]</code> occurs outside of delimiters, at the top-level of a template,
+then matching continues up to the end of the line, or until we encounter block
+syntax like <code>{...}</code> in JavaScript, whichever comes first. See the example
+<code>if :[hole]</code> on the <a href="https://bit.ly/31xX5Wg">playground ↗</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="stuctural-matching"></a><a href="#stuctural-matching" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stuctural matching</h2>
 <p>If holes only matched lazily up to patterns like <code>&lt;=</code> it wouldn’t be much more
 special than using <code>.*?</code> in regex to match a bunch of characters. But matching
@@ -219,34 +216,34 @@ this into account would get ugly fast, and that’s only for Javascript!</p>
 <p>Comby supports combining regular expressions with structural matching. The basic
 syntax is <code>:[hole~regex]</code> where <code>regex</code> is some PCRE regular expression.
 For example:</p>
-<pre><code class="hljs css language-text">:[_~\w+](:[arg~\d+])
+<pre><code class="hljs css language-text">:[fn~\w+](:[arg~\d+])
 </code></pre>
 <p>This template matches syntax that look like calls which have one argument consisting only of numbers:</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-number">777</span>)</span></span>          <span class="hljs-comment">// matches</span>
-<span class="hljs-function"><span class="hljs-title">bar</span><span class="hljs-params">(not_a_number)</span></span> <span class="hljs-comment">// does not match</span>
-<span class="hljs-function"><span class="hljs-title">baz</span><span class="hljs-params">(<span class="hljs-number">123</span>)</span></span>          <span class="hljs-comment">// matches</span>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-number">777</span>)</span></span>          <span class="hljs-comment">// match</span>
+<span class="hljs-function"><span class="hljs-title">bar</span><span class="hljs-params">(not_a_number)</span></span> <span class="hljs-comment">// no match</span>
+<span class="hljs-function"><span class="hljs-title">baz</span><span class="hljs-params">(<span class="hljs-number">123</span>)</span></span>          <span class="hljs-comment">// match</span>
 </code></pre>
 <blockquote>
-<p><a href="https://bit.ly/2FHco6u">playground ↗</a></p>
+<p><a href="https://bit.ly/2D9pcSq">playground ↗</a></p>
 </blockquote>
 <p>There is one special rule to keep in mind when you use regex. Comby will try its
-best to first match your regular expression before carrying on with
+best to <em>first</em> match your regular expression before carrying on with
 matching the rest of the template. In Comby, regular expressions in the template
 are <em>inlined</em> and part of matching. This gives you a lot of power, because you
 can match anything you like, including special syntax like parentheses. But that
 also means that regular expressions can swallow syntax that prevents
 well-structured matching.</p>
 <p>For example, a template like <code>foo(:[hole~.*])</code> will not match <code>foo(bar)</code>. The
-regex <code>.*</code> means Comby will attempt greedy match zero or more of <em>any</em>
-character, including <code>)</code>. Comby will reach a point where <code>hole</code> matches <code>bar)</code>,
-and will then expect a <code>)</code> in the template, but the <code>)</code> will already have been
-matched by the regular expression.</p>
+regex <code>.*</code> means Comby will greedy match zero or more of <em>any</em> character,
+including <code>)</code>. Comby will reach a point where <code>hole</code> matches <code>bar)</code>, and will
+then expect a <code>)</code> in the template, but the <code>)</code> will already have been matched by
+the regular expression.</p>
 <p>So: be careful about inling regex holes. For convenience, Comby provides some
-additional hole syntax that are a <a href="syntax-reference">shorthand</a> for safe
-regular expressions. For example, the syntax <code>:[[hole]]</code> can be used instead of
-<code>:[hole~\w+]</code>. Another available safe option is to first extract syntax without
-regular expressions, and then use <a href="advanced-usage#submatching-with-regular-expressions">rules</a> to match
-the extracted syntax with regular expressions. This is similar to piping the
+additional hole syntax for safe regular expressions. For example, the syntax
+<code>:[[hole]]</code> can be used instead of <code>:[hole~\w+]</code>. Another available safe option
+is to first extract syntax without regular expressions, and then use
+<a href="advanced-usage#submatching-with-regular-expressions">rules</a> to match the
+extracted syntax with regular expressions. This is similar to piping the
 contents to regex matching.</p>
 <h2><a class="anchor" aria-hidden="true" id="about-whitespace"></a><a href="#about-whitespace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>About whitespace</h2>
 <p>Comby tries to make matching code forgiving. Whitespace in the template, like a
