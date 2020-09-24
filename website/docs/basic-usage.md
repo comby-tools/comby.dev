@@ -180,7 +180,7 @@ Comby understands this interaction between delimiters, strings, and comments and
 makes reasonable guesses for your language based on file extension. You can also
 force a particular matcher with a command line option, see the [Quick Reference](cheat-sheet#select-the-language-to-parse).
 And, you can always fall back to a generic matcher for files or languages that
-are not explicitly supported. You can find out more about [language support and extension](http://localhost:3000/docs/advanced-usage#custom-language-definitions).
+are not explicitly supported. You can find out more about [language support and extension](advanced-usage#custom-language-definitions).
 
 Note that if we tried to use a regex above, our pattern would need to understand
 that `/* */` delineates comments, otherwise it would get confused by the
