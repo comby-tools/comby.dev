@@ -28,6 +28,12 @@ table tr:nth-child(2n) {
 
 Or [build from source](#build-from-source). Having trouble? Ask in [Gitter](https://gitter.im/comby-tools/community) or [create an issue on GitHub](https://github.com/comby-tools/comby/issues/new/choose).
 
+To make the command `comby` available to the system, you can create a script in bin containing
+```
+#!/usr/bin/env bash
+docker run --volume $PWD:/pwd --workdir="/pwd" -it comby/comby "$@"
+```
+
 ### Check your installation
 
 Run this in your terminal to check that things are working:
