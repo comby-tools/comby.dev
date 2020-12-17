@@ -33,6 +33,7 @@ To make the command `comby` available to the system, you can create a script in 
 #!/usr/bin/env bash
 docker run --volume $PWD:/pwd --workdir="/pwd" -it comby/comby "$@"
 ```
+where `docker` can also be replaced by `podman`.
 
 ### Check your installation
 
