@@ -5,7 +5,7 @@ title: Overview
 
 Comby provides a lightweight way of matching syntactic structures of a program's
 parse tree, like expressions and function blocks. Comby is language-aware and
-understands basic syntax of code, strings, and comment syntax many languages.
+understands basic syntax of code, strings, and comment syntax in many languages.
 
 <style>
 blockquote {
