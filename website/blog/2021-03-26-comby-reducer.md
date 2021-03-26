@@ -47,7 +47,7 @@ languages. You can [learn more about comby here](https://comby.dev/docs/overview
 engine, and a couple of functions for transforming a program to a fixed point.
 
 Let's move on to examples. If you want, you can learn more about how program
-reducers in this [Fuzzing Book Chapter](https://www.fuzzingbook.org/html/Reducer.html).
+reducers work by checking out the [resources at the end of this post](#learn-more).
 
 ## A program reduction tour
 
@@ -557,6 +557,13 @@ doesn't have the time. 🙂
 So instead, here are some related tools and topics that you might want to
 explore further.
 
+- The [Reducing chapter](https://www.fuzzingbook.org/html/Reducer.html) in The
+Fuzzing Book provides a deeper explanation of reducers, and particularly [grammar-based reduction](https://www.fuzzingbook.org/html/Reducer.html#Grammar-Based-Input-Reduction). In this sense, `comby-reducer` can be seen as a coarse, syntax-only
+grammar-based reducer that doesn't need you to write or understand the grammar,
+nor write any scripts or visitors to hook into a parse tree. Instead,
+transformations are specified declaratively and appeal to intuitive notions
+around syntax common to many languages.
+
 - This deep-dive [article on test-case reduction](https://blog.trailofbits.com/2019/11/11/test-case-reduction/)
 including various references to existing tools.
 
@@ -564,10 +571,3 @@ including various references to existing tools.
 (which also works well on non-C languages). It is an especially nice resource
 for explaining [interestingness tests](https://embed.cs.utah.edu/creduce/using/)
 which can further guide how and when the input is transformed.
-
-- The [Reducing chapter](https://www.fuzzingbook.org/html/Reducer.html) in The
-Fuzzing Book provides a deeper explanation of [grammar-based reduction](https://www.fuzzingbook.org/html/Reducer.html#Grammar-Based-Input-Reduction). In this sense, `comby-reducer` can be seen as a coarse, syntax-only
-grammar-based reducer that doesn't need you to write or understand the grammar,
-nor write any scripts or visitors to hook into a parse tree. Instead,
-transformations are specified declaratively and appeal to intuitive notions
-around syntax common to many languages.
