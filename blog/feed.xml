@@ -18,7 +18,7 @@
             <link>https://comby.dev/blog/2021/03/26/comby-reducer.html</link>
             <guid>https://comby.dev/blog/2021/03/26/comby-reducer.html</guid>
             <pubDate>Fri, 26 Mar 2021 06:00:00 GMT</pubDate>
-            <description><![CDATA[ <p>I’ve been fuzzing compilers for less familiar languages like Solidity and Diem (for smart contracts), and up-and-coming languages like Zig. <a href="https://blog.trailofbits.com/2021/03/23/a-year-in-the-life-of-a-compiler-fuzzing-campaign/">More on that fuzzing effort here</a>. A fun part of that is looking at programs that crash the compilers. Reducin...</p>]]></description>
+            <description><![CDATA[ <p>I’ve been fuzzing compilers for less familiar languages like <a href="https://github.com/ethereum/solidity">Solidity</a> and <a href="https://github.com/diem/diem">Diem</a> (for smart contracts), and up-and-coming languages like <a href="https://ziglang.org/">Zig</a>. <a href="https://blog.trailofbits.com/2021/03/23/a-year-in-the-life-of-a-compiler-fuzzing-campaign/">More on that fuzzing effort here</a>. A fun part of that is looking at programs that crash the compilers. Reducin...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[Comby website gets a refresh]]></title>
