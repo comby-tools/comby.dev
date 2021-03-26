@@ -96,7 +96,7 @@ languages. You can <a href="https://comby.dev/docs/overview">learn more about co
 <p><code>comby-reducer</code> uses a JavaScript library transpiled from <code>comby</code>'s core parser
 engine, and a couple of functions for transforming a program to a fixed point.</p>
 <p>Let’s move on to examples. If you want, you can learn more about how program
-reducers in this <a href="https://www.fuzzingbook.org/html/Reducer.html">Fuzzing Book Chapter</a>.</p>
+reducers work by checking out the <a href="#learn-more">resources at the end of this post</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="a-program-reduction-tour"></a><a href="#a-program-reduction-tour" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>A program reduction tour</h2>
 <p>I found this program crashed the <a href="https://github.com/diem/diem/tree/main/language/move-lang"><code>Move</code> compiler</a>.</p>
 <pre><code class="hljs css language-rust">module M {
@@ -519,18 +519,18 @@ doesn’t have the time. 🙂</p>
 <p>So instead, here are some related tools and topics that you might want to
 explore further.</p>
 <ul>
+<li><p>The <a href="https://www.fuzzingbook.org/html/Reducer.html">Reducing chapter</a> in The
+Fuzzing Book provides a deeper explanation of reducers, and particularly <a href="https://www.fuzzingbook.org/html/Reducer.html#Grammar-Based-Input-Reduction">grammar-based reduction</a>. In this sense, <code>comby-reducer</code> can be seen as a coarse, syntax-only
+grammar-based reducer that doesn’t need you to write or understand the grammar,
+nor write any scripts or visitors to hook into a parse tree. Instead,
+transformations are specified declaratively and appeal to intuitive notions
+around syntax common to many languages.</p></li>
 <li><p>This deep-dive <a href="https://blog.trailofbits.com/2019/11/11/test-case-reduction/">article on test-case reduction</a>
 including various references to existing tools.</p></li>
 <li><p>A favorite mentioned here is <a href="https://github.com/csmith-project/creduce">C-reduce</a>
 (which also works well on non-C languages). It is an especially nice resource
 for explaining <a href="https://embed.cs.utah.edu/creduce/using/">interestingness tests</a>
 which can further guide how and when the input is transformed.</p></li>
-<li><p>The <a href="https://www.fuzzingbook.org/html/Reducer.html">Reducing chapter</a> in The
-Fuzzing Book provides a deeper explanation of <a href="https://www.fuzzingbook.org/html/Reducer.html#Grammar-Based-Input-Reduction">grammar-based reduction</a>. In this sense, <code>comby-reducer</code> can be seen as a coarse, syntax-only
-grammar-based reducer that doesn’t need you to write or understand the grammar,
-nor write any scripts or visitors to hook into a parse tree. Instead,
-transformations are specified declaratively and appeal to intuitive notions
-around syntax common to many languages.</p></li>
 </ul>
 </span></div></div><div class="blogSocialSection"></div></div><div class="blog-recent"><a class="button" href="/blog/">Recent Posts</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-it-works">How it works</a></li><li><a href="#a-program-reduction-tour">A program reduction tour</a></li><li><a href="#declaring-transformations">Declaring transformations</a></li><li><a href="#observing-and-replaying-reduction">Observing and replaying reduction</a></li><li><a href="#comparison-to-afl-tmin">Comparison to afl-tmin</a></li><li><a href="#try-it">Try it</a></li><li><a href="#learn-more">Learn more</a></li></ul></nav></div><footer class="nav-footer" id="footer"><div class="wrapper"><p class="footer">© 2020 <a href="https://twitter.com/rvtond">@rvtond</a> · <a href="/docs/get-started">Get started</a> · <a href="/docs/overview">Docs</a> · <a href="/docs/projects">Projects &amp; Talks</a> · <a href="/blog">Blog</a> · <a href="https://twitter.com/rvtond">Twitter</a></p></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
