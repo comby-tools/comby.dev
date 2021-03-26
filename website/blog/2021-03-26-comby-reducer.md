@@ -17,7 +17,7 @@ table tr {
 }
 </style>
 
-I've been fuzzing compilers for less familiar languages like Solidity and Diem (for smart contracts), and up-and-coming languages like Zig. [More on that fuzzing effort here](https://blog.trailofbits.com/2021/03/23/a-year-in-the-life-of-a-compiler-fuzzing-campaign/).
+I've been fuzzing compilers for less familiar languages like [Solidity](https://github.com/ethereum/solidity) and [Diem](https://github.com/diem/diem) (for smart contracts), and up-and-coming languages like [Zig](https://ziglang.org/). [More on that fuzzing effort here](https://blog.trailofbits.com/2021/03/23/a-year-in-the-life-of-a-compiler-fuzzing-campaign/).
 A fun part of that is looking at programs that crash the compilers. Reducing
 those programs to submit in bug reports... less so. Thing is, I want to submit programs that are small and comprehensible for maintainers, and doing things by hand got tedious after about 5 reports. There _are_ tools for reducing programs out there, but none really checked the boxes I wanted. So I wrote [`comby-reducer`](https://github.com/comby-tools/comby-reducer#readme) to check those boxes, and things became a lot more fun:
 
@@ -30,8 +30,11 @@ those programs to submit in bug reports... less so. Thing is, I want to submit p
 <input type="checkbox" checked> Easy to see what it did (so I can tweak transformations)
 <br>
 <input type="checkbox" checked> Easy to install and invoke
+<br>
+<input type="checkbox"> Fast on large inputs? Most of the crashing inputs are small, this not as important
 
-Basically, something dead simple that allows easy tweaking for transforming syntax.
+Basically, something dead simple that allows easy tweaking for transforming
+syntax.
 
 ## How it works
 
@@ -51,7 +54,7 @@ reducers work by checking out the [resources at the end of this post](#learn-mor
 
 ## A program reduction tour
 
-I found this program crashed the [`Move` compiler](https://github.com/diem/diem/tree/main/language/move-lang).
+Some fuzzing found this program crashed the [`Move` compiler](https://github.com/diem/diem/tree/main/language/move-lang).
 
 ```rust
 module M {
@@ -90,7 +93,7 @@ module M {
 }
 ```
 
-Move as a similar syntax to Rust, and like many languages, uses parentheses `()`
+`Move` syntax is a similar `Rust` syntax, and like many languages, uses parentheses `()`
 and braces `{}` to delineate and nest expressions that correspond to an
 underlying parse tree. `comby-reducer` understands these syntactic constructs
 well, and can transform content inside balanced parentheses and braces (but won't
@@ -124,10 +127,18 @@ and reduces to another happy candidate for a bug report:
         export fn entry() usize { return @sizeOf(@TypeOf(foo)); }
 ```
 
-And here's a reduced Solidity contract:
+And here's a reduced [Solidity](https://github.com/ethereum/solidity) smart contract:
+
+```solidity
+contract C {
+    function f(uint256[] calldata x, uint256 s, uint256 e) external returns (uint256) {
+        (x[s:e]).length;
+    }
+}
+```
 
 <details>
-  <summary><strong>Expand to see original program</strong></summary>
+  <summary><strong>Expand to see original Solidity program</strong></summary>
 
 
 ```solidity
@@ -162,17 +173,10 @@ contract C {
 
 </details>
 
-```solidity
-contract C {
-    function f(uint256[] calldata x, uint256 s, uint256 e) external returns (uint256) {
-        (x[s:e]).length;
-    }
-}
-```
 
 ## Declaring transformations
 
-`comby-reducer` uses a handful of around 22 transformations to produce the above.
+`comby-reducer` uses a around 20 transformations to produce the above.
 These are [in the repo](https://github.com/comby-tools/comby-reducer/blob/master/transforms/config.toml),
 but you can also see a sample of them by expanding the below tab to get a sense of things. Transformations are
 defined using [comby syntax](https://comby.dev/docs/syntax-reference), and we'll walk through some of them.
@@ -218,16 +222,17 @@ rewrite='()'
 rule='where nested'
 ```
 
-This transform matches any content between balanced parentheses (including
-newlines) and deletes the content. The `:[1]` is a variable that can be used in
-the rewrite part. By default, `comby-reducer` will try to apply this
+This transformation matches any content between balanced parentheses (including
+newlines) and deletes the content. The `:[1]` is a variable that binds to
+matched content. By default, `comby-reducer` will try to apply this
 transformation at the top-level of a file, wherever it sees `(...)`. The
 `rule='where nested'` tells comby-reducer that it should also attempt to reduce
 nested matches of `(...)` inside other matched `(...)`. In general, parentheses
 are a common syntax to nest expressions in programs, so it makes sense to add
 `rule='where nested'`.
 
-Another one is
+
+Another transformation preserves the first comma-separated element inside parentheses:
 
 ```
 [remove_first_paren_element]
@@ -240,6 +245,23 @@ parameters or arguments inside parenthes. This transformation attempts to remove
 elements in such syntax. This transform doesn't have a rule part, since it might
 not be as fruitful to attempt nested reductions inside of `:[1]` or `:[2]`. But,
 we could easily add it.
+
+The default transformations aren't very language-specific and worked well to
+reduce the languages I dealt with (Solidity, Move, Zig) to small
+human-comprehensible programs. Of course, you can define your own
+transformations with the desired level of syntactic specificity. E.g., we might
+remove `for` loops in JavaScript with:
+
+```
+[remove_js_style_for_loop]
+match='''
+for (:[1]) {
+  :[2]
+}
+'''
+rewrite=''
+```
+
 
 ## Observing and replaying reduction
 
@@ -259,13 +281,13 @@ rewrite='{}'
 ```
 
 This transformation simply deletes contiguous whitespace (including newlines).
-In turn, this often lead to a reduction to, say, `func () {}` which then ends up
-being removed by a transformation that deletes lines. Nice!
+In turn, this often lead to a reduction to something like `func () {}` which
+then ends up being removed by a transformation that deletes lines. Nice!
 
-Given I had an easy way to introduce new transformations like these, I wanted
-more observability into how transformations behaved. This helped me understand
-what I could add to help reduction along, or even just discover transformations
-that would improve formatting.
+Because I had an easy way to introduce new transformations, I wanted more
+insight into into how transformations behaved. This helped me understand what I
+could add to help reduction along, or even just discover transformations that
+would improve formatting.
 
 For example, I noticed one Zig program reduced to:
 
@@ -275,8 +297,8 @@ For example, I noticed one Zig program reduced to:
         export fn entry() usize { return @sizeOf(@TypeOf(foo)); }
 ```
 
-I just wanted to group the first pair of parentheses pair on one line like `fn
-foo(error.Hi) u3 {}`. So I just added something that would match all content up
+Here I just wanted to group the first pair of parentheses pair on one line like
+`fn foo(error.Hi) u3 {}`. So I added something that would match all content up
 to trailing whitespace within balanced parentheses:
 
 ```toml
@@ -287,7 +309,7 @@ rewrite='(:[1])'
 
 To make this process a bit more snazzy, I added a way to replay transformations.
 `comby-reducer` takes a `--record` argument, and the output can be replayed with
-`comby-reduce-replay`, which makes it possible to step through the process.
+`comby-reduce-replay`. This makes it possible to step through the process.
 Here's an example where I manually step through the Zig reduction.
 
 <video style="width:100%;margin-top:0.5em;border-radius:5px" autoPlay controls>
@@ -424,19 +446,20 @@ Here's an example where I manually step through the Zig reduction.
 You can [find out more about replaying in the repo](https://github.com/comby-tools/comby-reducer#comby-reducer-replay).
 
 
-## Comparison to afl-tmin
+## Comparison to `afl-tmin`
 
-It's useful to compare some reduction to `afl-tmin`, which was a
-readily-available reducer for our afl-instrumented Solidity and Move compilers.
-Because `afl-tmin` exploits coverage information, it can be very effective at
-minimizing the size of inputs irrespective of format (e.g., it works for text
-inputs like our crashing programs, and binary formats like JPEG). At the same
-time, the catch-all coverage-guided approach in `afl-tmin` doesn't exploit
-properties of the input domain. E.g., in our case, we want to reduce around
-parentheses, or preserve syntactic elements or formatting, and can tailor
-transformations around that.
-
-For example, the reduced Move program by `comby-reducer` gives
+It's useful to compare some reduction to
+[`afl-tmin`](https://github.com/google/AFL/blob/master/docs/technical_details.txt#L281-L313),
+which is a readily-available reducer for our afl-instrumented Solidity and Move
+compilers. Because `afl-tmin` exploits coverage information, it can be very
+effective at minimizing the size of inputs irrespective of format (it works for
+text inputs like our crashing programs, and binary formats like JPEG). At the
+same time, this catch-all coverage-guided approach sacrifices some ability to
+exploit properties of the input domain. For bug reports, it's useful to reduce
+around certain syntax like parentheses, or otherwise preserve syntactic
+elements, formatting, or symbol names. `comby-reducer` makes it easy to tailor
+the process around the input. For example, the reduced Move program by
+`comby-reducer` gives
 
 ```rust
 module M {
@@ -456,11 +479,9 @@ module M{resource struct R{}struct C{}fun t(x:u){();();();R=();()}}
 
 The `afl-tmin` variety has some redundant syntax, eagerly deletes whitespace
 that help with readability, and renames the original function `t0` to `t`. These
-are not all horrible things, but there isn't much room for tweaking.
+are not necessarily bad, but there isn't much room for tweaking.
 
 Another example produced by `comby-reduce`
-
-
 
 ```rust
 module M {
@@ -545,8 +566,8 @@ module M {
 See the [GitHub repository](https://github.com/comby-tools/comby-reducer) for
 usage examples and more technical details. Note that `comby-reducer` is new,
 developed with simplicity, and not yet very battle tested; feel free to post
-issues in the GitHub issue tracker. If you want help with comby syntax, post in
-the [Gitter channel](https://gitter.im/comby-tools/community).
+issues in the GitHub issue tracker. If you want help writing
+transformations `comby` syntax, post in the [Gitter channel](https://gitter.im/comby-tools/community).
 
 ## Learn more
 
@@ -558,7 +579,7 @@ So instead, here are some related tools and topics that you might want to
 explore further.
 
 - The [Reducing chapter](https://www.fuzzingbook.org/html/Reducer.html) in The
-Fuzzing Book provides a deeper explanation of reducers, and particularly [grammar-based reduction](https://www.fuzzingbook.org/html/Reducer.html#Grammar-Based-Input-Reduction). In this sense, `comby-reducer` can be seen as a coarse, syntax-only
+Fuzzing Book provides a deeper explanation of reducers, and particularly [grammar-based reduction](https://www.fuzzingbook.org/html/Reducer.html#Grammar-Based-Input-Reduction). Here `comby-reducer` can be seen as a coarse, syntax-only
 grammar-based reducer that doesn't need you to write or understand the grammar,
 nor write any scripts or visitors to hook into a parse tree. Instead,
 transformations are specified declaratively and appeal to intuitive notions
@@ -567,7 +588,7 @@ around syntax common to many languages.
 - This deep-dive [article on test-case reduction](https://blog.trailofbits.com/2019/11/11/test-case-reduction/)
 including various references to existing tools.
 
-- A favorite mentioned here is [C-reduce](https://github.com/csmith-project/creduce)
+- A favorite tool mentioned here is [C-reduce](https://github.com/csmith-project/creduce)
 (which also works well on non-C languages). It is an especially nice resource
 for explaining [interestingness tests](https://embed.cs.utah.edu/creduce/using/)
 which can further guide how and when the input is transformed.
