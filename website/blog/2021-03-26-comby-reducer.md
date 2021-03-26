@@ -124,7 +124,7 @@ and reduces to another happy candidate for a bug report:
         export fn entry() usize { return @sizeOf(@TypeOf(foo)); }
 ```
 
-And here's an reduced Solidity contract:
+And here's a reduced Solidity contract:
 
 <details>
   <summary><strong>Expand to see original program</strong></summary>
