@@ -2,12 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://comby.dev/blog</id>
     <title>Comby Blog</title>
-    <updated>2020-06-10T06:00:00.000Z</updated>
+    <updated>2021-03-26T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://comby.dev/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Comby news and events.</subtitle>
     <logo>https://comby.dev/img/comby-logo.svg</logo>
-    <rights>© 2020 @rvtond</rights>
+    <rights>© 2021 @rvtond</rights>
+    <entry>
+        <title type="html"><![CDATA[A simple program reducer for any language]]></title>
+        <id>https://comby.dev/blog/2021/03/26/comby-reducer.html</id>
+        <link href="https://comby.dev/blog/2021/03/26/comby-reducer.html"/>
+        <updated>2021-03-26T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ <p>I’ve been fuzzing compilers for less familiar languages like Solidity and Diem (for smart contracts), and up-and-coming languages like Zig. <a href="https://blog.trailofbits.com/2021/03/23/a-year-in-the-life-of-a-compiler-fuzzing-campaign/">More on that fuzzing effort here</a>. A fun part of that is looking at programs that crash the compilers. Reducin...</p>]]></summary>
+        <author>
+            <name>Rijnard</name>
+            <email/>
+            <uri>https://twitter.com/rvtond</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Comby website gets a refresh]]></title>
         <id>https://comby.dev/blog/2020/06/10/new-blog-site.html</id>

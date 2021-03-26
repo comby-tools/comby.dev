@@ -4,7 +4,7 @@
         <title>Comby Blog</title>
         <link>https://comby.dev/blog</link>
         <description>The best place to stay up-to-date with the latest Comby news and events.</description>
-        <lastBuildDate>Wed, 10 Jun 2020 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 26 Mar 2021 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -12,7 +12,14 @@
             <url>https://comby.dev/img/comby-logo.svg</url>
             <link>https://comby.dev/blog</link>
         </image>
-        <copyright>© 2020 @rvtond</copyright>
+        <copyright>© 2021 @rvtond</copyright>
+        <item>
+            <title><![CDATA[A simple program reducer for any language]]></title>
+            <link>https://comby.dev/blog/2021/03/26/comby-reducer.html</link>
+            <guid>https://comby.dev/blog/2021/03/26/comby-reducer.html</guid>
+            <pubDate>Fri, 26 Mar 2021 06:00:00 GMT</pubDate>
+            <description><![CDATA[ <p>I’ve been fuzzing compilers for less familiar languages like Solidity and Diem (for smart contracts), and up-and-coming languages like Zig. <a href="https://blog.trailofbits.com/2021/03/23/a-year-in-the-life-of-a-compiler-fuzzing-campaign/">More on that fuzzing effort here</a>. A fun part of that is looking at programs that crash the compilers. Reducin...</p>]]></description>
+        </item>
         <item>
             <title><![CDATA[Comby website gets a refresh]]></title>
             <link>https://comby.dev/blog/2020/06/10/new-blog-site.html</link>
