@@ -176,7 +176,7 @@ contract C {
 
 ## Declaring transformations
 
-`comby-reducer` uses a around 20 transformations to produce the above.
+`comby-reducer` uses around 20 transformations to produce the above.
 These are [in the repo](https://github.com/comby-tools/comby-reducer/blob/master/transforms/config.toml),
 but you can also see a sample of them by expanding the below tab to get a sense of things. Transformations are
 defined using [comby syntax](https://comby.dev/docs/syntax-reference), and we'll walk through some of them.
@@ -241,7 +241,7 @@ rewrite='(:[2])'
 ```
 
 Program syntax often use call or function-like syntax that comma-separate
-parameters or arguments inside parenthes. This transformation attempts to remove
+parameters or arguments inside parentheses. This transformation attempts to remove
 elements in such syntax. This transform doesn't have a rule part, since it might
 not be as fruitful to attempt nested reductions inside of `:[1]` or `:[2]`. But,
 we could easily add it.
