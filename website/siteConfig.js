@@ -94,7 +94,14 @@ const siteConfig = {
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: [],
+  scripts: [
+      {
+          src: 'https://plausible.io/js/plausible.js',
+          async: true,
+          defer: true,
+          'data-domain': 'comby.dev',
+      }
+  ],
 
   // Put Table of Contents on the right side of the page
   onPageNav: 'separate',
@@ -110,7 +117,7 @@ algolia: {
   algoliaOptions: {}, // Optional, if provided by Algolia
 },
 
-  gaTrackingId: 'UA-142487942-1',
+//  gaTrackingId: 'UA-142487942-1',
 };
 
 module.exports = siteConfig;
