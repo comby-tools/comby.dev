@@ -2,12 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://comby.dev/blog</id>
     <title>Comby Blog</title>
-    <updated>2021-03-26T06:00:00.000Z</updated>
+    <updated>2021-04-25T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://comby.dev/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Comby news and events.</subtitle>
     <logo>https://comby.dev/img/comby-logo.svg</logo>
     <rights>© 2021 @rvtond</rights>
+    <entry>
+        <title type="html"><![CDATA[Whatever You Want syntax for rewriting code]]></title>
+        <id>https://comby.dev/blog/2021/04/25/whatever-you-want-syntax.html</id>
+        <link href="https://comby.dev/blog/2021/04/25/whatever-you-want-syntax.html"/>
+        <updated>2021-04-25T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ <blockquote> <p>We have color themes for our IDEs. We should have syntax themes for our tools.</p> </blockquote> <p>Search and Replace commands could look like this.</p> <p><code>swap($1, $2)</code> → <code>swap($2, $1)</code></p> <p><code>swap(α, β)</code> → <code>swap(β, α)</code></p> <p><code>swap(🐵, 🍌)</code> → <code>swap(🍌, 🐵)</code></p> <p>With Whatever You Want (WYW) syntax, it’s ...</p>]]></summary>
+        <author>
+            <name>Rijnard</name>
+            <uri>https://twitter.com/rvtond</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[A simple program reducer for any language]]></title>
         <id>https://comby.dev/blog/2021/03/26/comby-reducer.html</id>
@@ -16,7 +27,6 @@
         <summary type="html"><![CDATA[ <p>I’ve been fuzzing compilers for less familiar languages like <a href="https://github.com/ethereum/solidity">Solidity</a> and <a href="https://github.com/diem/diem">Diem</a> (for smart contracts), and up-and-coming languages like <a href="https://ziglang.org/">Zig</a>. <a href="https://blog.trailofbits.com/2021/03/23/a-year-in-the-life-of-a-compiler-fuzzing-campaign/">More on that fuzzing effort here</a>. A fun part of that is looking at programs that crash the compilers. Reducin...</p>]]></summary>
         <author>
             <name>Rijnard</name>
-            <email/>
             <uri>https://twitter.com/rvtond</uri>
         </author>
     </entry>
@@ -28,7 +38,6 @@
         <summary type="html"><![CDATA[<p>The <a href="https://old.comby.dev">old website</a> started off nice and simple and kept everything about <code>comby</code> on one page. As that grew things being unwieldly, and I wanted to partition off the usage documentation and &quot;other things&quot;. Another piece of feedback was that the l...</p>]]></summary>
         <author>
             <name>Rijnard</name>
-            <email/>
             <uri>https://twitter.com/rvtond</uri>
         </author>
     </entry>

@@ -186,7 +186,7 @@ Comby is designed to support <a href="docs/overview#does-it-work-on-my-language"
               <p>
                 Watch the <a href="https://www.youtube.com/watch?v=JMZLBB_BFNg&feature=emb_title">Strange Loop talk</a> to learn more about Comby.
               </p>
-              <blockquote className="monotone">
+              <blockquote className="bestBlockquote">
                 <p>
                   This talk shares the core ideas and motivation behind Comby, and example uses and applications.
                 </p>

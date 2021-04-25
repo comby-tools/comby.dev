@@ -9,9 +9,14 @@ const PageSection = require(`${process.cwd()}/core/PageSection.js`);
 
 const TalkListItem = (props) => (
   <li key={props.link}>
-    <b>{props.title} at {props.venue}</b>
+    <b>{props.title}</b>
+      <br></br>
+    <i>{props.venue}</i>
     <div>
-<a href={props.abstract}><img width="12px" src="/img/file-regular.svg"></img> Abstract</a> &nbsp; <a href={props.video}><img width="18px" src="/img/youtube-brands.svg"></img> Talk Recording</a> {props.subtitles ? '(turn on subtitles)' : ''} &nbsp;   <a href={props.slides}><img width="15px" src="/img/desktop-solid.svg"></img> Slides</a>
+        <a href={props.abstract}><img width="12px" src="/img/file-regular.svg"></img> Abstract</a> &nbsp;
+        <a href={props.slides}><img width="15px" src="/img/desktop-solid.svg"></img> Slides</a> &nbsp;
+        {props.paper === undefined ? '' : <a href={props.paper}><img width="10px" src="img/book-solid.svg"></img> Paper &nbsp;</a>}
+        <a href={props.video}><img width="18px" src="/img/youtube-brands.svg"></img> Talk Recording</a> {props.subtitles ? '(turn on subtitles)' : ''}
     </div>
     <br></br>
   </li>
@@ -81,10 +86,10 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <div className="homeContainer">
+        <div className="homeContainer" >
           <div className="homeSplashFade">
             <div className="wrapper homeWrapper">
-              <div className="inner">
+              <div className="inner"> 
                 <h2
                   className="projectTitle"
                   style={{maxWidth: '850px', textAlign: 'left'}}
@@ -143,12 +148,12 @@ class Index extends React.Component {
             </tr>
             </table>
             <p>Find more ideas for refactors in an <a href="https://catalog.comby.dev">example catalog of patterns</a>.</p>
-            <li><b>Structural code search</b> - Find out how Comby is used to power <a href="https://about.sourcegraph.com/blog/going-beyond-regular-expressions-with-structural-code-search">language-aware code search at scale</a>.</li>
-            <li><b>Editor find-and-replace</b> - There is an <a href="https://github.com/s-kostyaev/comby.el">Emacs package</a> and a prototype <a href="https://marketplace.visualstudio.com/items?itemName=giltho.comby-vscode">VS Code extension</a>.</li>
+            <li><b>Structural code search</b> - Comby is used to power <a href="https://about.sourcegraph.com/blog/going-beyond-regular-expressions-with-structural-code-search">language-aware code search at scale</a></li>
+            <li><b>Fuzzing</b> - <a href="https://blog.trailofbits.com/2021/03/23/a-year-in-the-life-of-a-compiler-fuzzing-campaign/">Language-aware compiler fuzzing</a> and <a href="https://comby.dev/blog/2021/03/26/comby-reducer">test case reduction</a></li>
+            <li><b>Editor find-and-replace</b> - There is an <a href="https://github.com/s-kostyaev/comby.el">Emacs package</a> and a prototype <a href="https://marketplace.visualstudio.com/items?itemName=giltho.comby-vscode">VS Code extension</a></li>
             <li><b>Academic research in software engineering</b>
-            <ul><li><a href="https://2020.icse-conferences.org/details/icse-2020-papers/72/Tailoring-Programs-for-Static-Analysis-via-Program-Transformation">Suppressing analyzer false positives</a> (upcoming talk)</li>
-            <li>Manipulating domain-specific languages for analysis (more details soon)</li>
-            <li>Language-aware fuzzing (more details soon)</li>
+            <ul><li><a href="https://2020.icse-conferences.org/details/icse-2020-papers/72/Tailoring-Programs-for-Static-Analysis-via-Program-Transformation">Suppressing analyzer false positives</a></li>
+            <li><a href="http://kinneerc.github.io/assets/acsos2020.pdf">Manipulating domain-specific languages for autonomic systems</a></li>
             </ul>
             </li>
             </ul>
@@ -175,6 +180,14 @@ class Index extends React.Component {
             <h1 id="talks">Talks</h1>
             <TalkList
               content={[
+                {
+                  title: 'Tailoring Programs for Static Analysis via Program Transformation',
+                  venue: 'International Conference on Software Engineering, July 2020',
+                  slides: '/pdfs/icse-20-tailoring-slides.pdf',
+                  paper: 'https://rijnard.com/pdfs/tailoring-analysis-icse-2020.pdf',
+                  video: 'https://youtu.be/GkMG2texb0c?t=5194',
+                  abstract: 'https://conf.researchr.org/details/icse-2020/icse-2020-papers/72/Tailoring-Programs-for-Static-Analysis-via-Program-Transformation',
+                },
                 {
                   title: 'Parser Parser Combinators for Program Transformation',
                   venue: 'Strangloop, September 2019',

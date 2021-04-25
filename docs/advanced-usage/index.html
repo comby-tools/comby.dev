@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Advanced Usage · Comby</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;style&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Advanced Usage · Comby"/><meta property="og:type" content="website"/><meta property="og:url" content="https://comby.dev/"/><meta property="og:description" content="&lt;style&gt;"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://comby.dev/blog/atom.xml" title="Comby Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://comby.dev/blog/feed.xml" title="Comby Blog RSS Feed"/><script type="text/javascript" src="https://plausible.io/js/plausible.js" async="" defer="" data-domain="comby.dev"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/comby-logo.svg" alt="Comby"/><h2 class="headerTitleWithLogo">Comby</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/get-started" target="_self">Get started</a></li><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="/en/projects" target="_self">Projects &amp; Talks</a></li><li class=""><a href="https://github.com/comby-tools/comby" target="_self">GitHub</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Usage</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/get-started">Get Started</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/basic-usage">Basic Usage</a></li><li class="navListItem"><a class="navItem" href="/docs/syntax-reference">Syntax Reference</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/advanced-usage">Advanced Usage</a></li><li class="navListItem"><a class="navItem" href="/docs/configuration">Configuration Files</a></li><li class="navListItem"><a class="navItem" href="/docs/cheat-sheet">Cheat Sheet</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Resources</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/get-help">Get Help</a></li><li class="navListItem"><a class="navItem" href="/docs/faq">FAQ</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Advanced Usage · Comby</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;style&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Advanced Usage · Comby"/><meta property="og:type" content="website"/><meta property="og:url" content="https://comby.dev/"/><meta property="og:description" content="&lt;style&gt;"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://comby.dev/blog/atom.xml" title="Comby Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://comby.dev/blog/feed.xml" title="Comby Blog RSS Feed"/><script type="text/javascript" src="https://plausible.io/js/plausible.js" async="" defer="" data-domain="comby.dev"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/comby-logo.svg" alt="Comby"/><h2 class="headerTitleWithLogo">Comby</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/get-started" target="_self">Get started</a></li><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="/en/projects" target="_self">Projects &amp; Talks</a></li><li class=""><a href="https://github.com/comby-tools/comby" target="_self">GitHub</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Usage</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/get-started">Get Started</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/basic-usage">Basic Usage</a></li><li class="navListItem"><a class="navItem" href="/docs/syntax-reference">Syntax Reference</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/advanced-usage">Advanced Usage</a></li><li class="navListItem"><a class="navItem" href="/docs/configuration">Configuration Files</a></li><li class="navListItem"><a class="navItem" href="/docs/cheat-sheet">Cheat Sheet</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Resources</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/get-help">Get Help</a></li><li class="navListItem"><a class="navItem" href="/docs/faq">FAQ</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -204,6 +204,126 @@ additional languages.</p>
 comments, and kinds of string literals. By design, it currently isn’t possible
 to further refine the meaning of syntax into keywords or high-level structures
 like functions.</p>
+<h2><a class="anchor" aria-hidden="true" id="custom-comby-metasyntax"></a><a href="#custom-comby-metasyntax" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom comby metasyntax</h2>
+<p>You can change <code>comby</code>'s internal syntax, like <code>:[var]</code> for variables, to be
+something else, like <code>$var</code>. This is done by defining a JSON file for your
+metasyntax. Below is the JSON definition for the default syntax. You can edit it
+in a file like <code>mine.json</code>, and then invoke <code>comby</code> like this:</p>
+<pre><code class="hljs css language-bash">comby -custom-metasynax mine.json ...
+</code></pre>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"syntax"</span>: [
+    <span class="hljs-comment">// :[var]</span>
+    [ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Everything"</span> ], [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-string">":["</span>, <span class="hljs-string">"]"</span> ] ],
+    <span class="hljs-comment">// :[var:e]</span>
+    [ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Expression"</span> ], [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-string">":["</span>, <span class="hljs-string">":e]"</span> ] ],
+    <span class="hljs-comment">// :[[var]]</span>
+    [ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Alphanum"</span> ],   [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-string">":[["</span>, <span class="hljs-string">"]]"</span> ] ],
+    <span class="hljs-comment">// :[var.]</span>
+    [ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Non_space"</span> ],  [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-string">":["</span>, <span class="hljs-string">".]"</span> ] ],
+    <span class="hljs-comment">// :[var\n]</span>
+    [ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Line"</span> ],       [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-string">":["</span>, <span class="hljs-string">"\\n]"</span> ] ],
+    <span class="hljs-comment">// :[ var]</span>
+    [ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Blank"</span> ],      [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-string">":[ "</span>, <span class="hljs-string">"]"</span> ] ],
+    <span class="hljs-comment">// :[var~regex]</span>
+    [ <span class="hljs-string">"Regex"</span>, <span class="hljs-string">":["</span>, <span class="hljs-string">"~"</span>, <span class="hljs-string">"]"</span> ],
+
+    <span class="hljs-comment">// String aliases for the "Everything" hole.</span>
+    [ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Everything"</span> ],
+        [ <span class="hljs-string">"Reserved_identifiers"</span>,
+            [ <span class="hljs-string">"Γ"</span>, <span class="hljs-string">"Δ"</span>, <span class="hljs-string">"Θ"</span>, <span class="hljs-string">"Λ"</span>, <span class="hljs-string">"Ξ"</span>, <span class="hljs-string">"Π"</span>, <span class="hljs-string">"Σ"</span>, <span class="hljs-string">"Φ"</span>, <span class="hljs-string">"Ψ"</span>, <span class="hljs-string">"Ω"</span> ]
+        ]
+    ],
+
+    <span class="hljs-comment">// String aliases for the "Expression" hole.</span>
+    [ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Expression"</span> ],
+        [ <span class="hljs-string">"Reserved_identifiers"</span>,
+            [
+                <span class="hljs-string">"α"</span>, <span class="hljs-string">"β"</span>, <span class="hljs-string">"γ"</span>, <span class="hljs-string">"δ"</span>, <span class="hljs-string">"ε"</span>, <span class="hljs-string">"ζ"</span>, <span class="hljs-string">"η"</span>, <span class="hljs-string">"θ"</span>, <span class="hljs-string">"ι"</span>, <span class="hljs-string">"κ"</span>, <span class="hljs-string">"λ"</span>,
+                <span class="hljs-string">"μ"</span>, <span class="hljs-string">"ξ"</span>, <span class="hljs-string">"π"</span>, <span class="hljs-string">"ρ"</span>, <span class="hljs-string">"ς"</span>, <span class="hljs-string">"σ"</span>, <span class="hljs-string">"τ"</span>, <span class="hljs-string">"υ"</span>, <span class="hljs-string">"φ"</span>, <span class="hljs-string">"χ"</span>, <span class="hljs-string">"ψ"</span>,
+                <span class="hljs-string">"ω"</span>
+            ]
+        ]
+    ]
+  ],
+
+  <span class="hljs-comment">// characters allowed for hole names like "var"</span>
+  <span class="hljs-attr">"identifier"</span>:
+    <span class="hljs-string">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"</span>
+}
+</code></pre>
+<p>Here’s what the fields do, and ways that you can customize the syntax.</p>
+<blockquote>
+<p>Custom syntax is only partially supported in rules. If you make use of rules,
+it’s advised to use the default syntax until full support is available.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="custom-hole-delimiters"></a><a href="#custom-hole-delimiters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom hole delimiters</h4>
+<p>The line</p>
+<pre><code class="hljs">[ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Everything"</span> ], [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-string">":["</span>, <span class="hljs-string">"]"</span> ] ],
+</code></pre>
+<p>Makes it so that the hole that corresponds to matching “Everything” has a left
+delimiter <code>:[</code> and a right delimiter <code>]</code>. The “Everything” kind hole corresponds to
+the behavior of <code>:[var]</code> in the first row of the <a href="syntax-reference">syntax reference</a>.
+To change the syntax so that <code>$var$</code> does this matching instead, redefine it like this:</p>
+<pre><code class="hljs">[ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Everything"</span> ], [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-string">"$"</span>, <span class="hljs-string">"$"</span> ] ]
+</code></pre>
+<p>If you only want the prefix, like <code>$var</code>, then you can make the right delimiter <code>null</code>:</p>
+<pre><code class="hljs">[ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Everything"</span> ], [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-string">"$"</span>, <span class="hljs-literal">null</span> ] ]
+</code></pre>
+<p>You can also make the left delimiter null, if you want <code>var$</code> instead:</p>
+<pre><code class="hljs">[ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Everything"</span> ], [ <span class="hljs-string">"Delimited"</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">"$"</span> ] ]
+</code></pre>
+<p>You can define multiple of these definitions for the same kind. You can also
+omit any that you don’t want.</p>
+<h4><a class="anchor" aria-hidden="true" id="custom-regex-hole"></a><a href="#custom-regex-hole" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom regex hole</h4>
+<p>The definition for embedding regular expressions is slightly different, because
+<code>comby</code> needs some kind of syntax to understand when to stop parsing a regular
+expression pattern. The current format is supported with a definition like this:</p>
+<pre><code class="hljs css language-json">[ <span class="hljs-string">"Regex"</span>, <span class="hljs-string">":["</span>, <span class="hljs-string">"~"</span>, <span class="hljs-string">"]"</span> ]
+</code></pre>
+<p>You must define both the left and right delimiters, <code>:[</code> and <code>]</code> respectively,
+as well as a <em>character</em> separator like <code>~</code>. Regular expression patterns will
+then be recognized in your template as <code>:[</code><em><code>var</code></em><code>~</code><em><code>regex-pattern</code></em><code>]</code>. It’s
+not currently possible to otherwise change the structure of this syntax.</p>
+<blockquote>
+<p>The order of definitions are significant <em>if</em> syntax overlaps.
+For example, in the default syntax, <code>:[var]</code> and <code>:[var~regex]</code> overlap in the
+prefix <code>:[var</code>. To ensure things work correctly, define the short and simple
+syntax first, followed by longer variations.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="custom-identifier-characters"></a><a href="#custom-identifier-characters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom identifier characters</h4>
+<p>By default, <code>comby</code> accepts any alphanumeric string, and <code>_</code> as valid
+identifiers for a hole like <code>:[var]</code>. By changing the <code>identifiers</code> field in the
+JSON, you can restrict or grow the set of allowed characters. For example, to allow only
+capital letters for holes, like <code>$VAR</code>, define the set as follows:</p>
+<pre><code class="hljs"><span class="hljs-string">"identifier"</span>: <span class="hljs-string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>
+</code></pre>
+<p>Now, if <code>comby</code> scans sees a pattern in your match template like <code>$var</code>, it will
+<em>not</em> think it is a variable, and instead it will match <code>$var</code> literally in the
+input program.</p>
+<blockquote>
+<p>The <code>_</code> character reserves special meaning for matching when it is included in
+the identifier set.</p>
+</blockquote>
+<p>In general, using the same variable twice like <code>(:[x], :[x])</code> means that both
+<code>:[x]</code> must match the same thing. The exception is when the variable is <code>:[_]</code>,
+where <code>(:[_], :[_])</code> may or may not match the same thing–the <code>_</code> makes the hole
+a wildcard matcher. This behavior cannot currently be customized.</p>
+<h4><a class="anchor" aria-hidden="true" id="custom-hole-aliases"></a><a href="#custom-hole-aliases" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom hole aliases</h4>
+<p>Hole aliases are reserved strings and can be optionally defined. When hole
+aliases are defined, <code>comby</code> will treat the reserved strings as variables, and
+assign any matching content to that variable name.</p>
+<pre><code class="hljs css language-json">[ <span class="hljs-string">"Hole"</span>, [ <span class="hljs-string">"Expression"</span> ], [ <span class="hljs-string">"Reserved_identifiers"</span>, [ <span class="hljs-string">"α"</span>, <span class="hljs-string">"αα"</span>, <span class="hljs-string">"β"</span>, <span class="hljs-string">"ββ"</span> ] ] ]
+</code></pre>
+<p>This way, you can simply match the input and substitute values by using a
+variable <code>α</code>, and avoid any syntax conflicts. You can even <a href="../blog/2021/04/25/whatever-you-want-syntax#emoji-movie">use emojis</a> if you like.</p>
+<blockquote>
+<p>If you want to define <em>only</em> <code>Reserved_identifiers</code> for holes, you’ll
+currently need to add a placeholder for at least one <code>Delimited</code> definition,
+like <code>[ &quot;Everything&quot; ], [ &quot;Delimited&quot;, &quot;ignore-me&quot;, null ]</code></p>
+</blockquote>
+<p>It’s not currently possible to associate custom syntax with other matching
+behaviors, or alias syntax to a regular expression.</p>
 <h2><a class="anchor" aria-hidden="true" id="substituting-fresh-identifiers"></a><a href="#substituting-fresh-identifiers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substituting fresh identifiers</h2>
 <p>Rewrite templates may contain the syntax <code>:[id()]</code> which generates a random
 alphanumeric identifier in the output. This is useful, for example,
@@ -217,7 +337,7 @@ var :[left] = :[[right]] + 1
 anon_:[id(my_label)]()
 </code></pre>
 <blockquote class="blockquote-playground"> <a href="https://bit.ly/30xWQKK">playground ↗</a> </blockquote>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/syntax-reference"><span class="arrow-prev">← </span><span>Syntax Reference</span></a><a class="docs-next button" href="/docs/configuration"><span>Configuration Files</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#rules">Rules</a><ul class="toc-headings"><li><a href="#equality">Equality</a></li><li><a href="#rewrite-expressions">Rewrite expressions</a></li><li><a href="#pattern-match-expressions">Pattern Match expressions</a></li><li><a href="#submatching-with-regular-expressions">Submatching with regular expressions</a></li></ul></li><li><a href="#custom-language-definitions">Custom language definitions</a></li><li><a href="#substituting-fresh-identifiers">Substituting fresh identifiers</a></li></ul></nav></div><footer class="nav-footer" id="footer"><div class="wrapper"><p class="footer">© 2020 <a href="https://twitter.com/rvtond">@rvtond</a> · <a href="/docs/get-started">Get started</a> · <a href="/docs/overview">Docs</a> · <a href="/docs/projects">Projects &amp; Talks</a> · <a href="/blog">Blog</a> · <a href="https://twitter.com/rvtond">Twitter</a></p></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/syntax-reference"><span class="arrow-prev">← </span><span>Syntax Reference</span></a><a class="docs-next button" href="/docs/configuration"><span>Configuration Files</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#rules">Rules</a><ul class="toc-headings"><li><a href="#equality">Equality</a></li><li><a href="#rewrite-expressions">Rewrite expressions</a></li><li><a href="#pattern-match-expressions">Pattern Match expressions</a></li><li><a href="#submatching-with-regular-expressions">Submatching with regular expressions</a></li></ul></li><li><a href="#custom-language-definitions">Custom language definitions</a></li><li><a href="#custom-comby-metasyntax">Custom comby metasyntax</a></li><li><a href="#substituting-fresh-identifiers">Substituting fresh identifiers</a></li></ul></nav></div><footer class="nav-footer" id="footer"><div class="wrapper"><p class="footer">© 2021 <a href="https://twitter.com/rvtond">@rvtond</a> · <a href="/docs/get-started">Get started</a> · <a href="/docs/overview">Docs</a> · <a href="/projects">Projects &amp; Talks</a> · <a href="/blog">Blog</a> · <a href="https://twitter.com/rvtond">Twitter</a></p></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

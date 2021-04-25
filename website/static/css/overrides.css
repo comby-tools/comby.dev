@@ -104,3 +104,8 @@ sup {
     float: left;
     width: 66%;
 }
+
+.bestBlockquote {
+    background-color:#00000000;
+    border-left: 8px solid #ffa504;
+}

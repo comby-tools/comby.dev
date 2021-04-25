@@ -205,6 +205,160 @@ comments, and kinds of string literals. By design, it currently isn't possible
 to further refine the meaning of syntax into keywords or high-level structures
 like functions.
 
+## Custom comby metasyntax
+
+You can change `comby`'s internal syntax, like `:[var]` for variables, to be
+something else, like `$var`. This is done by defining a JSON file for your
+metasyntax. Below is the JSON definition for the default syntax. You can edit it
+in a file like `mine.json`, and then invoke `comby` like this:
+
+```bash
+comby -custom-metasynax mine.json ...
+```
+
+```json
+{
+  "syntax": [
+    // :[var]
+    [ "Hole", [ "Everything" ], [ "Delimited", ":[", "]" ] ],
+    // :[var:e]
+    [ "Hole", [ "Expression" ], [ "Delimited", ":[", ":e]" ] ],
+    // :[[var]]
+    [ "Hole", [ "Alphanum" ],   [ "Delimited", ":[[", "]]" ] ],
+    // :[var.]
+    [ "Hole", [ "Non_space" ],  [ "Delimited", ":[", ".]" ] ],
+    // :[var\n]
+    [ "Hole", [ "Line" ],       [ "Delimited", ":[", "\\n]" ] ],
+    // :[ var]
+    [ "Hole", [ "Blank" ],      [ "Delimited", ":[ ", "]" ] ],
+    // :[var~regex]
+    [ "Regex", ":[", "~", "]" ],
+
+    // String aliases for the "Everything" hole.
+    [ "Hole", [ "Everything" ],
+        [ "Reserved_identifiers",
+            [ "Γ", "Δ", "Θ", "Λ", "Ξ", "Π", "Σ", "Φ", "Ψ", "Ω" ]
+        ]
+    ],
+
+    // String aliases for the "Expression" hole.
+    [ "Hole", [ "Expression" ],
+        [ "Reserved_identifiers",
+            [
+                "α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ",
+                "μ", "ξ", "π", "ρ", "ς", "σ", "τ", "υ", "φ", "χ", "ψ",
+                "ω"
+            ]
+        ]
+    ]
+  ],
+
+  // characters allowed for hole names like "var"
+  "identifier":
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"
+}
+```
+
+Here's what the fields do, and ways that you can customize the syntax.
+
+> Custom syntax is only partially supported in rules. If you make use of rules,
+> it's advised to use the default syntax until full support is available.
+
+#### Custom hole delimiters
+
+The line
+
+```
+[ "Hole", [ "Everything" ], [ "Delimited", ":[", "]" ] ],
+```
+
+Makes it so that the hole that corresponds to matching "Everything" has a left
+delimiter `:[` and a right delimiter `]`. The "Everything" kind hole corresponds to
+the behavior of `:[var]` in the first row of the [syntax reference](syntax-reference).
+To change the syntax so that `$var$` does this matching instead, redefine it like this:
+
+```
+[ "Hole", [ "Everything" ], [ "Delimited", "$", "$" ] ]
+```
+
+If you only want the prefix, like `$var`, then you can make the right delimiter `null`:
+
+```
+[ "Hole", [ "Everything" ], [ "Delimited", "$", null ] ]
+```
+
+You can also make the left delimiter null, if you want `var$` instead:
+
+```
+[ "Hole", [ "Everything" ], [ "Delimited", null, "$" ] ]
+```
+
+You can define multiple of these definitions for the same kind. You can also
+omit any that you don't want.
+
+#### Custom regex hole
+
+The definition for embedding regular expressions is slightly different, because
+`comby` needs some kind of syntax to understand when to stop parsing a regular
+expression pattern. The current format is supported with a definition like this:
+
+```json
+[ "Regex", ":[", "~", "]" ]
+```
+
+You must define both the left and right delimiters, `:[` and `]` respectively,
+as well as a _character_ separator like `~`. Regular expression patterns will
+then be recognized in your template as `:[`_`var`_`~`_`regex-pattern`_`]`. It's
+not currently possible to otherwise change the structure of this syntax.
+
+> The order of definitions are significant _if_ syntax overlaps.
+> For example, in the default syntax, `:[var]` and `:[var~regex]` overlap in the
+> prefix `:[var`. To ensure things work correctly, define the short and simple
+> syntax first, followed by longer variations.
+
+#### Custom identifier characters
+
+By default, `comby` accepts any alphanumeric string, and `_` as valid
+identifiers for a hole like `:[var]`. By changing the `identifiers` field in the
+JSON, you can restrict or grow the set of allowed characters. For example, to allow only
+capital letters for holes, like `$VAR`, define the set as follows:
+
+```
+"identifier": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+```
+
+Now, if `comby` scans sees a pattern in your match template like `$var`, it will
+_not_ think it is a variable, and instead it will match `$var` literally in the
+input program.
+
+> The `_` character reserves special meaning for matching when it is included in
+> the identifier set.
+
+In general, using the same variable twice like `(:[x], :[x])` means that both
+`:[x]` must match the same thing. The exception is when the variable is `:[_]`,
+where `(:[_], :[_])` may or may not match the same thing--the `_` makes the hole
+a wildcard matcher. This behavior cannot currently be customized.
+
+#### Custom hole aliases
+
+Hole aliases are reserved strings and can be optionally defined. When hole
+aliases are defined, `comby` will treat the reserved strings as variables, and
+assign any matching content to that variable name.
+
+```json
+[ "Hole", [ "Expression" ], [ "Reserved_identifiers", [ "α", "αα", "β", "ββ" ] ] ]
+```
+
+This way, you can simply match the input and substitute values by using a
+variable `α`, and avoid any syntax conflicts. You can even [use emojis](../blog/2021/04/25/whatever-you-want-syntax#emoji-movie) if you like.
+
+> If you want to define _only_ `Reserved_identifiers` for holes, you'll
+> currently need to add a placeholder for at least one `Delimited` definition,
+> like `[ "Everything" ], [ "Delimited", "ignore-me", null ]`
+
+It's not currently possible to associate custom syntax with other matching
+behaviors, or alias syntax to a regular expression.
+
 ## Substituting fresh identifiers
 
 Rewrite templates may contain the syntax `:[id()]` which generates a random

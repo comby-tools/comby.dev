@@ -4,7 +4,7 @@
         <title>Comby Blog</title>
         <link>https://comby.dev/blog</link>
         <description>The best place to stay up-to-date with the latest Comby news and events.</description>
-        <lastBuildDate>Fri, 26 Mar 2021 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 25 Apr 2021 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,13 @@
             <link>https://comby.dev/blog</link>
         </image>
         <copyright>© 2021 @rvtond</copyright>
+        <item>
+            <title><![CDATA[Whatever You Want syntax for rewriting code]]></title>
+            <link>https://comby.dev/blog/2021/04/25/whatever-you-want-syntax.html</link>
+            <guid>https://comby.dev/blog/2021/04/25/whatever-you-want-syntax.html</guid>
+            <pubDate>Sun, 25 Apr 2021 06:00:00 GMT</pubDate>
+            <description><![CDATA[ <blockquote> <p>We have color themes for our IDEs. We should have syntax themes for our tools.</p> </blockquote> <p>Search and Replace commands could look like this.</p> <p><code>swap($1, $2)</code> → <code>swap($2, $1)</code></p> <p><code>swap(α, β)</code> → <code>swap(β, α)</code></p> <p><code>swap(🐵, 🍌)</code> → <code>swap(🍌, 🐵)</code></p> <p>With Whatever You Want (WYW) syntax, it’s ...</p>]]></description>
+        </item>
         <item>
             <title><![CDATA[A simple program reducer for any language]]></title>
             <link>https://comby.dev/blog/2021/03/26/comby-reducer.html</link>
