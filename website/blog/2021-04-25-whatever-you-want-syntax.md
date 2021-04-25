@@ -29,7 +29,7 @@ blockquote {
 
 > We have color themes for our IDEs. We should have syntax themes for our tools.
 
-Search-and-replace commands could look like any of these:
+Search-and-replace commands could look like any of these.
 
 `swap($1, $2)` → `swap($2, $1)`
 
@@ -41,7 +41,7 @@ With Whatever You Want (WYW) syntax, it's really up to you.
 
 Like many pattern-matching languages,
 [`comby`](https://github.com/comby-tools/comby) recognizes some reserved syntax
-that has special meaning for matching an input. Think of a `grep` pattern like
+that has special meaning for matching input. Think of a `grep` pattern like
 `.*`. Here the reserved syntax `.` means mean "match any character" and `*`
 means "repeat matching the previous expression zero or more times". In the rest
 of this post I'll just call this reserved syntax a metasyntax. `comby`
@@ -85,7 +85,7 @@ And so I latched onto this idea of being less fastidious about syntax design.
 
 Yes, allowing different language syntax can lead to fragmented and inconsistent
 tooling. But who am I to deprive you from shooting yourself in the foot, O
-mighty developer. Besides, if the tooling is malleable, maybe we can shape it to
+mighty developer? Besides, if the tooling is malleable, maybe we can shape it to
 be in line and consistent with pervading opinions.
 
 I factored out the metasyntax definition in `comby` to support Whatever You
@@ -117,8 +117,9 @@ produces
 Below is the JSON definition for this metasyntax. Entries correspond to the
 matching behavior described in the
 [reference](https://comby.dev/docs/syntax-reference). No need to dwell on this
-format--have a look at the detailed page for [defining your own metasyntax]() if
-you want particulars, but this blog post is really just about enjoying the show.
+format--this blog post is really just about enjoying the show. Have a look at
+the detailed page for [defining your own metasyntax]() if you want particulars
+after reading.
 
 <details>
   <summary><strong>Expand for JSON definition</strong></summary>
