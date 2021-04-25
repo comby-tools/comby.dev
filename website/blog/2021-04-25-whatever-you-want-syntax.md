@@ -155,7 +155,7 @@ comby -stdin -custom-metasyntax dolla.json \
 
 This is a common and familiar syntax in Bash, Perl, PHP, and similar languages.
 It is also a bit more terse than the default `comby` syntax. You might be
-wondering You might ask "What if I want to match a the literal syntax `$var`,
+wondering You might ask "What if I want to match the literal `$var`,
 won't that conflict with this metasyntax?". See the [section on escaping](#on-escaping) later
 in this post if you're interested in this corner case.
 
@@ -403,7 +403,7 @@ comby -stdin -custom-metasyntax dangling.json \
 
 There you have it. Maybe you'd like to define a templating language with
 `{{var}}` or something else, it's Whatever You Want. For the curious reader, and
-to characertize some of the technical details more concretely, I cover some more
+to characterize some of the technical details more concretely, I cover some more
 thoughts on related tools and techniques below.
 
 ### On syntax definitions
