@@ -155,7 +155,7 @@ comby -stdin -custom-metasyntax dolla.json \
 
 This is a common and familiar syntax in Bash, Perl, PHP, and similar languages.
 It is also a bit more terse than the default `comby` syntax. You might be
-wondering You might ask "What if I want to match the literal `$var`,
+wondering You might ask "What if I want to match a the literal syntax `$var`,
 won't that conflict with this metasyntax?". See the [section on escaping](#on-escaping) later
 in this post if you're interested in this corner case.
 
@@ -403,7 +403,7 @@ comby -stdin -custom-metasyntax dangling.json \
 
 There you have it. Maybe you'd like to define a templating language with
 `{{var}}` or something else, it's Whatever You Want. For the curious reader, and
-to characterize some of the technical details more concretely, I cover some more
+to characertize some of the technical details more concretely, I cover some more
 thoughts on related tools and techniques below.
 
 ### On syntax definitions
@@ -416,11 +416,13 @@ is Spoofax's interface for defining language syntax. Generally, syntax
 definition here defines a grammar of input syntax to recognize, and parsing the
 input yields a concrete syntax tree or abstract syntax tree representation. This
 tree is later interpreted or evaluated by another program to perform some
-computation. The WYW metasyntax definition in `comby` works rather differently.
-It only lets you define a comparatively simple syntax for some fields in a JSON
-format (you're not defining a grammar here, just some parts of it). And then,
-those definitions are only associated with preexisting computations that `comby`
-implements (roughly, language-aware context-free matching behavior). Indeed,
+computation.
+
+The WYW metasyntax definition in `comby` operates rather differently. It only
+lets you define a comparatively simple syntax for some fields in a JSON format
+(you're not defining a grammar here, just some parts of it). And then, those
+definitions are only associated with preexisting computations that `comby`
+implements (roughly, language-aware context-free matching). Indeed,
 `comby` is built on the premise that no explicit parse tree or abstract syntax
 tree is needed at all to perform its syntax-tree rewriting. The `comby`
 metasyntax definitions directly parameterize matching behavior and there is no
