@@ -199,9 +199,8 @@ And we'll see `hello there. General Kenobi!`.
 
 ## Comby server
 
-To use the server, you'll need to [build from source](get-started#build-from-source).
-After running `make`, `comby-server` will exist in the directory. You can type
-`make-server` to run the server on port `8888`.
+To use the server, you'll need to build from source. See the [README
+instructions for comby-server](https://github.com/comby-tools/comby-server).
 
 The `comby` server exposes the three HTTP POST endpoints below. These return the
  same JSON values as the respective [command line](#command-line) operations.
