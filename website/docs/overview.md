@@ -35,6 +35,7 @@ following languages:
 table {
     margin-left:auto;
     margin-right:auto;
+    display: table;
 }
 table thead {
  visibility: collapse;
@@ -49,13 +50,13 @@ table tr:nth-child(2n) {
 </style>
 
 
-|            |            |         |            |         |      |       |       |
-|------------|------------|---------|------------|---------|------|-------|-------|
-| Bash       | C          | C++     | C#         | Clojure | CSS  | Dart  | Elm   |
-| Elixir     | Erlang     | Fortran | F#         | Go      | Hask | HTML  | Java  |
-| JavaScript | JSX        | JSON    | Julia      | LaTeX   | Lisp | Nim   | OCaml |
-| Pascal     | PHP        | Python  | Reason     | Ruby    | Rust | Scala | SQL   |
-| Swift      | Plain Text | TSX     | TypeScript |         |      |       |       |
+|        |            |        |         |            |        |        |            |          |
+|--------|------------|--------|---------|------------|--------|--------|------------|----------|
+| Bash   | C/C++      | C#     | Clojure | Coq        | CSS    | Dart   | Elm        | Elixir   |
+| Erlang | Fortran    | F#     | Go      | Haskell    | HTML   | Java   | JavaScript | JSX      |
+| JSON   | Kotlin     | Julia  | LaTeX   | Lisp       | Nim    | MATLAB | Move       | Pascal   |
+| PHP    | Plain Text | Python | R       | ReScript   | Ruby   | Rust   | Scala      | Solidity |
+| SQL    | Terraform  | Swift  | TSX     | TypeScript |        |        |            |          |
 
 Comby also implements a generic matcher that works as a fallback parser for data
 formats similar to JSON, new languages, and existing ones that may not have

@@ -39,6 +39,10 @@
       "overview": {
         "title": "Overview"
       },
+      "rewrite-properties": {
+        "title": "Rewrite properties",
+        "sidebar_label": "Rewrite Properties"
+      },
       "syntax-reference": {
         "title": "Syntax Reference",
         "sidebar_label": "Syntax Reference"
