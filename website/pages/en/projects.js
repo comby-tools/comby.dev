@@ -15,7 +15,7 @@ const TalkListItem = (props) => (
     <div>
         <a href={props.abstract}><img width="12px" src="/img/file-regular.svg"></img> Abstract</a> &nbsp;
         <a href={props.slides}><img width="15px" src="/img/desktop-solid.svg"></img> Slides</a> &nbsp;
-        {props.paper === undefined ? '' : <a href={props.paper}><img width="10px" src="img/book-solid.svg"></img> Paper &nbsp;</a>}
+        {props.paper === undefined ? '' : <a href={props.paper}><img width="10px" src="/img/book-solid.svg"></img> Paper &nbsp;</a>}
         <a href={props.video}><img width="18px" src="/img/youtube-brands.svg"></img> Talk Recording</a> {props.subtitles ? '(turn on subtitles)' : ''}
     </div>
     <br></br>
