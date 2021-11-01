@@ -15,7 +15,7 @@ blockquote {
 </style>
 
 > **The bottom line:** Comby lets you search and change many kinds of code structures with
-greater ease than what regular expessions alone allow.
+greater ease than what regular expressions alone allow.
 
 
 ### The basic idea
