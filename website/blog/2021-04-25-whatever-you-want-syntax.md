@@ -3,7 +3,7 @@ id: whatever-you-want-syntax
 title: Whatever You Want syntax for rewriting code
 author: Rijnard
 authorURL: https://twitter.com/rvtond
-authorImageURL: https://pbs.twimg.com/profile_images/1146126296889593858/jM_N3HPx_400x400.png
+authorImageURL: https://pbs.twimg.com/profile_images/1453928889013596163/PHv3cB1g_400x400.jpg
 ---
 
 <style>
