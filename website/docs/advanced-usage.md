@@ -70,7 +70,7 @@ useful for rewriting repetitions of a pattern. This example converts arguments
 of a dict to a JSON-like format, where `dict(foo=bar,baz=qux)` becomes
 `{"foo": bar, "baz": qux}`:
 
-`dict(:[args])` => `:[args]`
+`dict(:[args])` => `{:[args]}`
 
 `where rewrite :[args] {  ":[[k]]=:[[v]]" -> "\":[k]\": :[v]" }`
 
