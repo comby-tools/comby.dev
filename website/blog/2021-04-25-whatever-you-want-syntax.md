@@ -251,7 +251,7 @@ comby -stdin -custom-metasyntax emoji.json \
 
 When variables are used multiple times in a pattern, it implies that they should
 be textually equal. For example, if we wanted to check that two arguments of an
-`add` function are are equal, we could write a transformation like this:
+`add` function are equal, we could write a transformation like this:
 
 ```bash
 echo 'add(x, x)' | \

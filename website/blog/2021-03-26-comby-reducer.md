@@ -285,7 +285,7 @@ In turn, this often lead to a reduction to something like `func () {}` which
 then ends up being removed by a transformation that deletes lines. Nice!
 
 Because I had an easy way to introduce new transformations, I wanted more
-insight into into how transformations behaved. This helped me understand what I
+insight into how transformations behaved. This helped me understand what I
 could add to help reduction along, or even just discover transformations that
 would improve formatting.
 

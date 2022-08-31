@@ -136,7 +136,7 @@ Use on the command line to see this in action.
 
 ## Resolving clashes with property names
 
-Let's say you you want to literally insert the text `.length` after a hole. We
+Let's say you want to literally insert the text `.length` after a hole. We
 can't use `:[hole].length` because that reserved syntax will substitute the
 _length of the match_, and not insert the text `.length`. To resolve a clash like this,
 simply use `:[hole].value` instead of `:[hole]` to substitute the value of
