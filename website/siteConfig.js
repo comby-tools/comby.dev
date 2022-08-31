@@ -6,22 +6,12 @@
 // List of projects/orgs using your project for the users page.
 const users = [
   {
-    caption: 'Featured blog → Faster Refactoring with Comby',
+    caption: 'Featured blog → Automatically Migrating Eq of No (/=) in Haskell',
     image: 'img/blog-solid.svg',
-    infoLink: 'https://stefanbuck.com/blog/faster-refactoring-with-comby',
+    infoLink: 'https://reasonablypolymorphic.com/blog/comby/',
   },
   {
-    caption: 'Merged Pull Requests',
-    image: 'img/octicon-merged.svg',
-    infoLink: '/projects',
-  },
-  {
-    caption: 'Search Popular GitHub Repos with Comby',
-    image: 'img/search.svg',
-    infoLink: '/redirect'
-  },
-  {
-    caption: 'Projects using Comby',
+    caption: 'Projects and merged changes using Comby',
     image: 'img/tools-solid.svg',
     infoLink: '/projects'
   },
