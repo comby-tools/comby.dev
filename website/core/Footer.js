@@ -10,7 +10,7 @@ class Footer extends React.Component {
       <footer className="nav-footer" id="footer">
         <div className="wrapper">
           <p className="footer">
-            © 2021 <a href="https://twitter.com/rvtond">@rvtond</a>{' · '}
+            © 2022 <a href="https://twitter.com/rvtond">@rvtond</a>{' · '}
             <a href={docUrl('get-started')}>Get started</a>
             {' · '}
             <a href={docUrl('overview')}>Docs</a>
