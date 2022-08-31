@@ -15,7 +15,7 @@ blockquote {
 </style>
 
 > **The bottom line:** Comby lets you search and change many kinds of code structures with
-greater ease than what regular expessions alone allow.
+greater ease than what regular expressions alone allow.
 
 
 ### The basic idea
@@ -56,7 +56,7 @@ table tr:nth-child(2n) {
 | Erlang | Fortran    | F#     | Go      | Haskell    | HTML   | Java   | JavaScript | JSX      |
 | JSON   | Kotlin     | Julia  | LaTeX   | Lisp       | Nim    | MATLAB | Move       | Pascal   |
 | PHP    | Plain Text | Python | R       | ReScript   | Ruby   | Rust   | Scala      | Solidity |
-| SQL    | Terraform  | Swift  | TSX     | TypeScript |        |        |            |          |
+| SQL    | Terraform  | Swift  | TSX     | TypeScript | XML    | Zig    |            |          |
 
 Comby also implements a generic matcher that works as a fallback parser for data
 formats similar to JSON, new languages, and existing ones that may not have
