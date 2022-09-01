@@ -210,7 +210,7 @@ non-matches I found by using the new `:[x].lsif.hover` ability.
 ❌ `var hashCh chan *blockTxHashes` --- we don't want to match this, its a channel type `chan`!
 - This valid `nil` check lives in [`github/ethereum/go-ethereum`](https://sourcegraph.com/github.com/ethereum/go-ethereum@d10c28030944d1c32febba3f45ae8c175ab34063/-/blob/core/rawdb/chain_iterator_test.go?L84-85&subtree=true)
 
-You can use other patterns to achieve the similar things, with deeper or looser
+You can use other patterns to achieve similar things, with deeper or looser
 precision. For example, you could write a regex pattern to match undesired
 cases where the string contains `chan`, and then explicitly exclude such matches.
 
