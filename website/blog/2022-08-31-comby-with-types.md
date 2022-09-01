@@ -344,7 +344,7 @@ See more at the end of the post if you want to try things out yourself.<sup>[4](
 
 I've gotten this question a couple of times from my developer friends, and
 often they're able to nod their heads that accessing this kind of type
-information theoretically useful, but they really want to see concrete
+information is theoretically useful, but they really want to see concrete
 examples. The reality is that vast amounts of changes that simplify
 expressions, modernize functions, or apply lint-like fixes require type
 information. 
