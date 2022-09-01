@@ -65,7 +65,7 @@ not if `x` is a pointer or channel.<sup>[2](#footnotes)</sup> If we only have th
 really is no way to know if the change is valid. Ever since then I've
 wanted a way to pull type information into `comby`. 
 
-Now there's now an experimental way to query type information with
+There's now an experimental way to query type information with
 `comby` that solves this kind of issue. The main idea is to write [a rule](../../../../docs/advanced-usage#rules) that pattern matches against
 type information in hover tool tips (i.e., type-on-hover data).
 
