@@ -81,7 +81,7 @@ This kind of rule gives enough flexibility to avoid false positives, filtering
 and changing only code where type-on-hover suggests we have a slice (like
 `[]string` syntax in Go) or map (like `map[string]string)` on our hands.
 
-A few of things need to fall in place for this to work, and only a couple of
+A few things need to fall in place for this to work, and only a couple of
 open source projects and languages are supported right now. It's meant to be an
 early interface, implemented to generically support future language and project
 expansions. Read on to learn what's possible at the frontier of simpler find
