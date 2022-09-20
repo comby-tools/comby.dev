@@ -130,7 +130,7 @@ then matching continues up to the end of the line, or until we encounter block
 syntax like `{...}` in JavaScript, whichever comes first. See the example
 `if :[hole]` on the [playground ↗](https://bit.ly/31xX5Wg).
 
-## Stuctural matching
+## Structural matching
 
 If holes only matched lazily up to patterns like `<=` it wouldn't be much more
 special than using `.*?` in regex to match a bunch of characters. But matching
