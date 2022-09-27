@@ -6,22 +6,12 @@
 // List of projects/orgs using your project for the users page.
 const users = [
   {
-    caption: 'Featured blog → Faster Refactoring with Comby',
+    caption: 'Featured blog → Automatically Migrating Eq of No (/=) in Haskell',
     image: 'img/blog-solid.svg',
-    infoLink: 'https://stefanbuck.com/blog/faster-refactoring-with-comby',
+    infoLink: 'https://reasonablypolymorphic.com/blog/comby/',
   },
   {
-    caption: 'Merged Pull Requests',
-    image: 'img/octicon-merged.svg',
-    infoLink: 'https://github.com/squaresLab/pldi-artifact-2019/blob/master/PullRequests.md',
-  },
-  {
-    caption: 'Search Popular GitHub Repos with Comby',
-    image: 'img/search.svg',
-    infoLink: '/redirect'
-  },
-  {
-    caption: 'Projects using Comby',
+    caption: 'Projects and merged changes using Comby',
     image: 'img/tools-solid.svg',
     infoLink: '/projects'
   },
@@ -94,7 +84,14 @@ const siteConfig = {
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: [],
+  scripts: [
+      {
+          src: 'https://plausible.io/js/plausible.js',
+          async: true,
+          defer: true,
+          'data-domain': 'comby.dev',
+      }
+  ],
 
   // Put Table of Contents on the right side of the page
   onPageNav: 'separate',
@@ -102,15 +99,15 @@ const siteConfig = {
   // No .html extensions for paths.
   cleanUrl: true,
 
-//  algolia: {
-//    apiKey: '...',
-//    This name must match the index name here:
-//    https://github.com/algolia/docsearch-configs/blob/master/configs/comby.json
-//    indexName: '...',
-//    algoliaOptions: {}, // Optional, if provided by Algolia
-//  },
+algolia: {
+  apiKey: '2338f495ecf7cf858c6f1d73e1634c85',
+  //  This name must match the index name here:
+  //  https://github.com/algolia/docsearch-configs/blob/master/configs/comby.json
+  indexName: 'comby',
+  algoliaOptions: {}, // Optional, if provided by Algolia
+},
 
-  gaTrackingId: 'UA-142487942-1',
+//  gaTrackingId: 'UA-142487942-1',
 };
 
 module.exports = siteConfig;

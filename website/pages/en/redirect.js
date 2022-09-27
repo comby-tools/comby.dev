@@ -47,7 +47,7 @@ class Redirect extends React.Component {
                 {/*<MarkdownBlock>{searchExample}</MarkdownBlock>*/}
                 <div className="productShowcaseSection">
                   <div style={{paddingTop: '1.2em'}}>
-                    <Button href="https://sourcegraph.com/search?q=repogroup:go-gh-100+-file:vendor+errors.New%28fmt.Sprintf%28:%5B_%5D%29%29&patternType=structural">Take me there ↗</Button>
+                    <Button href="https://sourcegraph.com/search?q=context:%40r/go-100-gh+-file:vendor+errors.New%28fmt.Sprintf%28...%29%29&patternType=structural">Take me there ↗</Button>
                   </div>
                 </div>
               </PageSection>

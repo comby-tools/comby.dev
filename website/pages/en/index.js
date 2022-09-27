@@ -152,7 +152,7 @@ Comby is designed to support <a href="docs/overview#does-it-work-on-my-language"
               </p>
             </div>
           </div>
-<video id="background-video" style={{width: '100%', marginTop: '0.5em', borderRadius: '5px'}} loop autoPlay>
+<video id="background-video" style={{width: '100%', marginTop: '0.5em', borderRadius: '5px'}} loop autoPlay controls>
     <source  src={`${baseUrl}img/comby-errorf.mp4`} type="video/mp4" />
     <source src={`${baseUrl}img/comby-errorf.mp4`} type="video/ogg" />
     Your browser does not support the video tag.
@@ -184,9 +184,9 @@ Comby is designed to support <a href="docs/overview#does-it-work-on-my-language"
             </div>
             <div className="column">
               <p>
-                Watch the <a href="docs/talks/strange-loop-2018">Strange Loop talk</a> to learn more about Comby.
+                Watch the <a href="https://www.youtube.com/watch?v=JMZLBB_BFNg&feature=emb_title">Strange Loop talk</a> to learn more about Comby.
               </p>
-              <blockquote className="monotone">
+              <blockquote className="bestBlockquote">
                 <p>
                   This talk shares the core ideas and motivation behind Comby, and example uses and applications.
                 </p>

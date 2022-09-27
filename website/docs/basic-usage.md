@@ -32,7 +32,7 @@ func main() {
 ```
 
 We can match the arguments to `fmt.Println` with this _match template_ using
-`comby` syntax:
+Comby syntax:
 
 ```plaintext
 fmt.Println(:[arguments])
@@ -68,24 +68,17 @@ comby 'fmt.Println(:[args])' 'fmt.Println(fmt.Sprintf("comby says %s", :[args]))
 Or see it in action in the online [playground ↗](https://bit.ly/2XpttJG)
 
 
-Holes are the only special part in match templates, and they always have the
-form `:[...]`. *All other characters are interpreted literally* (there's a bit
-of detail about whitespace that we'll talk about in the next part). The point is
-that you *never* have to escape any characters in your template. Just say what
-you mean!
-
-There are more kinds of holes to match other kinds of strings, described in the
-[Syntax Reference](syntax-reference) in the next section. For the rest of this
-page, we'll focus on the main thing to understand, which is is the basic
-behavior of the `:[hole]` introduced above. of this page.
+*All other characters are interpreted literally* except for [recognized syntax](syntax-reference).
+There's a bit of detail about whitespace that you'll
+find at the end of this page. The point is that you *never* have to escape any
+characters in your template. Just say what you mean!
 
 ## How matching works
 
-`:[hole]` matches all characters, including newlines. If the match template was
-just `:[file_content]`, it would match all the file content. The way `:[hole]`
-starts and stops matching depends on the code structure around it. Let's look at
-a next example. There's some Javascript code on the left, and a match template
-on the right:
+The way `:[hole]` starts and stops matching depends on the code structure around
+it. We can also use the syntax `...` to mean a hole that we don't give a name
+to. Let's look at a next example. There's some Javascript code on the left, and
+a match template on the right:
 
 <style>
 table thead {
@@ -125,15 +118,19 @@ These holes match lazily: they look for the shortest way to satisfy the match.
 One way to refine matching is to add concrete context around holes based on what
 we care about. For example, we could match `height` to `:[height]` with either templates
 
--- `if (:[_] && :[height] :[_])` or
+-- `if (... && :[height] ...)` or
 
--- `if (:[_] :[height] <= 800)`
+-- `if (... :[height] <= 800)`
 
 What we use just depends on what we care about in the surrounding code. Note we
-used `_` as an identifier that we didn't care to avoid giving a descriptive
-name.
+used `...` as a hole to avoid giving a descriptive name.
 
-## Stuctural matching
+When `:[hole]` occurs outside of delimiters, at the top-level of a template,
+then matching continues up to the end of the line, or until we encounter block
+syntax like `{...}` in JavaScript, whichever comes first. See the example
+`if :[hole]` on the [playground ↗](https://bit.ly/31xX5Wg).
+
+## Structural matching
 
 If holes only matched lazily up to patterns like `<=` it wouldn't be much more
 special than using `.*?` in regex to match a bunch of characters. But matching
@@ -183,13 +180,56 @@ Comby understands this interaction between delimiters, strings, and comments and
 makes reasonable guesses for your language based on file extension. You can also
 force a particular matcher with a command line option, see the [Quick Reference](cheat-sheet#select-the-language-to-parse).
 And, you can always fall back to a generic matcher for files or languages that
-are not explicitly supported. You can find out more about [language support and extension](http://localhost:3000/docs/advanced-usage#custom-language-definitions).
+are not explicitly supported. You can find out more about [language support and extension](advanced-usage#custom-language-definitions).
 
 Note that if we tried to use a regex above, our pattern would need to understand
 that `/* */` delineates comments, otherwise it would get confused by the
 parenthesis inside! The same problem comes up for the string literal argument,
 which contains an unbalanced parenthesis. A regular expression that takes all of
 this into account would get ugly fast, and that's only for Javascript!
+
+## Using regular expressions
+
+Comby supports combining regular expressions with structural matching. The basic
+syntax is `:[hole~regex]` where `regex` is some PCRE regular expression.
+For example:
+
+```text
+:[fn~\w+](:[arg~\d+])
+```
+
+This template matches syntax that look like calls which have one argument consisting only of numbers:
+
+```
+foo(777)          // match
+bar(not_a_number) // no match
+baz(123)          // match
+```
+
+> [playground ↗](https://bit.ly/2D9pcSq)
+
+
+There is one special rule to keep in mind when you use regex. Comby will try its
+best to _first_ match your regular expression before carrying on with
+matching the rest of the template. In Comby, regular expressions in the template
+are _inlined_ and part of matching. This gives you a lot of power, because you
+can match anything you like, including special syntax like parentheses. But that
+also means that regular expressions can swallow syntax that prevents
+well-structured matching.
+
+For example, a template like `foo(:[hole~.*])` will not match `foo(bar)`. The
+regex `.*` means Comby will greedy match zero or more of _any_ character,
+including `)`. Comby will reach a point where `hole` matches `bar)`, and will
+then expect a `)` in the template, but the `)` will already have been matched by
+the regular expression.
+
+So: be careful about inling regex holes. For convenience, Comby provides some
+additional hole syntax for safe regular expressions. For example, the syntax
+`:[[hole]]` can be used instead of `:[hole~\w+]`. Another available safe option
+is to first extract syntax without regular expressions, and then use
+[rules](advanced-usage#submatching-with-regular-expressions) to match the
+extracted syntax with regular expressions. This is similar to piping the
+contents to regex matching.
 
 ## About whitespace
 

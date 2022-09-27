@@ -3,7 +3,7 @@ id: new-blog-site
 title: Comby website gets a refresh
 author: Rijnard
 authorURL: https://twitter.com/rvtond
-authorImageURL: https://pbs.twimg.com/profile_images/1146126296889593858/jM_N3HPx_400x400.png
+authorImageURL: https://pbs.twimg.com/profile_images/1453928889013596163/PHv3cB1g_400x400.jpg
 ---
 
 The [old website](https://old.comby.dev) started off nice and simple and kept everything about

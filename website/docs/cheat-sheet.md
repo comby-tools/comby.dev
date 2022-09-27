@@ -43,7 +43,8 @@ See `comby -help` for a complete list of flags.
 
 ### Run multiple search-and-replace templates?
 
-Use a directory of rewrite templates with the `-templates` option and run it like so:
+Have a look at using [configuration files](configuration). Alternatively, use a
+directory of rewrite templates with the `-templates` option and run it like so:
 
 ```bash
 comby -f .go -templates /path/to/directory

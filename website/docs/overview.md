@@ -5,7 +5,7 @@ title: Overview
 
 Comby provides a lightweight way of matching syntactic structures of a program's
 parse tree, like expressions and function blocks. Comby is language-aware and
-understands basic syntax of code, strings, and comment syntax many languages.
+understands basic syntax of code, strings, and comment syntax in many languages.
 
 <style>
 blockquote {
@@ -15,7 +15,7 @@ blockquote {
 </style>
 
 > **The bottom line:** Comby lets you search and change many kinds of code structures with
-greater ease than what regular expessions alone allow.
+greater ease than what regular expressions alone allow.
 
 
 ### The basic idea
@@ -35,6 +35,7 @@ following languages:
 table {
     margin-left:auto;
     margin-right:auto;
+    display: table;
 }
 table thead {
  visibility: collapse;
@@ -49,13 +50,13 @@ table tr:nth-child(2n) {
 </style>
 
 
-|            |            |         |            |         |      |       |       |
-|------------|------------|---------|------------|---------|------|-------|-------|
-| Bash       | C          | C++     | C#         | Clojure | CSS  | Dart  | Elm   |
-| Elixir     | Erlang     | Fortran | F#         | Go      | Hask | HTML  | Java  |
-| Javascript | JSX        | JSON    | Julia      | LaTeX   | Lisp | Nim   | OCaml |
-| Pascal     | PHP        | Python  | Reason     | Ruby    | Rust | Scala | SQL   |
-| Swift      | Plain Text | TSX     | Typescript |         |      |       |       |
+|        |            |        |         |            |        |        |            |          |
+|--------|------------|--------|---------|------------|--------|--------|------------|----------|
+| Bash   | C/C++      | C#     | Clojure | Coq        | CSS    | Dart   | Elm        | Elixir   |
+| Erlang | Fortran    | F#     | Go      | Haskell    | HTML   | Java   | JavaScript | JSX      |
+| JSON   | Kotlin     | Julia  | LaTeX   | Lisp       | Nim    | MATLAB | Move       | Pascal   |
+| PHP    | Plain Text | Python | R       | ReScript   | Ruby   | Rust   | Scala      | Solidity |
+| SQL    | Terraform  | Swift  | TSX     | TypeScript | XML    | Zig    |            |          |
 
 Comby also implements a generic matcher that works as a fallback parser for data
 formats similar to JSON, new languages, and existing ones that may not have

@@ -6,8 +6,10 @@
     ],
     "Usage": [
       "basic-usage",
+      "rewrite-properties",
       "syntax-reference",
       "advanced-usage",
+      "configuration",
       "cheat-sheet"
     ],
     "API": [

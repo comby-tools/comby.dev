@@ -18,13 +18,13 @@ table tr:nth-child(2n) {
 }
 </style>
 
-|          |                                                                                             |
-|----------|---------------------------------------------------------------------------------------------|
-| Mac OS X | `brew install comby`                                                                        |
-| Ubuntu   | `bash <(curl -sL get.comby.dev)`                                                            |
-| Windows  | `bash <(curl -sL get.comby.dev)` after installing Ubuntu with [WSL](https://ubuntu.com/wsl) |
-| Docker   | `docker pull comby/comby`                                                                   |
-|          |                                                                                             |
+|          |                                                                                                     |
+|----------|-----------------------------------------------------------------------------------------------------|
+| Mac OS X | `brew install comby`                                                                                |
+| Ubuntu   | `bash <(curl -sL get-comby.netlify.app)`                                                            |
+| Windows  | `bash <(curl -sL get-comby.netlify.app)` after installing Ubuntu with [WSL](https://ubuntu.com/wsl) |
+| Docker   | `docker pull comby/comby`                                                                           |
+|          |                                                                                                     |
 
 Or [build from source](#build-from-source). Having trouble? Ask in [Gitter](https://gitter.im/comby-tools/community) or [create an issue on GitHub](https://github.com/comby-tools/comby/issues/new/choose).
 
