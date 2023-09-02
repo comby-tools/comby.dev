@@ -50,13 +50,13 @@ table tr:nth-child(2n) {
 </style>
 
 
-|        |            |        |         |            |        |        |            |          |
-|--------|------------|--------|---------|------------|--------|--------|------------|----------|
-| Bash   | C/C++      | C#     | Clojure | Coq        | CSS    | Dart   | Elm        | Elixir   |
-| Erlang | Fortran    | F#     | Go      | Haskell    | HTML   | Java   | JavaScript | JSX      |
-| JSON   | Kotlin     | Julia  | LaTeX   | Lisp       | Nim    | MATLAB | Move       | Pascal   |
-| PHP    | Plain Text | Python | R       | ReScript   | Ruby   | Rust   | Scala      | Solidity |
-| SQL    | Terraform  | Swift  | TSX     | TypeScript | XML    | Zig    |            |          |
+|          |            |            |         |            |            |        |            |          |
+|----------|------------|------------|---------|------------|------------|--------|------------|----------|
+| Bash     | C/C++      | C#         | Clojure | Coq        | CSS        | Dart   | Elm        | Elixir   |
+| Erlang   | Fortran    | F#         | Go      | Haskell    | HTML       | Java   | JavaScript | JSX      |
+| JSON     | Kotlin     | Julia      | LaTeX   | Lisp       | Nim        | MATLAB | Move       | OCaml    |
+| Pascal   | PHP        | Plain Text | Python  | R          | ReScript   | Ruby   | Rust       | Scala    |
+| Solidity | SQL        | Terraform  | Swift   | TSX        | TypeScript | XML    | Zig        |          |
 
 Comby also implements a generic matcher that works as a fallback parser for data
 formats similar to JSON, new languages, and existing ones that may not have

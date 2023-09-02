@@ -3,7 +3,7 @@ id: comby-with-types
 title: Find and replace with type information
 author: Rijnard
 authorURL: https://twitter.com/rvtond
-authorImageURL: https://pbs.twimg.com/profile_images/1453928889013596163/PHv3cB1g_400x400.jpg 
+authorImageURL: https://pbs.twimg.com/profile_images/1668091943950364675/ok0uhR3s_400x400.jpg
 ---
 
 <style>
