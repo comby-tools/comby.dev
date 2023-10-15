@@ -7,13 +7,6 @@ Comby provides a lightweight way of matching syntactic structures of a program's
 parse tree, like expressions and function blocks. Comby is language-aware and
 understands basic syntax of code, strings, and comment syntax in many languages.
 
-<style>
-blockquote {
-    background-color:#00000000;
-    border-left: 8px solid #ffa504;
-}
-</style>
-
 > **The bottom line:** Comby lets you search and change many kinds of code structures with
 greater ease than what regular expressions alone allow.
 
@@ -30,24 +23,6 @@ text of every language).
 
 Comby implements basic parsers for the
 following languages:
-
-<style>
-table {
-    margin-left:auto;
-    margin-right:auto;
-    display: table;
-}
-table thead {
- visibility: collapse;
-}
-table td {
-    border: none;
-}
-table tr:nth-child(2n) {
-  background-color: transparent;
-}
-
-</style>
 
 
 |          |            |            |         |            |            |        |            |          |

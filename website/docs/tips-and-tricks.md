@@ -1,20 +1,4 @@
 
-<style>
-blockquote {
-    // background-color:#00000000;
-    border-left: 2px solid #ffa504;
-    border-bottom: 2px solid #ffa504;
-    border-left: 0px;
-//    border-radius: 20px 0px 0px 20px;
-    border-radius: 0px 20px 20px 0px;
-    text-align: right;
-    padding: 0px 10px 0px 0px;
-    align: right;
-    width: 115px;
-    margin-left: 85%;
-}
-</style>
-
 ## Tips and tricks
 → Know that you're looking for a specific string? Go faster by using [ripgrep](https://github.com/BurntSushi/ripgrep) to quickly filter files and then pipe them to `comby`:
 

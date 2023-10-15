@@ -4,22 +4,6 @@ title: Frequently Asked Questions
 sidebar_label: FAQ
 ---
 
-<style>
-blockquote {
-    // background-color:#00000000;
-    border-left: 2px solid #ffa504;
-    border-bottom: 2px solid #ffa504;
-    border-left: 0px;
-//    border-radius: 20px 0px 0px 20px;
-    border-radius: 0px 20px 20px 0px;
-    text-align: right;
-    padding: 0px 10px 0px 0px;
-    align: right;
-    width: 115px;
-    margin-left: 85%;
-}
-</style>
-
 ## Isn't a regex approach like `sed` good enough?
 
 Sometimes, yes. But often, small changes and refactorings are complicated by

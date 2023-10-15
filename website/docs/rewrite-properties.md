@@ -4,51 +4,6 @@ title: Rewrite properties
 sidebar_label: Rewrite Properties
 ---
 
-<style>
-blockquote {
-    // background-color:#00000000;
-    border-left: 2px solid #ffa504;
-    border-bottom: 2px solid #ffa504;
-    border-left: 0px;
-//    border-radius: 20px 0px 0px 20px;
-    border-radius: 0px 20px 20px 0px;
-    text-align: right;
-    padding: 0px 10px 0px 0px;
-    align: right;
-    width: 115px;
-    margin-left: 85%;
-}
-</style>
-
-<style>
-table {
-  display: table;
-}
-table th {
-  background-color: transparent;
-  border: none;
-}
-table td:first-child {
-  width: 15em;
-  min-width: 15em;
-  max-width: 15em;
-//  word-break: break-all;
-}
-//table td:nth-child(2) {
-//  width: 10em;
-//  min-width: 10em;
-//  max-width: 10em;
-//  word-break: break-all;
-//}
-table td {
-    border: none;
-}
-table tr:nth-child(2n) {
-  background-color: transparent;
-}
-
-</style>
-
 Comby has convenient built-in properties to transform and substitute matched
 values for certain use cases that commonly crop up when rewriting code. For
 example, `:[hole].Capitalize` will capitalize a string matched by `hole` (if

@@ -7,19 +7,6 @@ This is a quick reference guide for useful comby options.
 
 ## Useful command line options
 
-<style>
-table thead {
- visibility: collapse;
-}
-table td {
-    border: none;
-}
-table tr:nth-child(2n) {
-  background-color: transparent;
-}
-
-</style>
-
 |                       |                                                                                                   |
 |-----------------------|---------------------------------------------------------------------------------------------------|
 | `-i`                  | replace files in place                                                                            |

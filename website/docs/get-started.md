@@ -6,18 +6,6 @@ sidebar_label: Get Started
 
 ## Install
 
-<style>
-table thead {
- visibility: collapse;
-}
-table td {
-    border: none;
-}
-table tr:nth-child(2n) {
-  background-color: transparent;
-}
-</style>
-
 |          |                                                                                                     |
 |----------|-----------------------------------------------------------------------------------------------------|
 | Mac OS X | `brew install comby`                                                                                |

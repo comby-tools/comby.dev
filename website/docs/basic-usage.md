@@ -4,22 +4,6 @@ title: The Basics
 sidebar_label: Basic Usage
 ---
 
-<style>
-blockquote {
-    // background-color:#00000000;
-    border-left: 2px solid #ffa504;
-    border-bottom: 2px solid #ffa504;
-    border-left: 0px;
-//    border-radius: 20px 0px 0px 20px;
-    border-radius: 0px 20px 20px 0px;
-    text-align: right;
-    padding: 0px 10px 0px 0px;
-    align: right;
-    width: 115px;
-    margin-left: 85%;
-}
-</style>
-
 ## Overview
 
 Comby is a tool for searching and rewriting code. You start by writing a simple
@@ -79,32 +63,6 @@ The way `:[hole]` starts and stops matching depends on the code structure around
 it. We can also use the syntax `...` to mean a hole that we don't give a name
 to. Let's look at a next example. There's some Javascript code on the left, and
 a match template on the right:
-
-<style>
-table thead {
- visibility: collapse;
-}
-table td {
-  width: 25em;
-  min-width: 25em;
-  max-width: 25em;
-  border: none;
-}
-table tr:nth-child(2n) {
-  background-color: transparent;
-}
-table td:nth-child(2n) {
-  border: 2px dotted gray;
-  border-top: none;
-  border-bottom:none;
-}
-code {
-  background-color: #f0f0f0;
-}
-table tr {
-  background-color: #f0f0f0;
-}
-</style>
 
 |                                                                                   |                                     |
 |-----------------------------------------------------------------------------------|-------------------------------------|

@@ -39,17 +39,17 @@ module.exports={
       "@docusaurus/preset-classic",
       {
         "docs": {
-          "path": "../website/docs",
+          "path": "./docs",
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
           "editUrl": "https://github.com/comby-tools/comby.dev/edit/master/website/docs/",
-          "sidebarPath": "../website/sidebars.json"
+          "sidebarPath": "./sidebars.json"
         },
         "blog": {
-          "path": "blog"
+          "path": "./blog"
         },
         "theme": {
-          "customCss": "../src/css/customTheme.css"
+          "customCss": "./src/css/customTheme.css"
         }
       }
     ]
