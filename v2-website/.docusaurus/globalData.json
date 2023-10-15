@@ -1,0 +1,87 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "overview",
+          "docs": [
+            {
+              "id": "advanced-usage",
+              "path": "/docs/advanced-usage",
+              "sidebar": "core"
+            },
+            {
+              "id": "api",
+              "path": "/docs/api",
+              "sidebar": "core"
+            },
+            {
+              "id": "basic-usage",
+              "path": "/docs/basic-usage",
+              "sidebar": "core"
+            },
+            {
+              "id": "cheat-sheet",
+              "path": "/docs/cheat-sheet",
+              "sidebar": "core"
+            },
+            {
+              "id": "configuration",
+              "path": "/docs/configuration",
+              "sidebar": "core"
+            },
+            {
+              "id": "faq",
+              "path": "/docs/faq",
+              "sidebar": "core"
+            },
+            {
+              "id": "get-help",
+              "path": "/docs/get-help",
+              "sidebar": "core"
+            },
+            {
+              "id": "get-started",
+              "path": "/docs/get-started",
+              "sidebar": "core"
+            },
+            {
+              "id": "overview",
+              "path": "/docs/overview",
+              "sidebar": "core"
+            },
+            {
+              "id": "rewrite-properties",
+              "path": "/docs/rewrite-properties",
+              "sidebar": "core"
+            },
+            {
+              "id": "syntax-reference",
+              "path": "/docs/syntax-reference",
+              "sidebar": "core"
+            },
+            {
+              "id": "tips-and-tricks",
+              "path": "/docs/tips-and-tricks"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "core": {
+              "link": {
+                "path": "/docs/overview",
+                "label": "overview"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

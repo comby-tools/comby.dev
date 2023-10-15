@@ -1,0 +1,18 @@
+{
+  "unversionedId": "tips-and-tricks",
+  "id": "tips-and-tricks",
+  "title": "tips-and-tricks",
+  "description": "blockquote {",
+  "source": "@site/../website/docs/tips-and-tricks.md",
+  "sourceDirName": ".",
+  "slug": "/tips-and-tricks",
+  "permalink": "/docs/tips-and-tricks",
+  "draft": false,
+  "editUrl": "https://github.com/comby-tools/comby.dev/edit/master/website/docs/../website/docs/tips-and-tricks.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {}
+}

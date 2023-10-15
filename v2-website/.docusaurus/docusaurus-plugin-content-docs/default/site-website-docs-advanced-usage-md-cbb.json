@@ -1,0 +1,31 @@
+{
+  "unversionedId": "advanced-usage",
+  "id": "advanced-usage",
+  "title": "Advanced Usage",
+  "description": ".blockquote-playground {",
+  "source": "@site/../website/docs/advanced-usage.md",
+  "sourceDirName": ".",
+  "slug": "/advanced-usage",
+  "permalink": "/docs/advanced-usage",
+  "draft": false,
+  "editUrl": "https://github.com/comby-tools/comby.dev/edit/master/website/docs/../website/docs/advanced-usage.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "advanced-usage",
+    "title": "Advanced Usage",
+    "sidebar_label": "Advanced Usage"
+  },
+  "sidebar": "core",
+  "previous": {
+    "title": "Syntax Reference",
+    "permalink": "/docs/syntax-reference"
+  },
+  "next": {
+    "title": "Configuration Files",
+    "permalink": "/docs/configuration"
+  }
+}

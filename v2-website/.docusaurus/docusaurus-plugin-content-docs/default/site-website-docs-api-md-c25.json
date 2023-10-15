@@ -1,0 +1,31 @@
+{
+  "unversionedId": "api",
+  "id": "api",
+  "title": "API Reference",
+  "description": "The API Reference explains how to access various match and rewrite information",
+  "source": "@site/../website/docs/api.md",
+  "sourceDirName": ".",
+  "slug": "/api",
+  "permalink": "/docs/api",
+  "draft": false,
+  "editUrl": "https://github.com/comby-tools/comby.dev/edit/master/website/docs/../website/docs/api.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "api",
+    "title": "API Reference",
+    "sidebar_label": "API Reference"
+  },
+  "sidebar": "core",
+  "previous": {
+    "title": "Cheat Sheet",
+    "permalink": "/docs/cheat-sheet"
+  },
+  "next": {
+    "title": "Get Help",
+    "permalink": "/docs/get-help"
+  }
+}

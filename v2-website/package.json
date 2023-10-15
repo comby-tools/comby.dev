@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "license": "Apache-2.0",
+  "scripts": {
+    "examples": "docusaurus-examples",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "publish-gh-pages": "docusaurus-publish",
+    "write-translations": "docusaurus-write-translations",
+    "version": "docusaurus-version",
+    "rename-version": "docusaurus-rename-version",
+    "prettier": "prettier --write './**/*.js' './**/*.css' './**/*.md'",
+    "prettier-check": "prettier --check './**/*.js' './**/*.css' './**/*.md'",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "docusaurus": "docusaurus"
+  },
+  "devDependencies": {
+    "prettier": "1.18.2"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "@docusaurus/core": "2.4.3",
+    "@docusaurus/preset-classic": "2.4.3",
+    "clsx": "^1.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "packageManager": "yarn@3.6.4"
+}

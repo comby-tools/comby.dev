@@ -1,0 +1,33 @@
+{
+  "permalink": "/blog/2022/04/11/comby-decomposer-compiler-fuzzing",
+  "source": "@site/blog/2022-04-11-comby-decomposer-compiler-fuzzing.md",
+  "title": "Deconstructing programs for compiler fuzzing",
+  "description": "table td {",
+  "date": "2022-04-11T00:00:00.000Z",
+  "formattedDate": "April 11, 2022",
+  "tags": [],
+  "readingTime": 8.1,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "Rijnard",
+      "url": "https://twitter.com/rvtond",
+      "imageURL": "https://pbs.twimg.com/profile_images/1668091943950364675/ok0uhR3s_400x400.jpg"
+    }
+  ],
+  "frontMatter": {
+    "id": "comby-decomposer-compiler-fuzzer",
+    "title": "Deconstructing programs for compiler fuzzing",
+    "author": "Rijnard",
+    "authorURL": "https://twitter.com/rvtond",
+    "authorImageURL": "https://pbs.twimg.com/profile_images/1668091943950364675/ok0uhR3s_400x400.jpg"
+  },
+  "prevItem": {
+    "title": "Find and replace with type information",
+    "permalink": "/blog/2022/08/31/comby-with-types"
+  },
+  "nextItem": {
+    "title": "Whatever You Want syntax for rewriting code",
+    "permalink": "/blog/2021/04/25/whatever-you-want-syntax"
+  }
+}

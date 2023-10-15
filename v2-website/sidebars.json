@@ -1,0 +1,23 @@
+{
+  "core": {
+    "Getting Started": [
+      "overview",
+      "get-started"
+    ],
+    "Usage": [
+      "basic-usage",
+      "rewrite-properties",
+      "syntax-reference",
+      "advanced-usage",
+      "configuration",
+      "cheat-sheet"
+    ],
+    "API": [
+        "api"
+    ],
+    "Resources": [
+      "get-help",
+      "faq"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "unversionedId": "syntax-reference",
+  "id": "syntax-reference",
+  "title": "Syntax Reference",
+  "description": "The Comby syntax below has special meaning for matching. Bind match contents to",
+  "source": "@site/../website/docs/syntax-reference.md",
+  "sourceDirName": ".",
+  "slug": "/syntax-reference",
+  "permalink": "/docs/syntax-reference",
+  "draft": false,
+  "editUrl": "https://github.com/comby-tools/comby.dev/edit/master/website/docs/../website/docs/syntax-reference.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "syntax-reference",
+    "title": "Syntax Reference",
+    "sidebar_label": "Syntax Reference"
+  },
+  "sidebar": "core",
+  "previous": {
+    "title": "Rewrite Properties",
+    "permalink": "/docs/rewrite-properties"
+  },
+  "next": {
+    "title": "Advanced Usage",
+    "permalink": "/docs/advanced-usage"
+  }
+}

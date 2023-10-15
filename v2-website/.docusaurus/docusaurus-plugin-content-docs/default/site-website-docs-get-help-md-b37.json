@@ -1,0 +1,31 @@
+{
+  "unversionedId": "get-help",
+  "id": "get-help",
+  "title": "Help",
+  "description": "Here are a few ways to get help if you have questions:",
+  "source": "@site/../website/docs/get-help.md",
+  "sourceDirName": ".",
+  "slug": "/get-help",
+  "permalink": "/docs/get-help",
+  "draft": false,
+  "editUrl": "https://github.com/comby-tools/comby.dev/edit/master/website/docs/../website/docs/get-help.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "get-help",
+    "title": "Help",
+    "sidebar_label": "Get Help"
+  },
+  "sidebar": "core",
+  "previous": {
+    "title": "API Reference",
+    "permalink": "/docs/api"
+  },
+  "next": {
+    "title": "FAQ",
+    "permalink": "/docs/faq"
+  }
+}

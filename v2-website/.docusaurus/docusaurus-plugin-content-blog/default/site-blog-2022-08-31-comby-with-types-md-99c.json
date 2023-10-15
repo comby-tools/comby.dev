@@ -1,0 +1,29 @@
+{
+  "permalink": "/blog/2022/08/31/comby-with-types",
+  "source": "@site/blog/2022-08-31-comby-with-types.md",
+  "title": "Find and replace with type information",
+  "description": "table td {",
+  "date": "2022-08-31T00:00:00.000Z",
+  "formattedDate": "August 31, 2022",
+  "tags": [],
+  "readingTime": 15.895,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "Rijnard",
+      "url": "https://twitter.com/rvtond",
+      "imageURL": "https://pbs.twimg.com/profile_images/1668091943950364675/ok0uhR3s_400x400.jpg"
+    }
+  ],
+  "frontMatter": {
+    "id": "comby-with-types",
+    "title": "Find and replace with type information",
+    "author": "Rijnard",
+    "authorURL": "https://twitter.com/rvtond",
+    "authorImageURL": "https://pbs.twimg.com/profile_images/1668091943950364675/ok0uhR3s_400x400.jpg"
+  },
+  "nextItem": {
+    "title": "Deconstructing programs for compiler fuzzing",
+    "permalink": "/blog/2022/04/11/comby-decomposer-compiler-fuzzing"
+  }
+}
