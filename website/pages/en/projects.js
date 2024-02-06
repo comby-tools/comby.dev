@@ -152,10 +152,12 @@ class Index extends React.Component {
             <li><b>Fuzzing</b> - <a href="https://blog.trailofbits.com/2021/03/23/a-year-in-the-life-of-a-compiler-fuzzing-campaign/">Language-aware compiler fuzzing</a> and <a href="https://comby.dev/blog/2021/03/26/comby-reducer">test case reduction</a></li>
             <li><b>Editor find-and-replace</b> - There is an <a href="https://github.com/s-kostyaev/comby.el">Emacs package</a> and a prototype <a href="https://marketplace.visualstudio.com/items?itemName=giltho.comby-vscode">VS Code extension</a></li>
             <li><b>Academic research in software engineering</b>
-            <ul><li><a href="https://2020.icse-conferences.org/details/icse-2020-papers/72/Tailoring-Programs-for-Static-Analysis-via-Program-Transformation">Suppressing analyzer false positives</a></li>
-            <li><a href="http://kinneerc.github.io/assets/acsos2020.pdf">Manipulating domain-specific languages for autonomic systems</a></li>
-            </ul>
+              <ul>
+              <li><a href="https://2020.icse-conferences.org/details/icse-2020-papers/72/Tailoring-Programs-for-Static-Analysis-via-Program-Transformation">Suppressing analyzer false positives</a></li>
+              <li><a href="http://kinneerc.github.io/assets/acsos2020.pdf">Manipulating domain-specific languages for autonomic systems</a></li>
+              </ul>
             </li>
+            <li>HTML in  <a href="https://git.wine">personal projects</a></li>
             </ul>
 
             <p>
