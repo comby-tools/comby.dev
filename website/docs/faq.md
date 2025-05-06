@@ -36,7 +36,7 @@ if (fgets(line, 128, file_pointer) == Null) // 1) if (...) returns 0
 if (scanf("%d) %d", &x, &y) == 2) // 2) if (scanf("%d) %d", &x, &y) == 2) returns 0
       return 0;
 ```
-> [playground ↗](https://bit.ly/30935ou)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22if%20%28fgets%28line,%20128,%20file%5Fpointer%29%20==%20Null%29%20//%201%29%20if%20%28...%29%20returns%200%5Cn%20%20%20%20%20%20return%200;%5Cn...%5Cnif%20%28scanf%28%5C%22%25d%29%20%25d%5C%22,%20&x,%20&y%29%20==%202%29%20//%202%29%20if%20%28scanf%28%5C%22%25d%29%20%25d%5C%22,%20&x,%20&y%29%20==%202%29%20returns%200%5Cn%20%20%20%20%20%20return%200;%20%22,%22match%22:%22if%20%28:%5Bcond%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22if%20%281%29%22,%22language%22:%22.c%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 To match these with comby, all you need is the pattern `if (:[condition])`. As a
 small step, add `-matcher .c` to the command so that comby interprets the input
@@ -143,7 +143,7 @@ to a recognized Go construct in entirety). You'd need to complete a pattern to
 something that is recognizable, like `if len($X) == 0 {$Y}`, which does match
 [[1](https://semgrep.dev/s/WeyE)]. Comby doesn't have such restrictions and the
 analogous Comby patterns `switch {:[X]}` or `if len(:[X]) == 0` work as expected
-[[1](https://bit.ly/3jJThHl), [2](https://bit.ly/35L4ZfK)].
+[[1](https://comby-live.fly.dev/index.html#%7B%22source%22:%22func%20%28p%20%2Aparser%29%20errorExpected%28pos%20token.Pos,%20msg%20string%29%20%7B%5Cn%20%20%20%20msg%20=%20%5C%22expected%20%5C%22%20%2B%20msg%5Cn%20%20%20%20if%20pos%20==%20p.pos%20%7B%5Cn%20%20%20%20%20%20%20%20//%20the%20error%20happened%20at%20the%20current%20position;%5Cn%20%20%20%20%20%20%20%20//%20make%20the%20error%20message%20more%20specific%5Cn%20%20%20%20%20%20%20%20switch%20%7B%5Cn%20%20%20%20%20%20%20%20case%20p.tok%20==%20token.SEMICOLON%20&&%20p.lit%20==%20%5C%22%5C%5Cn%5C%22:%5Cn%20%20%20%20%20%20%20%20%20%20%20%20msg%20%2B=%20%5C%22,%20found%20newline%5C%22%5Cn%20%20%20%20%20%20%20%20case%20p.tok.IsLiteral%28%29:%5Cn%20%20%20%20%20%20%20%20%20%20%20%20//%20print%20123%20rather%20than%20'INT',%20etc.%5Cn%20%20%20%20%20%20%20%20%20%20%20%20msg%20%2B=%20%5C%22,%20found%20%5C%22%20%2B%20p.lit%5Cn%20%20%20%20%20%20%20%20default:%5Cn%20%20%20%20%20%20%20%20%20%20%20%20msg%20%2B=%20%5C%22,%20found%20'%5C%22%20%2B%20p.tok.String%28%29%20%2B%20%5C%22'%5C%22%5Cn%20%20%20%20%20%20%20%20%7D%5Cn%20%20%20%20%7D%5Cn%20%20%20%20p.error%28pos,%20msg%29%5Cn%7D%22,%22match%22:%22switch%20%7B:%5BX%5D%7D%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22%22,%22language%22:%22.go%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D), [2](https://comby-live.fly.dev/index.html#%7B%22source%22:%22func%20test%28nodes%20%5B%5DNode%29%20%7B%5Cn%20%20%20%20if%20len%28nodes%29%20==%200%20%7B%5Cn%20%20%20%20%20%20%20%20return%20nil%5Cn%20%20%20%20%7D%20else%20if%20len%28nodes%29%20==%201%20%7B%5Cn%20%20%20%20%20%20%20%20return%20nodes%5Cn%20%20%20%20%7D%5Cn%7D%22,%22match%22:%22if%20len%28:%5BX%5D%29%20==%200%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22%22,%22language%22:%22.go%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)].
 
 **Performance.** There's no dedicated benchmark comparing Comby and Semgrep in
 the overlap of their functionality, which would take a lot of effort to answer

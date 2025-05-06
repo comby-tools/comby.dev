@@ -133,7 +133,7 @@ class Index extends React.Component {
               <MarkdownBlock>{mainExample}</MarkdownBlock>
               <MarkdownBlock>{patchExample}</MarkdownBlock>
               <a style={{float: 'right', fontSize: 12 + 'px'}} href="https://docs.python.org/3/library/2to3.html#fixers">Python 2 to 3 fixers reference↗</a>
-            {/* [example](https://bit.ly/3e1hMgG */}
+            {/* [example](https://comby-live.fly.dev/index.html#%7B%22source%22:%22%20%20%20%20def%20test(self):%5Cn%20%20%20%20%20%20%20%20r%20=%20self.parse(%5C%22if%201%20fooze%5C%22,%20&#x27;r3&#x27;)%5Cn%20%20%20%20%20%20%20%20self.failUnlessEqual(%5Cn%20%20%20%20%20%20%20%20%20%20%20%20r.tree.toStringTree(),%5Cn%20%20%20%20%20%20%20%20%20%20%20%20&#x27;(if%201%20fooze)&#x27;%5Cn%20%20%20%20%20%20%20%20%20%20%20%20)%22,%22match%22:%22failUnlessEqual(:[a],:[b])%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22assertEqual(:[a],:[b])%22,%22language%22:%22.generic%22,%22substitution_kind%22:%22in_place%22,%22id%22:0%7D */}
             </div>
           </div>
         </PageSection>

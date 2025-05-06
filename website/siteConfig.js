@@ -36,7 +36,7 @@ const siteConfig = {
     // for "Get started" means that only the "Docs" tab will ever be active.
     {label: 'Get started', href: '/docs/get-started'},
     {label: 'Docs', doc: 'overview'},
-    // {label: 'Try', href: 'https://bit.ly/2UXkonD'},
+    // {label: 'Try', href: 'https://comby-live.fly.dev/index.html#%7B%22source%22:%22if%20test.flags%20!=%20nil%20%7B%5Cn%20%20%20%20%20%20%20%20for%20key,%20val%20:=%20range%20test.flags%20%7B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20cmd.Flags().Set(key,%20val)%5Cn%20%20%20%20%20%20%20%20%7D%5Cn%7D%22,%22match%22:%22if%20:[expr]%20!=%20nil%20%7B%5Cn%20%20for%20:[x]%20:=%20range%20:[expr]%20%7B%5Cn%20%20%20%20:[body]%5Cn%20%20%7D%5Cn%7D%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22for%20:[x]%20:=%20range%20:[expr]%20%7B%5Cn%20%20:[body]%5Cn%7D%22,%22language%22:%22.go%22,%22substitution_kind%22:%22in_place%22,%22id%22:0%7D'},
     {label: 'Projects & Talks', href: '/en/projects'},
     {label: 'GitHub', href: 'https://github.com/comby-tools/comby'},
     {blog: true, label: 'Blog'},

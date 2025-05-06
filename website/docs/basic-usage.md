@@ -65,7 +65,7 @@ To run this example on the command line, put the original code in a file `main.g
 comby 'fmt.Println(:[args])' 'fmt.Println(fmt.Sprintf("comby says %s", :[args]))' .go
 ```
 
-Or see it in action in the online [playground ↗](https://bit.ly/2XpttJG)
+Or see it in action in the online [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22func%20main%28%29%20%7B%5Cn%20%20%20%20fmt.Println%28%5C%22hello%20world%5C%22%29%5Cn%7D%22,%22match%22:%22fmt.Println%28:%5Barguments%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22fmt.Println%28fmt.Sprintf%28%5C%22comby%20says%20%25s%5C%22,%20:%5Barguments%5D%29%29%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 
 *All other characters are interpreted literally* except for [recognized syntax](syntax-reference).
@@ -110,7 +110,7 @@ table tr {
 |-----------------------------------------------------------------------------------|-------------------------------------|
 | <code class="hljs">if (width <= 1280 && height <= 800) {<br/>&nbsp;    return 1; <br/>}</code> | <code>if (:[var] <= :[rest])</code> |
 
-> [playground ↗](https://bit.ly/2Xiw1cf)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22if%20%28width%20%3C=%201280%20&&%20height%20%3C=%20800%29%20%7B%5Cn%20%20%20%20return%201;%5Cn%7D%22,%22match%22:%22if%20%28:%5Bvar%5D%20%3C=%20:%5Brest%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22var%20matched:%20:%5Bvar%5D%5Cnrest%20matched:%20:%5Brest%5D%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22newline%5Fseparated%22,%22id%22:0%7D)
 
 `:[var]` matches until it sees the `<=` part coming after it and matches
 `width`. `:[rest]` matches the rest of the condition: `1280 && height <= 800`.
@@ -128,7 +128,7 @@ used `...` as a hole to avoid giving a descriptive name.
 When `:[hole]` occurs outside of delimiters, at the top-level of a template,
 then matching continues up to the end of the line, or until we encounter block
 syntax like `{...}` in JavaScript, whichever comes first. See the example
-`if :[hole]` on the [playground ↗](https://bit.ly/31xX5Wg).
+`if :[hole]` on the [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22if%20%28condition%29%20%7B%5Cn%20%20console.log%28%5C%22oh%20hai%5C%22%29%5Cn%7D%5Cnif%20%28condition%29%20%5Cn%7B%5Cn%20%20console.log%28%5C%22oh%20hai%5C%22%29%20%20%20%5Cn%7D%22,%22match%22:%22if%20:%5Bhole%5D%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22newline%5Fseparated%22,%22id%22:0%7D).
 
 ## Structural matching
 
@@ -143,7 +143,7 @@ for `(:[1])` in this code:
 result = foo(bar(x)) + foobar(baz(x));
 ```
 
-> [playground ↗](https://bit.ly/2ZwvV1F)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22result%20=%20foo%28bar%28x%29%29%20%2B%20foobar%28baz%28x%29%29;%22,%22match%22:%22%28:%5B1%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22%28:%5B1%5D%29%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 The hole binds to `bar(x)` and `baz(x)` respectively, which we can easily
 rewrite to a different call `qux(x)`, for example. You may notice that the `(x)`
@@ -160,7 +160,7 @@ was this Javascript snippet:
 var result = foo(bar(x /* arg 1) */)) + foobar("(");
 ```
 
-> [playground ↗](https://bit.ly/2Xm12Mk)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22result%20=%20foo%28bar%28x%29%29%20%2B%20foobar%28baz%28x%29%29;%22,%22match%22:%22%28:%5B1%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22%28qux%28x%29%29%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 Now there's quite a bit of complexity if we want to match the arguments of foo
 and foobar. A block comment `/* arg 1) */` is inlined for `bar`. Because this is a
@@ -174,7 +174,7 @@ captures the comment and string)
 var result = foo(bar(x /* arg 1) */)) + foobar("(");
 ```
 
-> [playground ↗](https://bit.ly/2Zy5PYG)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22var%20result%20=%20foo%28bar%28x%20/%2A%20arg%201%29%20%2A/%29%29%20%2B%20foobar%28%5C%22%28%5C%22%29;%22,%22match%22:%22%28:%5B1%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22%28qux%28x%29%29%22,%22language%22:%22.js%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 Comby understands this interaction between delimiters, strings, and comments and
 makes reasonable guesses for your language based on file extension. You can also
@@ -206,7 +206,7 @@ bar(not_a_number) // no match
 baz(123)          // match
 ```
 
-> [playground ↗](https://bit.ly/2D9pcSq)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22foo%28777%29%5Cnfoo%28not%5Fa%5Fnumber%29%5Cnbar%28123%29%22,%22match%22:%22:%5Bfn~%5C%5Cw%2B%5D%28:%5Bdigits~%5C%5Cd%2B%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22matched%20:%5Bnumber%5D%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22newline%5Fseparated%22,%22id%22:0%7D)
 
 
 There is one special rule to keep in mind when you use regex. Comby will try its
@@ -249,7 +249,7 @@ if (width <= 1280
 }
 ```
 
-> [playground ↗](https://bit.ly/2Xh2tMk)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22if%20%28width%20%3C=%201280%5Cn%20%20%20%20&&%20height%20%3C=%20800%29%20%7B%5Cn%20%20%20%20return%201;%5Cn%7D%22,%22match%22:%22if%20%28:%5Bvar%5D%20%3C=%20:%5Brest%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22var%20matched:%20:%5Bvar%5D%5Cnrest%20matched:%20:%5Brest%5D%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22newline%5Fseparated%22,%22id%22:0%7D)
 
 ```
 if (width     <= 1280
@@ -258,6 +258,6 @@ if (width     <= 1280
 }
 ```
 
-> [playground ↗](https://bit.ly/2XaGTZV)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22if%20%28width%20%20%20%20%20%3C=%201280%5Cn%20%20%20%20&&%20height%20%3C=%20800%29%20%7B%5Cn%20%20%20%20return%201;%5Cn%7D%22,%22match%22:%22if%20%28:%5Bvar%5D%20%3C=%20:%5Brest%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22var%20matched:%20:%5Bvar%5D%5Cnrest%20matched:%20:%5Brest%5D%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22newline%5Fseparated%22,%22id%22:0%7D)
 
 If you're wondering about indentation-sensitive languages like Python, be sure to check out the [FAQ](faq#what-about-indentation-sensitive-languages).

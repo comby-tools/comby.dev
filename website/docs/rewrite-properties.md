@@ -67,7 +67,7 @@ echo 'these are words 123' | comby -stdin ':[[x]]' ':[[x]].Capitalize' -lang .tx
 +These Are Words 123
 ```
 
-> [playground ↗](https://bit.ly/3z91jCz)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22these%20are%20words%20123%22,%22match%22:%22:%5B%5Bx%5D%5D%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22:%5Bx%5D.Capitalize%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 Properties are recognized in the rewrite template and substituted according to
 the predefined behavior. Property accesses cannot be chained. Below are the
@@ -86,7 +86,7 @@ current built-in properties.
 | `.UpperCamelCase`   | Convert `snake_case` to `CamelCase` (each letter after `_` in `snake_case` is capitalized, and the `_` removed). Then capitalize the first character. |
 | `.lowerCamelCase`   | Convert `snake_case` to `CamelCase` (each letter after `_` in `snake_case` is capitalized, and the `_` removed). Then lowercase the first character.  |
 
-> [playground ↗](https://bit.ly/34WU7LX)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22%20%20%20%20LOWERCASE%5Cn%20%20%20%20uppercase%5Cn%20%20%20%20capitalize%5Cn%20%20%20%20Uncapitalize%5Cn%20%20%20%20upper%5Fcamel%5Fcase%5Cn%20%20%20%20Lower%5Fcamel%5FCase%5Cn%20%20%20%20upperSnakeCase%5Cn%20%20%20%20lowerSnakeCase%22,%22match%22:%22%20%20%20%20%20%20%20:%5B%5Ba%5D%5D%5Cn%20%20%20%20%20%20%20:%5B%5Bb%5D%5D%5Cn%20%20%20%20%20%20%20:%5B%5Bc%5D%5D%5Cn%20%20%20%20%20%20%20:%5B%5Bd%5D%5D%5Cn%20%20%20%20%20%20%20:%5B%5Be%5D%5D%5Cn%20%20%20%20%20%20%20:%5B%5Bf%5D%5D%5Cn%20%20%20%20%20%20%20:%5B%5Bg%5D%5D%5Cn%20%20%20%20%20%20%20:%5B%5Bh%5D%5D%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22%20%20%20%20%20%20%20:%5B%5Ba%5D%5D%20-%3E%20:%5B%5Ba%5D%5D.lowercase%5Cn%20%20%20%20%20%20%20:%5B%5Bb%5D%5D%20-%3E%20:%5B%5Bb%5D%5D.UPPERCASE%5Cn%20%20%20%20%20%20%20:%5B%5Bc%5D%5D%20-%3E%20:%5B%5Bc%5D%5D.Capitalize%5Cn%20%20%20%20%20%20%20:%5B%5Bd%5D%5D%20-%3E%20:%5B%5Bd%5D%5D.uncapitalize%5Cn%20%20%20%20%20%20%20:%5B%5Be%5D%5D%20-%3E%20:%5B%5Be%5D%5D.UpperCamelCase%5Cn%20%20%20%20%20%20%20:%5B%5Bf%5D%5D%20-%3E%20:%5B%5Bf%5D%5D.lowerCamelCase%5Cn%20%20%20%20%20%20%20:%5B%5Bg%5D%5D%20-%3E%20:%5B%5Bg%5D%5D.UPPER%5FSNAKE%5FCASE%5Cn%20%20%20%20%20%20%20:%5B%5Bh%5D%5D%20-%3E%20:%5B%5Bh%5D%5D.lower%5Fsnake%5Fcase%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 ### Sizes
 
@@ -95,7 +95,7 @@ current built-in properties.
 | `.length`         | Substitute the number of characters of the hole value                          |
 | `.lines`          | Substitute the number of lines of the hole value                               |
 
-> [playground ↗](https://bit.ly/3pxjspq)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22fn%20another%5Ffunction%28x:%20i32,%20y:%20i32%29%20%7B%5Cn%20%20%20%20println!%28%5C%22The%20value%20of%20x%20is:%20%7B%7D%5C%22,%20x%29;%5Cn%20%20%20%20println!%28%5C%22The%20value%20of%20y%20is:%20%7B%7D%5C%22,%20y%29;%5Cn%7D%22,%22match%22:%22fn%20:%5Bx%5D%20%7B:%5Bbody%5D%7D%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22%23characters%20in%20function%20body:%20:%5Bbody%5D.length%5Cnlines%20in%20function%20body:%20:%5Bbody%5D.lines%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 ### Positions
 
@@ -115,7 +115,7 @@ Note: only `.offset` is available in the playground. `.line` and
 `.column` are currently only supported on the command-line, and on files (not
 via `-stdin`).
 
-> [playground ↗](https://bit.ly/3w7Qdfm)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22fn%20another%5Ffunction%28x:%20i32,%20y:%20i32%29%20%7B%5Cn%20%20%20%20println!%28%5C%22The%20value%20of%20x%20is:%20%7B%7D%5C%22,%20x%29;%5Cn%20%20%20%20println!%28%5C%22The%20value%20of%20y%20is:%20%7B%7D%5C%22,%20y%29;%5Cn%7D%22,%22match%22:%22println!%28:%5Barg%5D%29%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22offset%20of%20%60println%60:%20:%5Barg%5D.offset%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22newline%5Fseparated%22,%22id%22:0%7D)
 
 ### File context
 
@@ -155,7 +155,7 @@ echo 'a word' | comby -stdin ':[[x]]' ':[x].value.length is :[x].length' -lang .
 +a.length is 1 word.length is 4
 ```
 
-> [playground ↗](https://bit.ly/34VMyFd)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22a%20word%22,%22match%22:%22:%5B%5Bx%5D%5D%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22:%5Bx%5D.value.length%20is%20:%5Bx%5D.length%22,%22language%22:%22.generic%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 
 The way this works is that `:[hole].value` acts as an escape sequence so that any conflicting `.<property>` can be interpreted

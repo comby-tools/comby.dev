@@ -27,7 +27,7 @@ is implemented for most languages. Comby also understands the difference between
 escapable string literals (like "string" in C) and raw string literals (like
 `string` in Go), and will know to stop between these delimiters.
 
-> [playground ↗](https://bit.ly/2WRnxEL)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22I%20am%20%60a%20multiline%20%5CnGo%20string%60%5Cnand%20I%20am%20a%20%5C%22%5C%5C%5C%22escapable%5C%5C%5C%22%5C%22%20string%20%22,%22match%22:%22%60:%5Braw%5D%60%20:%5B%5F%5D%20%5C%22:%5Bliteral%5D%5C%22%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22:%5Braw%5D%5Cn:%5B%5F%5D%5Cn:%5Bliteral%5D%22,%22language%22:%22.go%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 → You almost never want to start a template with `:[hole]`, since it matches
 everything including newlines up to its suffix. This can make things slow.
@@ -40,7 +40,7 @@ to capture leading indentation of a line, use a template like:
 :[ leading_indentation]:[everything_until_newline\n]
 ```
 
-> [playground ↗](https://bit.ly/31uC6RE)
+> [playground ↗](https://comby-live.fly.dev/index.html#%7B%22source%22:%22%20%20%20%20%20%20%20line%201%5Cn%20line%202%5Cn%20%20%20%20%20%20%20%20%20%20%20line%203%5Cn%22,%22match%22:%22:%5B%20leading%5Findentation%5D:%5Brest%5C%5Cn%5D%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22:%5Brest%5D%22,%22language%22:%22.go%22,%22substitution%5Fkind%22:%22in%5Fplace%22,%22id%22:0%7D)
 
 → Looking for inspiration? Check out these [sample code rewrites](https://catalog.comby.dev/) and the [FAQ](faq#what-can-i-use-comby-for).
 

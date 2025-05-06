@@ -48,7 +48,7 @@ expression without changing a variable like `x` to `y`:
 if (x == 500 && x == 500)
 ```
 
-<blockquote class="blockquote-playground"> <a href="https://bit.ly/2Na9UAS">playground ↗</a> </blockquote>
+<blockquote class="blockquote-playground"> <a href="https://comby-live.fly.dev/index.html#%7B%22source%22:%22if%20(x%20==%20500%20&amp;&amp;%20x%20==%20500)%22,%22match%22:%22if%20(:[left_side]%20&amp;&amp;%20:[right_side])%22,%22rule%22:%22where%20:[left_side]%20==%20:[right_side]%22,%22rewrite%22:%22if%20(:[left_side]%20&amp;&amp;%20:[right_side])%20//%20uh%20oh%22,%22language%22:%22.generic%22,%22substitution_kind%22:%22in_place%22,%22id%22:0%7D">playground ↗</a> </blockquote>
 
 You can use the `!=` operator to check inequality. Multiple conditions can be
 separated by a comma, and mean "logical and". The following adds a condition to
@@ -58,7 +58,7 @@ ignore our match case above:
 where :[left_side] == :[right_side], :[left_side] != "x == 500"
 ```
 
-<blockquote class="blockquote-playground"> <a href="https://bit.ly/2NaaCOy">playground ↗</a> </blockquote>
+<blockquote class="blockquote-playground"> <a href="https://comby-live.fly.dev/index.html#%7B%22source%22:%22if%20(x%20==%20500%20&amp;&amp;%20x%20==%20500)%22,%22match%22:%22if%20(:[left_side]%20&amp;&amp;%20:[right_side])%22,%22rule%22:%22where%20:[left_side]%20==%20:[right_side],%20:[left_side]%20!=%20%5C%22x%20==%20500%5C%22%22,%22rewrite%22:%22no%20match.%22,%22language%22:%22.generic%22,%22substitution_kind%22:%22in_place%22,%22id%22:0%7D">playground ↗</a> </blockquote>
 
 Variables can be compared to other variables or string contents (enclosed by
 double quotes).
@@ -74,7 +74,7 @@ of a dict to a JSON-like format, where `dict(foo=bar,baz=qux)` becomes
 
 `where rewrite :[args] {  ":[[k]]=:[[v]]" -> "\":[k]\": :[v]" }`
 
-<blockquote class="blockquote-playground"> <a href="https://bit.ly/30d3Tss">playground ↗</a> </blockquote>
+<blockquote class="blockquote-playground"> <a href="https://comby-live.fly.dev/index.html#%7B%22source%22:%22dict(foo=bar,baz=qux)%22,%22match%22:%22dict(:[args])%22,%22rule%22:%22where%5Cnrewrite%20:[args]%20%7B%20%20%5Cn%20%20%5C%22:[[k]]=:[[v]]%5C%22%20-%3E%20%5C%22%5C%5C%5C%22:[k]%5C%5C%5C%22:%20:[v]%5C%22%20%5Cn%7D,%5Cnrewrite%20:[args]%20%7B%20%20%5Cn%20%20%5C%22:%20:[[v]]%5C%22%20-%3E%20%5C%22:%20%5C%5C%5C%22:[v]%5C%5C%5C%22%5C%22%20%5Cn%7D%22,%22rewrite%22:%22%7B:[args]%7D%22,%22language%22:%22.generic%22,%22substitution_kind%22:%22in_place%22,%22id%22:0%7D">playground ↗</a> </blockquote>
 
 The pattern rewrites every matching instance of `:[[k]]=:[[v]] to ":[k]": :[v]`.
 The contents of the `:[args]` hole are overwritten if the rewrite pattern fires.
@@ -95,7 +95,7 @@ rewrite :[args] {  ":[[k]]=:[[v]]" -> "\":[k]\": :[v]" },
 rewrite :[args] {  ": :[[v]]" -> ": \":[v]\"" }
 ```
 
-<blockquote class="blockquote-playground"> <a href="https://bit.ly/306lB0H">playground ↗</a> </blockquote>
+<blockquote class="blockquote-playground"> <a href="https://comby-live.fly.dev/index.html#%7B%22source%22:%22dict(foo=bar,baz=qux)%22,%22match%22:%22dict(:[args])%22,%22rule%22:%22where%5Cnrewrite%20:[args]%20%7B%20%20%5C%22:[[k]]=:[[v]]%5C%22%20-%3E%20%5C%22%5C%5C%5C%22:[k]%5C%5C%5C%22:%20:[v]%5C%22%20%7D,%5Cnrewrite%20:[args]%20%7B%20%20%5C%22:%20:[[v]]%5C%22%20-%3E%20%5C%22:%20%5C%5C%5C%22:[v]%5C%5C%5C%22%5C%22%20%7D%22,%22rewrite%22:%22%7B:[args]%7D%22,%22language%22:%22.generic%22,%22substitution_kind%22:%22in_place%22,%22id%22:0%7D">playground ↗</a> </blockquote>
 
 The rewrite expressions are evaluated in a left-to-right sequence and overwrite
 `:[args]` in every case where expressions succeed. Rewrite expressions always
@@ -369,7 +369,7 @@ when creating fresh variable names during a refactor.
 var a_:[id()] = 42
 var :[left] = :[[right]] + 1
 ```
-<blockquote class="blockquote-playground"> <a href="https://bit.ly/3fg8H4r">playground ↗</a> </blockquote>
+<blockquote class="blockquote-playground"> <a href="https://comby-live.fly.dev/index.html#%7B%22source%22:%22var%20a%20=%2042%22,%22match%22:%22var%20:[[left]]%20=%20:[[right]]%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22var%20a_:[id()]%20=%2042%5Cnvar%20:[left]%20=%20:[[right]]%20%2B%201%22,%22language%22:%22.generic%22,%22substitution_kind%22:%22in_place%22,%22id%22:0%7D">playground ↗</a> </blockquote>
 
 To reference the same identifier in multiple places in the template, simply supply a label to `id`, like so:
 
@@ -378,4 +378,4 @@ anon_:[id(my_label)] = func(){:[body]}
 anon_:[id(my_label)]()
 ```
 
-<blockquote class="blockquote-playground"> <a href="https://bit.ly/30xWQKK">playground ↗</a> </blockquote>
+<blockquote class="blockquote-playground"> <a href="https://comby-live.fly.dev/index.html#%7B%22source%22:%22func()%20%7B%20return%2052;%20%7D()%5Cn%20%20%22,%22match%22:%22func()%20%7B:[body]%7D()%22,%22rule%22:%22where%20true%22,%22rewrite%22:%22anon_:[id(my_label)]%20=%20func()%7B:[body]%7D%5Cnanon_:[id(my_label)]()%22,%22language%22:%22.generic%22,%22substitution_kind%22:%22in_place%22,%22id%22:0%7D">playground ↗</a> </blockquote>
