@@ -157,7 +157,7 @@ class Index extends React.Component {
               <li><a href="http://kinneerc.github.io/assets/acsos2020.pdf">Manipulating domain-specific languages for autonomic systems</a></li>
               </ul>
             </li>
-            <li>HTML in  <a href="https://git.wine">personal projects</a></li>
+            <li>HTML in <a href="https://git.wine">personal</a> <a href="https://elid.wine/producer/FR-DOMP">projects</a></li>
             </ul>
 
             <p>
